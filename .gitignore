@@ -1,0 +1,14 @@
+# OS files
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Local data snapshot (not consumed by the page)
+youtube-downloader.json

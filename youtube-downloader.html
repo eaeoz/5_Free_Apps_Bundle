@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #08080f;
+      min-height: 100vh;
+      padding: 32px;
+    }
+
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    .bg-glow {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .bg-glow::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: -10%;
+      width: 60%;
+      height: 60%;
+      background: radial-gradient(circle, rgba(255, 68, 68, 0.06), transparent 60%);
+      animation: glowDrift 12s ease-in-out infinite alternate;
+    }
+
+    .bg-glow::after {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      right: -10%;
+      width: 60%;
+      height: 60%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.05), transparent 60%);
+      animation: glowDrift 14s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes glowDrift {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+      100% {
+        transform: translate(60px, 40px) scale(1.2);
+      }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* ── Hero Header ── */
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+      animation: fadeDown 0.8s ease-out;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -1.5px;
+      line-height: 1.15;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #ff4444, #ff6b6b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      color: rgba(255, 255, 255, 0.35);
+      font-size: 15px;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+
+    .hero-grand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 20px;
+      padding: 14px 32px;
+      background: rgba(255, 68, 68, 0.06);
+      border: 1px solid rgba(255, 68, 68, 0.12);
+      border-radius: 60px;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-grand-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+
+    .hero-grand-num {
+      font-size: 28px;
+      font-weight: 900;
+      color: #ff4444;
+      letter-spacing: -1px;
+    }
+
+    /* ── Repo Grid ── */
+    .grid {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      gap: 28px;
+    }
+
+    /* ── Repo Card ── */
+    .repo-card {
+      flex: 0 1 360px;
+      background: linear-gradient(160deg, rgba(26, 26, 46, 0.7), rgba(22, 33, 62, 0.7));
+      backdrop-filter: blur(12px);
+      border-radius: 24px;
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+      opacity: 0;
+      transform: translateY(40px) scale(0.96);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .repo-card.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .repo-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .repo-card:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 16px 60px rgba(0, 0, 0, 0.5), 0 0 40px var(--accent-glow);
+    }
+
+    .repo-card:hover::before {
+      opacity: 1;
+    }
+
+    .repo-card-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .repo-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      background: var(--accent);
+      box-shadow: 0 4px 16px var(--accent-glow);
+      transition: transform 0.3s ease;
+    }
+
+    .repo-card:hover .repo-icon {
+      transform: scale(1.08) rotate(-4deg);
+    }
+
+    .repo-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: #fff;
+    }
+
+    .repo-card-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .repo-card-name {
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+    }
+
+    .repo-card-sub {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .repo-card-count {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent-text);
+      background: var(--accent-bg);
+      padding: 2px 10px;
+      border-radius: 20px;
+    }
+
+    .repo-card-releases {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.3);
+      font-weight: 500;
+    }
+
+    /* ── Executable Buttons ── */
+    .exe-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .exe-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .exe-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
+    }
+
+    .exe-btn:hover::after {
+      transform: translateX(100%);
+    }
+
+    .exe-btn:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: var(--accent);
+      transform: translateX(4px);
+    }
+
+    .exe-btn:active {
+      transform: translateX(4px) scale(0.98);
+    }
+
+    .exe-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .exe-icon svg {
+      width: 14px;
+      height: 14px;
+      fill: rgba(255, 255, 255, 0.4);
+    }
+
+    .exe-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .exe-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.8);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .exe-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 2px;
+    }
+
+    .exe-size {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.25);
+      font-weight: 500;
+    }
+
+    .exe-dl-badge {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--accent-text);
+      background: var(--accent-bg);
+      padding: 1px 8px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .exe-dl-badge svg {
+      width: 10px;
+      height: 10px;
+      fill: currentColor;
+    }
+
+    .exe-arrow {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      opacity: 0;
+      transform: translateX(-6px);
+      transition: all 0.25s ease;
+    }
+
+    .exe-arrow svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--accent);
+    }
+
+    .exe-btn:hover .exe-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .no-exe {
+      padding: 20px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.2);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes countUp {
+      0% {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .count-anim {
+      display: inline-block;
+      animation: countUp 0.5s ease-out both;
+    }
+
+    /* ── Loading ── */
+    .loader {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 0;
+      gap: 20px;
+    }
+
+    .loader-ring {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(255, 255, 255, 0.04);
+      border-top-color: #ff4444;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .loader-text {
+      color: rgba(255, 255, 255, 0.25);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
+    .loader-dots span {
+      display: inline-block;
+      animation: dotPulse 1.4s ease-in-out infinite both;
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .loader-dots span:nth-child(1) { animation-delay: 0s; }
+    .loader-dots span:nth-child(2) { animation-delay: 0.16s; }
+    .loader-dots span:nth-child(3) { animation-delay: 0.32s; }
+
+    @keyframes dotPulse {
+      0%, 80%, 100% {
+        transform: scale(0.6);
+        opacity: 0.3;
+      }
+      40% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .error-state {
+      text-align: center;
+      padding: 40px;
+      color: rgba(255, 255, 255, 0.3);
+      font-size: 14px;
+    }
+
+    @media (max-width: 860px) {
+      body {
+        padding: 16px;
+      }
+      .hero h1 {
+        font-size: 28px;
+      }
+      .hero-grand {
+        padding: 10px 20px;
+      }
+      .hero-grand-num {
+        font-size: 22px;
+      }
+      .grid {
+        gap: 20px;
+      }
+      .repo-card {
+        flex: 0 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <div class="container" id="app">
+    <div class="loader">
+      <div class="loader-ring"></div>
+      <div class="loader-text">Loading dashboard</div>
+      <div class="loader-dots"><span>.</span><span>.</span><span>.</span></div>
+    </div>
+  </div>
+
+  <script>
+    const REPOS = [
+      'eaeoz/youtube-downloader',
+      'eaeoz/movie-downloader',
+      'eaeoz/music-downloader',
+      'eaeoz/command-manager-docker',
+      'eaeoz/sondakika',
+    ];
+
+    const META = {
+      'eaeoz/youtube-downloader': {
+        label: 'YouTube Downloader',
+        icon: `<svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`,
+        accent: '#ff4444',
+      },
+      'eaeoz/movie-downloader': {
+        label: 'Movie Downloader',
+        icon: `<svg viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4a2 2 0 0 0-1.99 2L2 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V4h-4z"/></svg>`,
+        accent: '#e50914',
+      },
+      'eaeoz/music-downloader': {
+        label: 'Music Downloader',
+        icon: `<svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>`,
+        accent: '#1ed760',
+      },
+      'eaeoz/command-manager-docker': {
+        label: 'Command Manager',
+        icon: `<svg viewBox="0 0 24 24"><path d="M13 9h-2V7h2v2zm0 4h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 0H7v-2h2v2zm-4 4h2v2H5v-2zm8 2h-2v-2h2v2zm4-2h-2v-2h2v2zm4-8h-2V7h2v2zm0 4h-2v-2h2v2zm-4-4h-2V7h2v2zM3 5h18V3H3v2zm0 16h18v-2H3v2z"/></svg>`,
+        accent: '#0db7ed',
+      },
+      'eaeoz/sondakika': {
+        label: 'Sondakika',
+        icon: `<svg viewBox="0 0 24 24"><path d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"/></svg>`,
+        accent: '#f59e0b',
+      },
+    };
+
+    function formatSize(bytes) {
+      if (!bytes) return '0 B';
+      const units = ['B', 'KB', 'MB', 'GB'];
+      let i = 0;
+      let size = bytes;
+      while (size >= 1024 && i < units.length - 1) { size /= 1024;
+        i++; }
+      return `${size.toFixed(i === 0 ? 0 : 1)} ${units[i]}`;
+    }
+
+    function formatDate(iso) {
+      if (!iso) return '';
+      const d = new Date(iso);
+      return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
+
+    function repoLabel(repo) {
+      return META[repo]?.label || repo.split('/')[1].replace(/-/g, ' ').replace(/(^\w|\s\w)/g, m => m.toUpperCase());
+    }
+
+    function getLatestExe(assets) {
+      return assets
+        .filter(a => a.name.endsWith('.exe'))
+        .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+    }
+
+    function exeBtn(asset, accent) {
+      return `
+        <a class="exe-btn" href="${asset.browser_download_url}" target="_blank" rel="noopener">
+          <div class="exe-icon">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/></svg>
+          </div>
+          <div class="exe-info">
+            <div class="exe-name" title="${asset.name}">${asset.name}</div>
+            <div class="exe-meta">
+              <span class="exe-size">${formatSize(asset.size)}</span>
+              <span class="exe-dl-badge">
+                <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                ${asset.download_count.toLocaleString()}
+              </span>
+            </div>
+          </div>
+          <div class="exe-arrow">
+            <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+          </div>
+        </a>`;
+    }
+
+    async function loadAll() {
+      const app = document.getElementById('app');
+
+      const results = await Promise.allSettled(REPOS.map(
+        repo => fetch(`https://api.github.com/repos/${repo}/releases`)
+          .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
+      ));
+
+      let grandTotal = 0;
+      let cardsHtml = '';
+
+      for (let i = 0; i < REPOS.length; i++) {
+        const repo = REPOS[i];
+        const result = results[i];
+        const meta = META[repo] || {};
+        const accent = meta.accent || '#ff4444';
+        const label = repoLabel(repo);
+        const icon = meta.icon || '';
+
+        if (result.status === 'rejected') {
+          cardsHtml += `
+            <div class="repo-card" style="--accent:${accent};--accent-glow:rgba(255,68,68,0.08);--accent-bg:rgba(255,255,255,0.04);--accent-text:rgba(255,255,255,0.3)">
+              <div class="repo-card-header">
+                ${icon ? `<div class="repo-icon" style="background:${accent}">${icon}</div>` : ''}
+                <div class="repo-card-info">
+                  <div class="repo-card-name">${label}</div>
+                  <div class="repo-card-sub"><span class="repo-card-count" style="color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.04)">Error</span></div>
+                </div>
+              </div>
+              <div class="no-exe">Failed to load</div>
+            </div>`;
+          continue;
+        }
+
+        const data = result.value;
+        let allExes = [];
+        let repoTotal = 0;
+
+        for (const release of data) {
+          const assets = (release.assets || []).filter(a => a.name.endsWith('.exe'));
+          for (const a of assets) {
+            a._releaseTag = release.tag_name;
+            a._releaseDate = release.published_at;
+            allExes.push(a);
+            repoTotal += a.download_count;
+          }
+        }
+
+        grandTotal += repoTotal;
+        const latest = getLatestExe(allExes);
+        const releaseCount = new Set(allExes.map(a => a._releaseTag)).size;
+
+        const accentRgb = accent;
+        const glowRgb = accent.replace(')', ',0.1)').replace('rgb', 'rgba');
+
+        let bodyHtml = '';
+
+        if (latest.length > 0) {
+          bodyHtml = '<div class="exe-list">';
+          for (const exe of latest) {
+            bodyHtml += exeBtn(exe, accent);
+          }
+          bodyHtml += '</div>';
+        } else {
+          bodyHtml = '<div class="no-exe">No executables found</div>';
+        }
+
+        cardsHtml += `
+          <div class="repo-card" style="--accent:${accent};--accent-glow:${glowRgb};--accent-bg:${accent}15;--accent-text:${accent}">
+            <div class="repo-card-header">
+              ${icon ? `<div class="repo-icon" style="background:${accent};box-shadow:0 4px 16px ${glowRgb}">${icon}</div>` : ''}
+              <div class="repo-card-info">
+                <div class="repo-card-name">${label}</div>
+                <div class="repo-card-sub">
+                  <span class="repo-card-count">${repoTotal.toLocaleString()} downloads</span>
+                  <span class="repo-card-releases">${releaseCount} release${releaseCount !== 1 ? 's' : ''}</span>
+                </div>
+              </div>
+            </div>
+            ${bodyHtml}
+          </div>`;
+      }
+
+      const hero = `
+        <div class="hero">
+          <h1>Download <span>Dashboard</span></h1>
+          <p>Live download counts across all projects</p>
+          ${REPOS.length > 1 ? `
+          <div class="hero-grand">
+            <span class="hero-grand-label">Grand Total</span>
+            <span class="hero-grand-num" id="grandTotal">0</span>
+          </div>` : ''}
+        </div>`;
+
+      app.innerHTML = hero + `<div class="grid" id="grid">${cardsHtml}</div>`;
+
+      // Animate grand total
+      if (REPOS.length > 1) {
+        const el = document.getElementById('grandTotal');
+        let current = 0;
+        const step = Math.max(1, Math.floor(grandTotal / 40));
+        const interval = setInterval(() => {
+          current += step;
+          if (current >= grandTotal) {
+            current = grandTotal;
+            clearInterval(interval);
+          }
+          el.textContent = current.toLocaleString();
+        }, 30);
+      }
+
+      // Staggered card entrance
+      const cards = document.querySelectorAll('.repo-card');
+      cards.forEach((card, i) => {
+        setTimeout(() => card.classList.add('visible'), 150 + i * 100);
+      });
+    }
+
+    loadAll();
+  </script>
+
+</body>
+</html>
