@@ -296,6 +296,20 @@
       transform: translateX(4px) scale(0.98);
     }
 
+    .exe-btn--disabled {
+      cursor: default;
+    }
+
+    .exe-btn--disabled:hover {
+      background: rgba(255, 255, 255, 0.03);
+      border-color: rgba(255, 255, 255, 0.06);
+      transform: none;
+    }
+
+    .exe-btn--disabled:hover::after {
+      transform: translateX(-100%);
+    }
+
     .exe-icon {
       width: 28px;
       height: 28px;
@@ -573,9 +587,13 @@
         .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
     }
 
-    function exeBtn(asset, accent) {
+    function exeBtn(asset, accent, isLatest = true) {
+      const tag = isLatest ? 'a' : 'div';
+      const attrs = isLatest
+        ? ` class="exe-btn" href="${asset.browser_download_url}" target="_blank" rel="noopener"`
+        : ` class="exe-btn exe-btn--disabled"`;
       return `
-        <a class="exe-btn" href="${asset.browser_download_url}" target="_blank" rel="noopener">
+        <${tag}${attrs}>
           <div class="exe-icon">
             <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/></svg>
           </div>
@@ -589,10 +607,11 @@
               </span>
             </div>
           </div>
+          ${isLatest ? `
           <div class="exe-arrow">
             <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
-          </div>
-        </a>`;
+          </div>` : ''}
+        </${tag}>`;
     }
 
     async function loadAll() {
@@ -644,7 +663,7 @@
         }
 
         grandTotal += repoTotal;
-        const latest = getLatestExe(allExes);
+        const allExesSorted = getLatestExe(allExes);
         const releaseCount = new Set(allExes.map(a => a._releaseTag)).size;
 
         const accentRgb = accent;
@@ -652,10 +671,11 @@
 
         let bodyHtml = '';
 
-        if (latest.length > 0) {
+        if (allExesSorted.length > 0) {
+          const latestReleaseTag = allExesSorted[0]._releaseTag;
           bodyHtml = '<div class="exe-list">';
-          for (const exe of latest) {
-            bodyHtml += exeBtn(exe, accent);
+          for (const exe of allExesSorted) {
+            bodyHtml += exeBtn(exe, accent, exe._releaseTag === latestReleaseTag);
           }
           bodyHtml += '</div>';
         } else {
