@@ -1415,22 +1415,6 @@
       transition-delay: 0.35s;
     }
 
-    .lightbox-border-beam {
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      padding: 3px;
-      background: conic-gradient(from 0deg, transparent 60%, var(--lightbox-accent) 72%, transparent 82%);
-      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      animation: lightboxBeamSpin 2.5s linear infinite;
-    }
-
-    @keyframes lightboxBeamSpin {
-      to { transform: rotate(360deg); }
-    }
-
     .lightbox-border-glow {
       position: absolute;
       inset: -3px;
@@ -1574,7 +1558,6 @@
     </button>
     <div class="lightbox-stage" id="lightboxStage">
       <div class="lightbox-border" id="lightboxBorder">
-        <div class="lightbox-border-beam"></div>
         <div class="lightbox-border-glow"></div>
       </div>
       <img class="lightbox-image" id="lightboxImage" src="" alt="">
