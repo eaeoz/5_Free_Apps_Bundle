@@ -1020,12 +1020,12 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      height: 3px;
+      height: 4px;
       z-index: 4;
       border-radius: 0 2px 0 0;
       background: var(--slider-accent);
-      transition: width 0.1s linear;
-      box-shadow: 0 0 12px var(--slider-accent);
+      box-shadow: 0 0 14px var(--slider-accent), 0 0 30px color-mix(in srgb, var(--slider-accent) 25%, transparent);
+      will-change: width;
     }
 
     @media (max-width: 860px) {
@@ -2415,6 +2415,7 @@
 
       let current = 0;
       let autoplayTimer;
+      let autoplayPending = false;
       const AUTOPLAY_DELAY = 4500;
       const total = slides.length;
 
@@ -2429,7 +2430,7 @@
         const accent = slides[index].dataset.accent;
         wrapper.style.setProperty('--slider-accent', accent);
         progress.style.background = accent;
-        progress.style.boxShadow = `0 0 12px ${accent}`;
+        progress.style.boxShadow = `0 0 14px ${accent}, 0 0 30px color-mix(in srgb, ${accent} 25%, transparent)`;
         resetProgress();
       }
 
@@ -2438,27 +2439,24 @@
 
       function startAutoplay() {
         stopAutoplay();
-        autoplayTimer = setInterval(next, AUTOPLAY_DELAY);
+        autoplayPending = true;
+        autoplayTimer = setTimeout(function tick() {
+          if (!autoplayPending) return;
+          next();
+          autoplayTimer = setTimeout(tick, AUTOPLAY_DELAY);
+        }, AUTOPLAY_DELAY);
       }
-      function stopAutoplay() { clearInterval(autoplayTimer); }
-
-      let progressStart;
-      let progressRAF;
+      function stopAutoplay() {
+        autoplayPending = false;
+        clearTimeout(autoplayTimer);
+      }
 
       function resetProgress() {
-        cancelAnimationFrame(progressRAF);
+        progress.style.transition = 'none';
         progress.style.width = '0%';
-        progressStart = Date.now();
-        tickProgress();
-      }
-
-      function tickProgress() {
-        const elapsed = Date.now() - progressStart;
-        const pct = Math.min(elapsed / AUTOPLAY_DELAY * 100, 100);
-        progress.style.width = pct + '%';
-        if (pct < 100) {
-          progressRAF = requestAnimationFrame(tickProgress);
-        }
+        void progress.offsetWidth;
+        progress.style.transition = 'width 4.4s linear';
+        progress.style.width = '100%';
       }
 
       // Click image to open lightbox
