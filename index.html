@@ -790,10 +790,46 @@
       position: relative;
       z-index: 1;
       filter: drop-shadow(0 4px 20px rgba(0,0,0,0.4));
+      cursor: pointer;
     }
 
     .slider-slide:hover .slider-image {
       filter: drop-shadow(0 6px 30px rgba(0,0,0,0.5));
+    }
+
+    /* Click hint overlay on image */
+    .slider-image-hint {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 4;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 10px;
+      background: rgba(8,8,15,0.5);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.04);
+      font-size: 10px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.3px;
+    }
+
+    .slider-slide.active .slider-image-hint {
+      opacity: 1;
+      transition-delay: 0.6s;
+    }
+
+    .slider-image-hint svg {
+      width: 12px;
+      height: 12px;
+      fill: currentColor;
     }
 
     .slider-glow {
@@ -1213,6 +1249,301 @@
         flex: 0 1 100%;
       }
     }
+    /* ── Lightbox ── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0.4s, opacity 0.4s ease;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    .lightbox.open {
+      visibility: visible;
+      opacity: 1;
+      transition: visibility 0s, opacity 0.4s ease;
+    }
+
+    .lightbox-bg {
+      position: absolute;
+      inset: 0;
+      background: rgba(4, 4, 12, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      cursor: zoom-out;
+    }
+
+    .lightbox.open .lightbox-bg {
+      animation: lightboxBgIn 0.5s ease;
+    }
+
+    @keyframes lightboxBgIn {
+      0% { opacity: 0; backdrop-filter: blur(0); }
+      100% { opacity: 1; backdrop-filter: blur(16px); }
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      z-index: 10;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(8, 8, 15, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      opacity: 0;
+      transform: translateY(-12px) scale(0.7) rotate(-90deg);
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .lightbox.open .lightbox-close {
+      opacity: 1;
+      transform: translateY(0) scale(1) rotate(0deg);
+      transition-delay: 0.3s;
+    }
+
+    .lightbox-close:hover {
+      background: var(--lightbox-accent);
+      border-color: var(--lightbox-accent);
+      transform: scale(1.12) rotate(90deg);
+      box-shadow: 0 0 30px color-mix(in srgb, var(--lightbox-accent) 40%, transparent);
+    }
+
+    .lightbox-close svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      transition: transform 0.4s ease;
+    }
+
+    .lightbox-close:hover svg {
+      transform: rotate(90deg);
+    }
+
+    .lightbox-counter {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.35);
+      letter-spacing: 1.5px;
+      padding: 8px 20px;
+      border-radius: 20px;
+      background: rgba(8, 8, 15, 0.5);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      opacity: 0;
+      transform: translateX(-50%) translateY(12px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .lightbox.open .lightbox-counter {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+      transition-delay: 0.5s;
+    }
+
+    .lightbox-stage {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      max-width: 88vw;
+      max-height: 82vh;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+      transform: scale(0.8);
+      opacity: 0;
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+      cursor: grab;
+    }
+
+    .lightbox.open .lightbox-stage {
+      transform: scale(1);
+      opacity: 1;
+      transition-delay: 0.15s;
+    }
+
+    .lightbox-stage:active {
+      cursor: grabbing;
+    }
+
+    .lightbox-image {
+      display: block;
+      max-width: 88vw;
+      max-height: 82vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      transition: transform 0.05s linear;
+      position: relative;
+      z-index: 1;
+      border-radius: 20px;
+    }
+
+    /* Animated colored border around image */
+    .lightbox-border {
+      position: absolute;
+      inset: -3px;
+      border-radius: 22px;
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      overflow: hidden;
+    }
+
+    .lightbox.open .lightbox-border {
+      opacity: 1;
+      transition-delay: 0.35s;
+    }
+
+    .lightbox-border-beam {
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 3px;
+      background: conic-gradient(from 0deg, transparent 60%, var(--lightbox-accent) 72%, transparent 82%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      animation: lightboxBeamSpin 2.5s linear infinite;
+    }
+
+    @keyframes lightboxBeamSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    .lightbox-border-glow {
+      position: absolute;
+      inset: -3px;
+      border-radius: 22px;
+      border: 2px solid var(--lightbox-accent);
+      z-index: 1;
+      animation: lightboxBorderPulse 2.5s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes lightboxBorderPulse {
+      0%, 100% { opacity: 0.35; box-shadow: 0 0 8px var(--lightbox-accent), 0 0 20px transparent; }
+      50% { opacity: 0.7; box-shadow: 0 0 20px var(--lightbox-accent), 0 0 50px color-mix(in srgb, var(--lightbox-accent) 15%, transparent); }
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      z-index: 10;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(8, 8, 15, 0.5);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: all 0.35s ease;
+      color: #fff;
+    }
+
+    .lightbox:hover .lightbox-nav {
+      opacity: 0.6;
+    }
+
+    .lightbox-nav:hover {
+      opacity: 1 !important;
+      background: rgba(8, 8, 15, 0.8);
+      border-color: var(--lightbox-accent);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .lightbox-nav svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .lightbox-nav--prev { left: 20px; }
+    .lightbox-nav--next { right: 20px; }
+
+    .lightbox-zoom-hint {
+      position: absolute;
+      bottom: 78px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.2);
+      letter-spacing: 0.5px;
+      padding: 6px 16px;
+      border-radius: 12px;
+      background: rgba(8, 8, 15, 0.4);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .lightbox.open .lightbox-zoom-hint {
+      opacity: 1;
+      transition-delay: 0.7s;
+    }
+
+    .lightbox-zoom-hint span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .lightbox-zoom-hint svg {
+      width: 12px;
+      height: 12px;
+      fill: currentColor;
+      vertical-align: middle;
+    }
+
+    @media (max-width: 860px) {
+      .lightbox-close {
+        top: 14px;
+        right: 14px;
+        width: 40px;
+        height: 40px;
+      }
+      .lightbox-close svg { width: 16px; height: 16px; }
+      .lightbox-stage { max-width: 95vw; max-height: 85vh; }
+      .lightbox-image { max-width: 95vw; max-height: 85vh; }
+      .lightbox-nav { width: 36px; height: 36px; }
+      .lightbox-nav--prev { left: 10px; }
+      .lightbox-nav--next { right: 10px; }
+      .lightbox-nav svg { width: 16px; height: 16px; }
+      .lightbox-counter { font-size: 10px; padding: 6px 14px; bottom: 18px; }
+      .lightbox-zoom-hint { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -1228,6 +1559,28 @@
       <div class="loader-text">Loading dashboard</div>
       <div class="loader-dots"><span>.</span><span>.</span><span>.</span></div>
     </div>
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-bg" id="lightboxBg"></div>
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">
+      <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+    <button class="lightbox-nav lightbox-nav--prev" id="lightboxNavPrev" aria-label="Previous">
+      <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+    </button>
+    <button class="lightbox-nav lightbox-nav--next" id="lightboxNavNext" aria-label="Next">
+      <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+    </button>
+    <div class="lightbox-stage" id="lightboxStage">
+      <div class="lightbox-border" id="lightboxBorder">
+        <div class="lightbox-border-beam"></div>
+        <div class="lightbox-border-glow"></div>
+      </div>
+      <img class="lightbox-image" id="lightboxImage" src="" alt="">
+    </div>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+    <div class="lightbox-zoom-hint"><span><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> Scroll to zoom &middot; Drag to pan</span></div>
   </div>
 
   <script>
@@ -1590,6 +1943,7 @@
                 return `<div class="slider-slide${i === 0 ? ' active' : ''}" data-accent="${accent}" data-index="${i}">
                   <style>#sliderWrapper{--accent-${i}:${accent};--accent-${i}-trans:${hexToRgba(accent, 0.35)}}</style>
                   <div class="slider-glow" style="background:radial-gradient(circle at 50% 50%, var(--accent-${i}) 0%, transparent 65%)"></div>
+                  <div class="slider-image-hint"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> View full size</div>
                   <img class="slider-image" src="${item.src}" alt="${item.label}" loading="${i === 0 ? 'eager' : 'lazy'}">
                   <div class="slider-image-glow-border" style="--slider-accent-trans:var(--accent-${i}-trans)"></div>
                   <div class="slider-overlay">
@@ -1667,6 +2021,14 @@
         }
       }
 
+      // Click image to open lightbox
+      slides.forEach((slide, i) => {
+        slide.addEventListener('click', () => {
+          stopAutoplay();
+          lbOpen(i);
+        });
+      });
+
       prevBtn.addEventListener('click', () => { stopAutoplay(); prev(); startAutoplay(); });
       nextBtn.addEventListener('click', () => { stopAutoplay(); next(); startAutoplay(); });
 
@@ -1698,6 +2060,154 @@
       const el = document.getElementById('lastUpdated');
       if (el) el.textContent = `Last updated: ${new Date().toLocaleTimeString()}`;
     }
+
+    /* ── Lightbox ── */
+    let lbIndex = 0;
+    let lbZoom = 1;
+    let lbPanX = 0;
+    let lbPanY = 0;
+    let lbDragging = false;
+    let lbDragStartX = 0;
+    let lbDragStartY = 0;
+    let lbPanStartX = 0;
+    let lbPanStartY = 0;
+
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightboxImage');
+    const lbBg = document.getElementById('lightboxBg');
+    const lbStage = document.getElementById('lightboxStage');
+    const lbClose = document.getElementById('lightboxClose');
+    const lbCounter = document.getElementById('lightboxCounter');
+    const lbBorder = document.getElementById('lightboxBorder');
+    const lbNavPrev = document.getElementById('lightboxNavPrev');
+    const lbNavNext = document.getElementById('lightboxNavNext');
+
+    function lbUpdateTransform() {
+      lbImg.style.transform = `translate(${lbPanX}px, ${lbPanY}px) scale(${lbZoom})`;
+    }
+
+    function lbOpen(index) {
+      const slides = document.querySelectorAll('.slider-slide');
+      if (!slides[index]) return;
+      const slide = slides[index];
+      const img = slide.querySelector('.slider-image');
+      const accent = slide.dataset.accent || '#ff4444';
+
+      lbIndex = index;
+      lbZoom = 1;
+      lbPanX = 0;
+      lbPanY = 0;
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbUpdateTransform();
+      lb.style.setProperty('--lightbox-accent', accent);
+      lbBorder.style.setProperty('--lightbox-accent', accent);
+      lbCounter.textContent = `${index + 1} / ${slides.length}`;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function lbCloseFn() {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+      lbZoom = 1;
+      lbPanX = 0;
+      lbPanY = 0;
+    }
+
+    function lbNext() {
+      const slides = document.querySelectorAll('.slider-slide');
+      const next = (lbIndex + 1) % slides.length;
+      lbOpen(next);
+    }
+
+    function lbPrev() {
+      const slides = document.querySelectorAll('.slider-slide');
+      const prev = (lbIndex - 1 + slides.length) % slides.length;
+      lbOpen(prev);
+    }
+
+    lbBg.addEventListener('click', lbCloseFn);
+    lbClose.addEventListener('click', lbCloseFn);
+
+    lbNavNext.addEventListener('click', lbNext);
+    lbNavPrev.addEventListener('click', lbPrev);
+
+    document.addEventListener('keydown', e => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') { lbCloseFn(); return; }
+      if (e.key === 'ArrowRight') { lbNext(); return; }
+      if (e.key === 'ArrowLeft') { lbPrev(); return; }
+    });
+
+    lbStage.addEventListener('wheel', e => {
+      if (!lb.classList.contains('open')) return;
+      e.preventDefault();
+      const delta = e.deltaY > 0 ? -0.1 : 0.1;
+      lbZoom = Math.max(0.5, Math.min(6, parseFloat((lbZoom + delta).toFixed(2))));
+      lbUpdateTransform();
+    }, { passive: false });
+
+    lbStage.addEventListener('mousedown', e => {
+      if (e.button === 0 || e.button === 1) {
+        lbDragging = true;
+        lbDragStartX = e.clientX;
+        lbDragStartY = e.clientY;
+        lbPanStartX = lbPanX;
+        lbPanStartY = lbPanY;
+        e.preventDefault();
+      }
+    });
+
+    document.addEventListener('mousemove', e => {
+      if (!lbDragging) return;
+      lbPanX = lbPanStartX + (e.clientX - lbDragStartX) / lbZoom;
+      lbPanY = lbPanStartY + (e.clientY - lbDragStartY) / lbZoom;
+      lbUpdateTransform();
+    });
+
+    document.addEventListener('mouseup', () => { lbDragging = false; });
+
+    // Touch support for mobile
+    let lbTouchStartX = 0;
+    let lbTouchStartY = 0;
+    let lbTouchDist = 0;
+    let lbTouching = false;
+
+    lbStage.addEventListener('touchstart', e => {
+      if (e.touches.length === 1) {
+        lbTouching = true;
+        lbTouchStartX = e.touches[0].clientX;
+        lbTouchStartY = e.touches[0].clientY;
+        lbPanStartX = lbPanX;
+        lbPanStartY = lbPanY;
+      } else if (e.touches.length === 2) {
+        lbTouchDist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+      }
+    }, { passive: true });
+
+    lbStage.addEventListener('touchmove', e => {
+      if (e.touches.length === 1 && lbTouching) {
+        lbPanX = lbPanStartX + (e.touches[0].clientX - lbTouchStartX) / lbZoom;
+        lbPanY = lbPanStartY + (e.touches[0].clientY - lbTouchStartY) / lbZoom;
+        lbUpdateTransform();
+      } else if (e.touches.length === 2) {
+        const dist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+        if (lbTouchDist) {
+          lbZoom = Math.max(0.5, Math.min(6, lbZoom * (dist / lbTouchDist)));
+          lbUpdateTransform();
+        }
+        lbTouchDist = dist;
+      }
+    }, { passive: true });
+
+    lbStage.addEventListener('touchend', () => { lbTouching = false; }, { passive: true });
 
     loadAll().then(updateTimestamp, updateTimestamp);
     setInterval(() => loadAll().then(updateTimestamp, updateTimestamp), 600000);
