@@ -345,6 +345,95 @@
       transform: translateX(-100%);
     }
 
+    /* ── Older Releases Toggle ── */
+    .exe-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      margin: 2px 0;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      transition: all 0.25s ease;
+      user-select: none;
+    }
+
+    .exe-toggle:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .exe-toggle-arrow {
+      font-size: 8px;
+      color: rgba(255, 255, 255, 0.25);
+      transition: transform 0.35s ease;
+      flex-shrink: 0;
+    }
+
+    .exe-toggle.open .exe-toggle-arrow {
+      transform: rotate(90deg);
+    }
+
+    .exe-toggle-label {
+      flex: 1;
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.3);
+      transition: color 0.25s ease;
+    }
+
+    .exe-toggle:hover .exe-toggle-label {
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .exe-toggle-badge {
+      font-size: 10px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.5);
+      padding: 2px 10px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .exe-older-wrap {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .exe-older-wrap.open {
+      grid-template-rows: 1fr;
+    }
+
+    .exe-older-inner {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-top: 2px;
+    }
+
+    .exe-older-inner .exe-btn {
+      opacity: 0;
+      transform: translateY(-6px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .exe-older-wrap.open .exe-older-inner .exe-btn {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .exe-older-wrap.open .exe-older-inner .exe-btn:nth-child(1) { transition-delay: 0.03s; }
+    .exe-older-wrap.open .exe-older-inner .exe-btn:nth-child(2) { transition-delay: 0.06s; }
+    .exe-older-wrap.open .exe-older-inner .exe-btn:nth-child(3) { transition-delay: 0.09s; }
+    .exe-older-wrap.open .exe-older-inner .exe-btn:nth-child(4) { transition-delay: 0.12s; }
+    .exe-older-wrap.open .exe-older-inner .exe-btn:nth-child(5) { transition-delay: 0.15s; }
+    .exe-older-wrap.open .exe-older-inner .exe-btn:nth-child(6) { transition-delay: 0.18s; }
+    .exe-older-wrap.open .exe-older-inner .exe-btn:nth-child(7) { transition-delay: 0.21s; }
+    .exe-older-wrap.open .exe-older-inner .exe-btn:nth-child(8) { transition-delay: 0.24s; }
+
     .exe-icon {
       width: 28px;
       height: 28px;
@@ -858,6 +947,7 @@
 
       let grandTotal = 0;
       let cardsHtml = '';
+      let toggleId = 0;
 
       for (const project of json.projects) {
         const fullRepo = `eaeoz/${project.repo}`;
@@ -894,13 +984,45 @@
         const glowRgb = accent.replace(')', ',0.1)').replace('rgb', 'rgba');
 
         let bodyHtml = '';
+        toggleId++;
 
         if (allExesSorted.length > 0) {
-          const latestReleaseTag = allExesSorted[0]._releaseTag;
-          bodyHtml = '<div class="exe-list">';
+          const tagGroups = {};
           for (const exe of allExesSorted) {
-            bodyHtml += exeBtn(exe, accent, exe._releaseTag === latestReleaseTag);
+            if (!tagGroups[exe._releaseTag]) {
+              tagGroups[exe._releaseTag] = { exes: [], releaseDate: exe._releaseDate };
+            }
+            tagGroups[exe._releaseTag].exes.push(exe);
           }
+
+          const sortedTags = Object.keys(tagGroups).sort(
+            (a, b) => new Date(tagGroups[b].releaseDate) - new Date(tagGroups[a].releaseDate)
+          );
+
+          const latestExes = tagGroups[sortedTags[0]].exes;
+          const olderExes = sortedTags.slice(1).flatMap(tag => tagGroups[tag].exes);
+
+          bodyHtml = '<div class="exe-list">';
+          for (const exe of latestExes) {
+            bodyHtml += exeBtn(exe, accent, true);
+          }
+
+          if (olderExes.length > 0) {
+            const olderDownloads = olderExes.reduce((s, e) => s + e.download_count, 0);
+            bodyHtml += `
+              <div class="exe-toggle" data-target="older-${toggleId}">
+                <span class="exe-toggle-arrow">▸</span>
+                <span class="exe-toggle-label">${olderExes.length} older release${olderExes.length !== 1 ? 's' : ''}</span>
+                <span class="exe-toggle-badge">${olderDownloads.toLocaleString()} dl</span>
+              </div>
+              <div class="exe-older-wrap" id="older-${toggleId}">
+                <div class="exe-older-inner">`;
+            for (const exe of olderExes) {
+              bodyHtml += exeBtn(exe, accent, false);
+            }
+            bodyHtml += '</div></div>';
+          }
+
           bodyHtml += '</div>';
         } else {
           bodyHtml = '<div class="no-exe">No executables found</div>';
@@ -986,6 +1108,20 @@
           if (!overlay || overlay.classList.contains('show')) return;
           overlay.classList.add('show');
           setTimeout(() => overlay.classList.remove('show'), 4000);
+        });
+      });
+
+      // Toggle older releases dropdown
+      document.querySelectorAll('.exe-toggle').forEach(tog => {
+        tog.addEventListener('click', () => {
+          const wrap = document.getElementById(tog.dataset.target);
+          const isOpen = wrap.classList.toggle('open');
+          tog.classList.toggle('open');
+          tog.querySelector('.exe-toggle-arrow').textContent = isOpen ? '▾' : '▸';
+          const count = wrap.querySelectorAll('.exe-btn--disabled').length;
+          tog.querySelector('.exe-toggle-label').textContent = isOpen
+            ? 'Hide older releases'
+            : `${count} older release${count !== 1 ? 's' : ''}`;
         });
       });
     }
