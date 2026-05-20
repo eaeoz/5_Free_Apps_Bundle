@@ -796,6 +796,7 @@
 
     /* ── Toast ── */
     #toast {
+      --toast-accent: #ff4444;
       position: fixed;
       top: 24px;
       left: 50%;
@@ -807,9 +808,9 @@
       padding: 14px 28px;
       border-radius: 14px;
       background: linear-gradient(135deg, #1a1a2e, #16213e);
-      border: 1px solid rgba(255, 68, 68, 0.25);
+      border: 1px solid color-mix(in srgb, var(--toast-accent) 30%, transparent);
       color: #fff;
-      box-shadow: 0 8px 40px rgba(255, 68, 68, 0.2), 0 0 60px rgba(255, 68, 68, 0.06);
+      box-shadow: 0 8px 40px color-mix(in srgb, var(--toast-accent) 25%, transparent), 0 0 60px color-mix(in srgb, var(--toast-accent) 8%, transparent);
       opacity: 0;
       transition: none;
       display: flex;
@@ -829,7 +830,7 @@
       width: 22px;
       height: 22px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #ff4444, #ff6b6b);
+      background: linear-gradient(135deg, var(--toast-accent), color-mix(in srgb, var(--toast-accent) 70%, #fff));
       display: flex;
       align-items: center;
       justify-content: center;
@@ -848,7 +849,7 @@
     }
 
     #toast .toast-app {
-      color: #ff4444;
+      color: var(--toast-accent);
     }
 
     @keyframes toastPop {
@@ -933,7 +934,7 @@
       'eaeoz/movie-downloader': {
         label: 'Movie Downloader',
         icon: `<svg viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4a2 2 0 0 0-1.99 2L2 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V4h-4z"/></svg>`,
-        accent: '#e50914',
+        accent: '#a855f7',
         cmd: 'iex (iwr -useb https://tinyurl.com/mvdlps1)',
       },
       'eaeoz/music-downloader': {
@@ -1009,11 +1010,11 @@
         </${tag}>`;
     }
 
-    function installBox(cmd, appName) {
+    function installBox(cmd, appName, accent) {
       return `
         <div class="install-box">
           <div class="install-label">Quick Install</div>
-          <div class="install-code-wrap" data-app="${appName.replace(/"/g, '&quot;')}">
+          <div class="install-code-wrap" data-app="${appName.replace(/"/g, '&quot;')}" data-accent="${accent}">
             <div class="install-code">${cmd}</div>
             <button class="install-copy" data-cmd="${cmd.replace(/"/g, '&quot;')}">Copy</button>
             <div class="install-overlay">
@@ -1043,7 +1044,7 @@
         const label = meta.label || repoLabel(fullRepo);
         const icon = meta.icon || '';
         const repoUrl = `https://github.com/${fullRepo}`;
-        const installCmd = meta.cmd ? installBox(meta.cmd, label) : '';
+        const installCmd = meta.cmd ? installBox(meta.cmd, label, accent) : '';
         const stars = project.stars || 0;
         const ownerLogin = project.owner.login;
         const ownerAvatar = project.owner.avatar_url;
@@ -1189,6 +1190,7 @@
       document.querySelectorAll('.install-code-wrap').forEach(wrap => {
         const cmd = wrap.querySelector('.install-copy').dataset.cmd;
         const appName = wrap.dataset.app;
+        const accent = wrap.dataset.accent;
         // Click anywhere on the code block copies the command
         wrap.addEventListener('click', () => {
           navigator.clipboard.writeText(cmd).then(() => {
@@ -1196,7 +1198,7 @@
             const orig = btn.textContent;
             btn.textContent = 'Copied!';
             setTimeout(() => btn.textContent = orig, 1500);
-            showToast(appName);
+            showToast(appName, accent);
           });
         });
         // Hover overlay
@@ -1223,9 +1225,10 @@
       });
     }
 
-    function showToast(appName) {
+    function showToast(appName, accent) {
       const t = document.getElementById('toast');
       t.className = '';
+      t.style.setProperty('--toast-accent', accent);
       t.innerHTML = `<div class="toast-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div><span class="toast-msg"><span class="toast-app">${appName}</span> install command copied</span>`;
       void t.offsetWidth;
       t.classList.add('show');
