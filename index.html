@@ -937,6 +937,7 @@
         <div class="hero">
           <h1>5 Free <span>Apps Bundle</span></h1>
           <p>Live download tracker for all projects</p>
+          <p id="lastUpdated" style="font-size:12px;color:rgba(255,255,255,0.2);margin-top:4px"></p>
           ${REPOS.length > 1 ? `
           <div class="hero-grand">
             <span class="hero-grand-label">Grand Total</span>
@@ -989,7 +990,13 @@
       });
     }
 
-    loadAll();
+    function updateTimestamp() {
+      const el = document.getElementById('lastUpdated');
+      if (el) el.textContent = `Last updated: ${new Date().toLocaleTimeString()}`;
+    }
+
+    loadAll().then(updateTimestamp, updateTimestamp);
+    setInterval(() => loadAll().then(updateTimestamp, updateTimestamp), 600000);
   </script>
 
 </body>
