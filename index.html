@@ -999,6 +999,16 @@
             (a, b) => new Date(tagGroups[b].releaseDate) - new Date(tagGroups[a].releaseDate)
           );
 
+          for (const tag of sortedTags) {
+            tagGroups[tag].exes.sort((a, b) => {
+              const aSetup = a.name.includes('Setup');
+              const bSetup = b.name.includes('Setup');
+              if (aSetup && !bSetup) return -1;
+              if (!aSetup && bSetup) return 1;
+              return 0;
+            });
+          }
+
           const latestExes = tagGroups[sortedTags[0]].exes;
           const olderExes = sortedTags.slice(1).flatMap(tag => tagGroups[tag].exes);
 
