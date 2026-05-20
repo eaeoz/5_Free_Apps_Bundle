@@ -9,6 +9,3 @@ Desktop.ini
 *.swp
 *.swo
 *~
-
-# Local data snapshot (not consumed by the page)
-youtube-downloader.json
