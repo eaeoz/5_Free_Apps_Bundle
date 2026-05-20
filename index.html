@@ -794,6 +794,89 @@
       font-size: 14px;
     }
 
+    /* ── Toast ── */
+    #toast {
+      position: fixed;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      pointer-events: none;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      border: 1px solid rgba(255, 68, 68, 0.25);
+      color: #fff;
+      box-shadow: 0 8px 40px rgba(255, 68, 68, 0.2), 0 0 60px rgba(255, 68, 68, 0.06);
+      opacity: 0;
+      transition: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    #toast.show {
+      animation: toastPop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    #toast.hide {
+      animation: toastFade 0.35s ease forwards;
+    }
+
+    #toast .toast-icon {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff4444, #ff6b6b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    #toast .toast-icon svg {
+      width: 12px;
+      height: 12px;
+      fill: #fff;
+    }
+
+    #toast .toast-msg {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    #toast .toast-app {
+      color: #ff4444;
+    }
+
+    @keyframes toastPop {
+      0% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.6);
+      }
+      60% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1.08);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+      }
+    }
+
+    @keyframes toastFade {
+      0% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.85);
+      }
+    }
+
     @media (max-width: 860px) {
       body {
         padding: 16px;
@@ -820,6 +903,8 @@
 
   <div class="bg-grid"></div>
   <div class="bg-glow"></div>
+
+  <div id="toast"></div>
 
   <div class="container" id="app">
     <div class="loader">
@@ -924,11 +1009,11 @@
         </${tag}>`;
     }
 
-    function installBox(cmd) {
+    function installBox(cmd, appName) {
       return `
         <div class="install-box">
           <div class="install-label">Quick Install</div>
-          <div class="install-code-wrap">
+          <div class="install-code-wrap" data-app="${appName.replace(/"/g, '&quot;')}">
             <div class="install-code">${cmd}</div>
             <button class="install-copy" data-cmd="${cmd.replace(/"/g, '&quot;')}">Copy</button>
             <div class="install-overlay">
@@ -958,7 +1043,7 @@
         const label = meta.label || repoLabel(fullRepo);
         const icon = meta.icon || '';
         const repoUrl = `https://github.com/${fullRepo}`;
-        const installCmd = meta.cmd ? installBox(meta.cmd) : '';
+        const installCmd = meta.cmd ? installBox(meta.cmd, label) : '';
         const stars = project.stars || 0;
         const ownerLogin = project.owner.login;
         const ownerAvatar = project.owner.avatar_url;
@@ -1103,6 +1188,7 @@
       // Install overlay: show on hover, auto-hide after 4s
       document.querySelectorAll('.install-code-wrap').forEach(wrap => {
         const cmd = wrap.querySelector('.install-copy').dataset.cmd;
+        const appName = wrap.dataset.app;
         // Click anywhere on the code block copies the command
         wrap.addEventListener('click', () => {
           navigator.clipboard.writeText(cmd).then(() => {
@@ -1110,6 +1196,7 @@
             const orig = btn.textContent;
             btn.textContent = 'Copied!';
             setTimeout(() => btn.textContent = orig, 1500);
+            showToast(appName);
           });
         });
         // Hover overlay
@@ -1134,6 +1221,20 @@
             : `${count} older release${count !== 1 ? 's' : ''}`;
         });
       });
+    }
+
+    function showToast(appName) {
+      const t = document.getElementById('toast');
+      t.className = '';
+      t.innerHTML = `<div class="toast-icon"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg></div><span class="toast-msg"><span class="toast-app">${appName}</span> install command copied</span>`;
+      void t.offsetWidth;
+      t.classList.add('show');
+      clearTimeout(t._timer);
+      t._timer = setTimeout(() => {
+        t.classList.remove('show');
+        t.classList.add('hide');
+        setTimeout(() => { t.className = ''; }, 400);
+      }, 2200);
     }
 
     function updateTimestamp() {
