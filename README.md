@@ -15,6 +15,8 @@
 
 Each release ships two `.exe` variants — **Setup** (installer) and **Portable** (standalone). The **Downloads** badge shows the total across both.
 
+> **How to run the install commands below:** Press `Win+R`, type `powershell`, press Enter, paste the command, press Enter.
+
 <table>
   <tr>
     <td width="180"><b>YouTube Downloader</b></td>
