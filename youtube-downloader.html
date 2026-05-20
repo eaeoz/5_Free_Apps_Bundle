@@ -427,6 +427,136 @@
       fill: currentColor;
     }
 
+    .install-box {
+      margin-top: 14px;
+      margin-bottom: 14px;
+      position: relative;
+    }
+
+    .install-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: rgba(255, 255, 255, 0.25);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .install-label::before {
+      content: '\26A1';
+      font-size: 11px;
+    }
+
+    .install-code-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      cursor: pointer;
+    }
+
+    .install-code {
+      display: flex;
+      align-items: center;
+      padding: 10px 12px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.55);
+      overflow-x: auto;
+      white-space: nowrap;
+      transition: color 0.3s ease;
+      user-select: all;
+    }
+
+    .install-code-wrap:hover .install-code {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .install-copy {
+      position: absolute;
+      right: 7px;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 4px 10px;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--accent);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 6px;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.2s ease, background 0.2s ease;
+      font-family: inherit;
+    }
+
+    .install-copy:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .install-code-wrap:hover .install-copy {
+      opacity: 1;
+    }
+
+    .install-overlay {
+      position: absolute;
+      inset: 0;
+      border-radius: 10px;
+      background: rgba(8, 8, 15, 0.94);
+      backdrop-filter: blur(6px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 12px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+      z-index: 10;
+    }
+
+    .install-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .install-overlay-step {
+      font-size: 10px;
+      color: rgba(255, 255, 255, 0.45);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .install-overlay-step code {
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 9px;
+      color: var(--accent);
+      background: rgba(255, 255, 255, 0.06);
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+
+    .install-overlay-step kbd {
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 9px;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 1px 5px;
+      border-radius: 3px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .install-overlay-arrow {
+      color: rgba(255, 255, 255, 0.15);
+      font-size: 11px;
+    }
+
     .exe-meta {
       display: flex;
       align-items: center;
@@ -624,26 +754,31 @@
         label: 'YouTube Downloader',
         icon: `<svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`,
         accent: '#ff4444',
+        cmd: 'iex (iwr -useb https://tinyurl.com/ytdlps1)',
       },
       'eaeoz/movie-downloader': {
         label: 'Movie Downloader',
         icon: `<svg viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4a2 2 0 0 0-1.99 2L2 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V4h-4z"/></svg>`,
         accent: '#e50914',
+        cmd: 'iex (iwr -useb https://tinyurl.com/mvdlps1)',
       },
       'eaeoz/music-downloader': {
         label: 'Music Downloader',
         icon: `<svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>`,
         accent: '#1ed760',
+        cmd: 'iex (iwr -useb https://tinyurl.com/msdlps1)',
       },
       'eaeoz/command-manager-docker': {
         label: 'Command Manager',
         icon: `<svg viewBox="0 0 24 24"><path d="M13 9h-2V7h2v2zm0 4h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 0H7v-2h2v2zm-4 4h2v2H5v-2zm8 2h-2v-2h2v2zm4-2h-2v-2h2v2zm4-8h-2V7h2v2zm0 4h-2v-2h2v2zm-4-4h-2V7h2v2zM3 5h18V3H3v2zm0 16h18v-2H3v2z"/></svg>`,
         accent: '#0db7ed',
+        cmd: 'iex (iwr -useb https://tinyurl.com/cmmgrps1)',
       },
       'eaeoz/sondakika': {
         label: 'Sondakika',
         icon: `<svg viewBox="0 0 24 24"><path d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"/></svg>`,
         accent: '#f59e0b',
+        cmd: 'iex (iwr -useb https://tinyurl.com/sndkkps1)',
       },
     };
 
@@ -700,6 +835,20 @@
         </${tag}>`;
     }
 
+    function installBox(cmd) {
+      return `
+        <div class="install-box">
+          <div class="install-label">Quick Install</div>
+          <div class="install-code-wrap">
+            <div class="install-code">${cmd}</div>
+            <button class="install-copy" data-cmd="${cmd.replace(/"/g, '&quot;')}">Copy</button>
+            <div class="install-overlay">
+              <div class="install-overlay-step"><span class="install-overlay-arrow">▸</span> <kbd>Win</kbd>+<kbd>R</kbd> &gt; <code>powershell</code> &gt; Enter &gt; paste &gt; Enter</div>
+            </div>
+          </div>
+        </div>`;
+    }
+
     async function loadAll() {
       const app = document.getElementById('app');
 
@@ -723,6 +872,7 @@
         const label = repoLabel(repo);
         const icon = meta.icon || '';
         const repoUrl = `https://github.com/${repo}`;
+        const installCmd = meta.cmd ? installBox(meta.cmd) : '';
 
         if (result.status === 'rejected') {
           cardsHtml += `
@@ -797,7 +947,7 @@
                   </div>
                 </div>
               </div>
-              ${bodyHtml}
+              ${installCmd}${bodyHtml}
               <div class="repo-footer">
                 <a class="repo-link" href="${repoUrl}" target="_blank" rel="noopener">
                   <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12 24 5.37 18.63 0 12 0z"/></svg>
@@ -839,6 +989,27 @@
       const cards = document.querySelectorAll('.repo-card');
       cards.forEach((card, i) => {
         setTimeout(() => card.classList.add('visible'), 150 + i * 100);
+      });
+
+      // Install overlay: show on hover, auto-hide after 4s
+      document.querySelectorAll('.install-code-wrap').forEach(wrap => {
+        const cmd = wrap.querySelector('.install-copy').dataset.cmd;
+        // Click anywhere on the code block copies the command
+        wrap.addEventListener('click', () => {
+          navigator.clipboard.writeText(cmd).then(() => {
+            const btn = wrap.querySelector('.install-copy');
+            const orig = btn.textContent;
+            btn.textContent = 'Copied!';
+            setTimeout(() => btn.textContent = orig, 1500);
+          });
+        });
+        // Hover overlay
+        wrap.addEventListener('mouseenter', () => {
+          const overlay = wrap.querySelector('.install-overlay');
+          if (!overlay || overlay.classList.contains('show')) return;
+          overlay.classList.add('show');
+          setTimeout(() => overlay.classList.remove('show'), 4000);
+        });
       });
     }
 
