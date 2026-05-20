@@ -759,8 +759,7 @@
       position: relative;
       overflow: hidden;
       border-radius: 24px;
-      min-height: 300px;
-      max-height: 55vh;
+      height: 400px;
     }
 
     .slider-track {
@@ -778,20 +777,23 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      background: radial-gradient(ellipse at center, rgba(255,255,255,0.02) 0%, transparent 70%);
     }
 
     .slider-image {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
+      object-position: center;
       display: block;
-      transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      padding: 20px 24px;
       position: relative;
       z-index: 1;
+      filter: drop-shadow(0 4px 20px rgba(0,0,0,0.4));
     }
 
     .slider-slide:hover .slider-image {
-      transform: scale(1.06);
+      filter: drop-shadow(0 6px 30px rgba(0,0,0,0.5));
     }
 
     .slider-glow {
@@ -992,8 +994,10 @@
 
     @media (max-width: 860px) {
       .slider-viewport {
-        min-height: 200px;
-        max-height: 35vh;
+        height: 260px;
+      }
+      .slider-image {
+        padding: 12px 14px;
       }
       .slider-overlay {
         padding: 20px 22px;
