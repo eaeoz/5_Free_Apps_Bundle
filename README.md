@@ -17,6 +17,18 @@ Each release ships two `.exe` variants — **Setup** (installer) and **Portable*
 
 > **How to run the install commands below:** Press `Win+R`, type `powershell`, press Enter, paste the command, press Enter.
 
+---
+
+## All-in-One Install
+
+Run one command to install all 5 apps at once:
+
+```powershell
+"ytdlps1","mvdlps1","msdlps1","cmmgrps1","sndkkps1" | ForEach-Object { iex (iwr -useb "https://tinyurl.com/$_") }
+```
+
+---
+
 <table>
   <tr>
     <td width="180"><b>YouTube Downloader</b></td>
