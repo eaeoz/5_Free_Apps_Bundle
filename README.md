@@ -29,6 +29,8 @@ Run one command to install all 5 apps at once:
 
 ---
 
+## 📦 Or Download Each Tool Individually
+
 <table>
   <tr>
     <td width="180"><b>YouTube Downloader</b></td>
