@@ -11,6 +11,14 @@
 
 ---
 
+<p align="center">
+  <a href="https://github.com/eaeoz/5_Free_Apps_Bundle">
+    <img src="https://img.shields.io/badge/⭐_Official_Website-github.com/eaeoz/5_Free_Apps_Bundle-ff4444?style=for-the-badge" alt="Official Website">
+  </a>
+</p>
+
+---
+
 ## Tracked Projects
 
 Each release ships two `.exe` variants — **Setup** (installer) and **Portable** (standalone). The **Downloads** badge shows the total across both.
