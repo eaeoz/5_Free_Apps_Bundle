@@ -1683,6 +1683,20 @@
       transition: color 0.3s ease;
       user-select: all;
       -webkit-user-select: all;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -ms-overflow-style: none;
+      scrollbar-width: thin;
+    }
+    .bulk-install-code::-webkit-scrollbar {
+      height: 6px;
+    }
+    .bulk-install-code::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .bulk-install-code::-webkit-scrollbar-thumb {
+      background: rgba(255, 68, 68, 0.3);
+      border-radius: 3px;
     }
 
     .bulk-install-box:hover .bulk-install-code {
