@@ -137,6 +137,10 @@
         <h2>Send a Message</h2>
         <p>Fill out the form below and we'll get back to you as soon as possible.</p>
         <form id="contactForm" novalidate>
+          <div style="position:absolute;left:-9999px" aria-hidden="true">
+            <input type="text" id="honeypot" tabindex="-1" autocomplete="off">
+          </div>
+          <input type="hidden" id="formTime" value="">
           <div class="form-group">
             <label for="name">Your Name</label>
             <input class="form-input" type="text" id="name" placeholder="John Doe" required>
@@ -265,13 +269,70 @@
       draw();
     })();
 
+    // Spam protection
+    const SUBMIT_COOLDOWN = 60;
+    let lastSubmit = 0;
+    let cooldownTimer = null;
+
     // Form validation & submission
     const form = document.getElementById('contactForm');
     const formSubmit = document.getElementById('formSubmit');
     const formStatus = document.getElementById('formStatus');
+    const honeypot = document.getElementById('honeypot');
+    const formTime = document.getElementById('formTime');
+
+    // Set timestamp on focus to catch auto-fill bots
+    document.querySelectorAll('#contactForm input, #contactForm textarea').forEach(el => {
+      el.addEventListener('focus', () => { if (!formTime.value) formTime.value = Date.now(); }, { once: true });
+    });
+
+    // Cooldown countdown display
+    function updateCooldown(remaining) {
+      formSubmit.disabled = true;
+      formStatus.className = 'form-status error';
+      formStatus.textContent = `Please wait ${remaining}s before sending another message.`;
+      if (remaining <= 0) {
+        formSubmit.disabled = false;
+        formSubmit.innerHTML = '<svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg> Send Message';
+        formStatus.className = '';
+        formStatus.textContent = '';
+        clearInterval(cooldownTimer);
+        cooldownTimer = null;
+      }
+    }
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      const now = Date.now();
+      const elapsed = (now - lastSubmit) / 1000;
+
+      // Cooldown check
+      if (elapsed < SUBMIT_COOLDOWN && lastSubmit > 0) {
+        let remaining = Math.ceil(SUBMIT_COOLDOWN - elapsed);
+        updateCooldown(remaining);
+        clearInterval(cooldownTimer);
+        cooldownTimer = setInterval(() => {
+          remaining--;
+          updateCooldown(remaining);
+        }, 1000);
+        return;
+      }
+
+      // Honeypot check
+      if (honeypot.value.trim()) {
+        formStatus.className = 'form-status success';
+        formStatus.textContent = 'Message sent successfully!';
+        form.reset();
+        return;
+      }
+
+      // Time check — bots submit in under 3s
+      if (formTime.value && (now - parseInt(formTime.value) < 3000)) {
+        formStatus.className = 'form-status error';
+        formStatus.textContent = 'Please take your time filling out the form.';
+        return;
+      }
+
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const subject = document.getElementById('subject').value.trim();
@@ -308,13 +369,18 @@
           formStatus.className = 'form-status success';
           formStatus.textContent = 'Message sent successfully! We will get back to you soon.';
           form.reset();
+          lastSubmit = Date.now();
+          formTime.value = '';
+          // Re-arm timestamp on next input
+          document.querySelectorAll('#contactForm input, #contactForm textarea').forEach(el => {
+            el.addEventListener('focus', () => { if (!formTime.value) formTime.value = Date.now(); }, { once: true });
+          });
         } else {
           throw new Error('Send failed');
         }
       } catch {
-        formStatus.className = 'form-status success';
-        formStatus.textContent = 'Thank you for reaching out! (Demo mode &mdash; form is not live)';
-        form.reset();
+        formStatus.className = 'form-status error';
+        formStatus.textContent = 'Something went wrong. Please try again or email us directly.';
       }
       formSubmit.disabled = false;
       formSubmit.innerHTML = '<svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg> Send Message';
