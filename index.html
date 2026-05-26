@@ -848,6 +848,7 @@
       overflow: hidden;
       border-radius: 24px;
       height: 400px;
+      touch-action: pan-y;
     }
 
     .slider-track {
@@ -855,6 +856,14 @@
       height: 100%;
       transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       will-change: transform;
+    }
+
+    .slider-track.dragging {
+      transition: none !important;
+    }
+
+    .slider-track.dragging .slider-slide {
+      pointer-events: none;
     }
 
     .slider-slide {
@@ -2539,6 +2548,7 @@
       let autoplayPending = false;
       const AUTOPLAY_DELAY = 4500;
       const total = slides.length;
+      let touchMoved = false;
 
       function goTo(index) {
         if (index === current) return;
@@ -2583,6 +2593,7 @@
       // Click image to open lightbox
       slides.forEach((slide, i) => {
         slide.addEventListener('click', () => {
+          if (touchMoved) return;
           stopAutoplay();
           lbOpen(i);
         });
@@ -2605,6 +2616,39 @@
 
       wrapper.addEventListener('mouseenter', stopAutoplay);
       wrapper.addEventListener('mouseleave', startAutoplay);
+
+      // Touch drag (mobile only)
+      const viewport = document.querySelector('.slider-viewport');
+      let touchStartX = 0, touchOffset = 0;
+
+      viewport.addEventListener('touchstart', e => {
+        if (e.touches.length !== 1) return;
+        touchMoved = false;
+        touchStartX = e.touches[0].clientX;
+        touchOffset = 0;
+        track.classList.add('dragging');
+        stopAutoplay();
+      }, { passive: true });
+
+      viewport.addEventListener('touchmove', e => {
+        if (e.touches.length !== 1) return;
+        const dx = e.touches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 5) touchMoved = true;
+        touchOffset = dx;
+        const vw = viewport.offsetWidth;
+        track.style.transform = `translateX(${-current * vw + dx}px)`;
+      }, { passive: true });
+
+      viewport.addEventListener('touchend', () => {
+        track.classList.remove('dragging');
+        if (touchMoved) {
+          const vw = viewport.offsetWidth;
+          if (touchOffset < -vw * 0.25) next();
+          else if (touchOffset > vw * 0.25) prev();
+          else goTo(current);
+        }
+        startAutoplay();
+      }, { passive: true });
 
       // Set initial accent
       const initialAccent = slides[0].dataset.accent;
