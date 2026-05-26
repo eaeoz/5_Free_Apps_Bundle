@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://eaeoz.github.io/5_Free_Apps_Bundle/sitemap.xml
