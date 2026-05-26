@@ -2664,11 +2664,13 @@
       lbCounter.textContent = `${index + 1} / ${slides.length}`;
       lb.classList.add('open');
       document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
     }
 
     function lbCloseFn() {
       lb.classList.remove('open');
       document.body.style.overflow = '';
+      document.body.style.touchAction = '';
       lbZoom = 1;
       lbPanX = 0;
       lbPanY = 0;
@@ -2734,6 +2736,8 @@
     let lbTouching = false;
 
     lbStage.addEventListener('touchstart', e => {
+      if (!lb.classList.contains('open')) return;
+      e.preventDefault();
       if (e.touches.length === 1) {
         lbTouching = true;
         lbTouchStartX = e.touches[0].clientX;
@@ -2746,9 +2750,11 @@
           e.touches[0].clientY - e.touches[1].clientY
         );
       }
-    }, { passive: true });
+    }, { passive: false });
 
     lbStage.addEventListener('touchmove', e => {
+      if (!lb.classList.contains('open')) return;
+      e.preventDefault();
       if (e.touches.length === 1 && lbTouching) {
         lbPanX = lbPanStartX + (e.touches[0].clientX - lbTouchStartX) / lbZoom;
         lbPanY = lbPanStartY + (e.touches[0].clientY - lbTouchStartY) / lbZoom;
@@ -2764,9 +2770,13 @@
         }
         lbTouchDist = dist;
       }
-    }, { passive: true });
+    }, { passive: false });
 
-    lbStage.addEventListener('touchend', () => { lbTouching = false; }, { passive: true });
+    lbStage.addEventListener('touchend', e => {
+      if (!lb.classList.contains('open')) return;
+      e.preventDefault();
+      lbTouching = false;
+    }, { passive: false });
 
     // Theme toggle
     (function() {
