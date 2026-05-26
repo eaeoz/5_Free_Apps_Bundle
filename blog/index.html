@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guides &amp; Blog | 5 Free Apps Bundle</title>
+  <meta name="description" content="Guides, tutorials, and blog posts about 5 Free Apps Bundle applications. Learn tips, tricks, and best practices.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ff4444'/%3E%3Cstop offset='1' stop-color='%23ff6b6b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='2' y='2' width='28' height='28' rx='7' fill='url(%23a)'/%3E%3Cpath d='M16 8v14m0 0l-5-5m5 5l5-5' stroke='%23fff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#08080f;min-height:100vh;color:rgba(255,255,255,0.8);-webkit-font-smoothing:antialiased}
+    .bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px);background-size:48px 48px}
+    .bg-glow{position:fixed;inset:0;z-index:0;pointer-events:none}
+    .bg-glow::before{content:'';position:absolute;top:-20%;left:-10%;width:60%;height:60%;background:radial-gradient(circle,rgba(255,68,68,0.06),transparent 60%);animation:glowDrift 12s ease-in-out infinite alternate}
+    .bg-glow::after{content:'';position:absolute;bottom:-20%;right:-10%;width:60%;height:60%;background:radial-gradient(circle,rgba(59,130,246,0.05),transparent 60%);animation:glowDrift 14s ease-in-out infinite alternate-reverse}
+    @keyframes glowDrift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(60px,40px) scale(1.2)}}
+    .container{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:32px 24px 80px}
+    @media(max-width:860px){.container{padding:16px 16px 60px}}
+
+    .nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;background:rgba(8,8,15,0.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.04);max-width:100%;animation:navSlide 0.6s ease-out}
+    @keyframes navSlide{0%{transform:translateY(-100%);opacity:0}100%{transform:translateY(0);opacity:1}}
+    .nav-inner{display:flex;align-items:center;gap:32px;max-width:1280px;margin:0 auto;width:100%}
+    .nav-logo{font-size:18px;font-weight:900;color:#fff;text-decoration:none;letter-spacing:-0.5px;display:flex;align-items:center;gap:10px;transition:opacity 0.25s}
+    .nav-logo:hover{opacity:0.8}
+    .nav-logo-dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,#ff4444,#ff6b6b);flex-shrink:0}
+    .nav-links{display:flex;align-items:center;gap:6px}
+    .nav-link{padding:8px 16px;border-radius:10px;font-size:13px;font-weight:600;color:rgba(255,255,255,0.4);text-decoration:none;transition:all 0.3s ease}
+    .nav-link:hover{color:#fff;background:rgba(255,255,255,0.04)}
+    .nav-link.active{color:#ff4444;background:rgba(255,68,68,0.08)}
+    @media(max-width:660px){
+      .nav{padding:12px 16px}
+      .nav-inner{gap:16px}
+      .nav-logo{font-size:15px}
+      .nav-link{padding:6px 10px;font-size:11px}
+      .nav-links{gap:2px}
+    }
+
+    .page-hero{text-align:center;padding:60px 0 40px;animation:fadeDown 0.8s ease-out}
+    .page-hero h1{font-size:38px;font-weight:900;color:#fff;letter-spacing:-1.5px;line-height:1.15}
+    .page-hero h1 span{background:linear-gradient(135deg,#ff4444,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .page-hero p{color:rgba(255,255,255,0.35);font-size:15px;font-weight:500;margin-top:8px}
+    .page-hero-search{max-width:480px;margin:20px auto 0;position:relative}
+    .page-hero-search input{width:100%;padding:14px 20px 14px 48px;border-radius:16px;border:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.3);color:rgba(255,255,255,0.8);font-family:'Inter',sans-serif;font-size:14px;font-weight:500;outline:none;transition:all 0.3s ease}
+    .page-hero-search input:focus{border-color:#ff4444;box-shadow:0 0 0 3px rgba(255,68,68,0.1)}
+    .page-hero-search input::placeholder{color:rgba(255,255,255,0.2)}
+    .page-hero-search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;fill:rgba(255,255,255,0.2);pointer-events:none}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 18px;border-radius:20px;background:rgba(255,68,68,0.06);border:1px solid rgba(255,68,68,0.12);font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.5px;margin-top:16px}
+    @media(max-width:660px){.page-hero{padding:36px 0 24px}.page-hero h1{font-size:26px}}
+
+    /* Reading progress */
+    #readingProgress{position:fixed;top:0;left:0;height:3px;z-index:999;background:linear-gradient(90deg,#ff4444,#ff6b6b);width:0%;transition:width 0.1s linear;pointer-events:none}
+
+    /* Category filter pills */
+    .category-bar{display:flex;align-items:center;gap:8px;margin-bottom:32px;flex-wrap:wrap;animation:fadeDown 0.8s ease-out;animation-delay:0.15s;opacity:0;animation-fill-mode:forwards}
+    .cat-pill{padding:8px 20px;border-radius:20px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);color:rgba(255,255,255,0.4);font-size:13px;font-weight:600;cursor:pointer;transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);font-family:'Inter',sans-serif;user-select:none}
+    .cat-pill:hover{color:#fff;background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);transform:translateY(-2px)}
+    .cat-pill.active{color:#fff;background:#ff4444;border-color:#ff4444;box-shadow:0 4px 16px rgba(255,68,68,0.3)}
+    .cat-pill-count{font-size:10px;opacity:0.5;margin-left:4px}
+    @media(max-width:660px){.category-bar{gap:6px;margin-bottom:20px}.cat-pill{padding:6px 14px;font-size:12px}}
+
+    /* Blog grid */
+    .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;min-height:200px}
+    @media(max-width:660px){.blog-grid{grid-template-columns:1fr;gap:16px}}
+
+    /* Blog cards with 3D tilt effect */
+    .blog-card{background:linear-gradient(160deg,rgba(26,26,46,0.6),rgba(22,33,62,0.6));backdrop-filter:blur(12px);border-radius:20px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 8px 40px rgba(0,0,0,0.3);overflow:hidden;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.4s ease;opacity:0;transform:translateY(40px) scale(0.95);cursor:pointer;position:relative;transform-style:preserve-3d;perspective:1000px}
+    .blog-card.visible{opacity:1;transform:translateY(0) scale(1)}
+    .blog-card.hidden{display:none}
+    .blog-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+    .blog-card:active{transform:translateY(-2px) scale(0.98)}
+
+    .blog-card-accent{height:4px;background:var(--card-accent)}
+    .blog-card-body{padding:24px}
+    .blog-card-category{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:8px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px;background:var(--cat-bg);color:var(--card-accent)}
+    .blog-card-date{font-size:11px;color:rgba(255,255,255,0.25);font-weight:500;margin-bottom:8px}
+    .blog-card-title{font-size:17px;font-weight:800;color:#fff;letter-spacing:-0.3px;line-height:1.3;margin-bottom:8px;transition:color 0.3s}
+    .blog-card:hover .blog-card-title{color:var(--card-accent)}
+    .blog-card-desc{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.6;margin-bottom:16px}
+    .blog-card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:14px;border-top:1px solid rgba(255,255,255,0.04)}
+    .blog-card-author{display:flex;align-items:center;gap:8px}
+    .blog-card-avatar{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#ff4444,#ff6b6b);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;flex-shrink:0}
+    .blog-card-author-name{font-size:11px;font-weight:600;color:rgba(255,255,255,0.3)}
+    .blog-card-read{font-size:11px;font-weight:700;color:var(--card-accent);opacity:0;transform:translateX(-8px);transition:all 0.3s ease;display:flex;align-items:center;gap:4px}
+    .blog-card:hover .blog-card-read{opacity:1;transform:translateX(0)}
+    .blog-card-read svg{width:14px;height:14px;fill:currentColor}
+
+    /* Empty state */
+    .blog-empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:rgba(255,255,255,0.2)}
+    .blog-empty svg{width:48px;height:48px;fill:currentColor;margin-bottom:12px;opacity:0.3}
+    .blog-empty p{font-size:14px;font-weight:500}
+
+    /* Featured card */
+    .blog-card.featured{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:0}
+    .blog-card.featured .blog-card-body{display:flex;flex-direction:column;justify-content:center;padding:32px}
+    .blog-card.featured .blog-card-title{font-size:22px}
+    .blog-card.featured .blog-card-desc{font-size:14px}
+    @media(max-width:660px){.blog-card.featured{grid-template-columns:1fr}.blog-card.featured .blog-card-body{padding:20px}}
+
+    .page-footer{margin-top:60px;text-align:center}
+    .footer-hr{border:none;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.06),rgba(255,68,68,0.15),rgba(255,255,255,0.06),transparent);margin:0 auto 24px;max-width:400px}
+    .footer-links{display:flex;align-items:center;justify-content:center;gap:24px}
+    .footer-link{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);color:rgba(255,255,255,0.3);text-decoration:none}
+    .footer-link svg{width:20px;height:20px;fill:currentColor;transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1)}
+    .footer-link:hover{transform:translateY(-4px) scale(1.08);border-color:transparent}
+    .footer-link--back:hover{background:#ff4444;color:#fff;box-shadow:0 8px 30px rgba(255,68,68,0.35)}
+    .footer-credit{margin-top:16px;font-size:11px;color:rgba(255,255,255,0.15);font-weight:500;letter-spacing:0.3px}
+
+    @keyframes fadeDown{0%{opacity:0;transform:translateY(-20px)}100%{opacity:1;transform:translateY(0)}}
+
+    /* Animated typewriter for hero subtitle */
+    .typewriter{display:inline-block;overflow:hidden;white-space:nowrap;border-right:2px solid #ff4444;animation:typewriter 2.5s steps(30) 0.5s 1 normal both,blink 0.7s step-end infinite;animation-delay:0.5s,2.8s;width:0;max-width:100%}
+    @keyframes typewriter{from{width:0}to{width:100%}}
+    @keyframes blink{50%{border-color:transparent}}
+
+    /* Featured card visual */
+    .blog-card-feat-visual{display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center, rgba(255,68,68,0.05), transparent);padding:40px;position:relative;overflow:hidden;min-height:200px}
+    .blog-card-feat-visual .feat-icon{width:80px;height:80px;border-radius:24px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(255,68,68,0.15),rgba(255,68,68,0.05));border:1px solid rgba(255,68,68,0.15);animation:featPulse 3s ease-in-out infinite}
+    .blog-card-feat-visual .feat-icon svg{width:44px;height:44px;fill:#ff4444}
+    @keyframes featPulse{0%,100%{transform:scale(1);box-shadow:0 0 20px rgba(255,68,68,0.1)}50%{transform:scale(1.05);box-shadow:0 0 40px rgba(255,68,68,0.2)}}
+    @media(max-width:660px){.blog-card-feat-visual{padding:24px;min-height:140px}.blog-card-feat-visual .feat-icon{width:56px;height:56px}.blog-card-feat-visual .feat-icon svg{width:30px;height:30px}}
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <div id="readingProgress"></div>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo"><span class="nav-logo-dot"></span>5 Apps Bundle</a>
+      <div class="nav-links">
+        <a href="../index.html" class="nav-link">Dashboard</a>
+        <a href="../about.html" class="nav-link">About</a>
+        <a href="index.html" class="nav-link active">Guides</a>
+        <a href="../contact.html" class="nav-link">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="page-hero">
+      <h1>Guides &amp; <span>Blog</span></h1>
+      <p><span class="typewriter">Tips, tutorials, and deep dives into your favorite tools</span></p>
+      <div class="page-hero-search">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <input type="text" id="blogSearch" placeholder="Search guides..." aria-label="Search guides">
+      </div>
+      <div class="hero-badge">&#128221; Guides &amp; Tutorials</div>
+    </div>
+
+    <div class="category-bar" id="categoryBar"></div>
+
+    <div class="blog-grid" id="blogGrid"></div>
+
+    <footer class="page-footer">
+      <hr class="footer-hr">
+      <div class="footer-links">
+        <a href="../index.html" class="footer-link footer-link--back" aria-label="Back to Dashboard">
+          <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        </a>
+      </div>
+      <p class="footer-credit">5 Free Apps Bundle &middot; Guides &amp; Blog</p>
+    </footer>
+  </div>
+
+  <script>
+    // ── Blog data ──
+    const POSTS = [
+      {
+        id: 1,
+        title: 'Getting Started with YouTube Downloader v1.0.0',
+        desc: 'Electron desktop app powered by yt-dlp &amp; FFmpeg. Download videos in 360p-1080p+ with auto-merged audio, or extract MP3 at 128k-320k. Supports playlists, format browsing, and real-time SSE progress.',
+        category: 'guides',
+        date: 'May 20, 2026',
+        readTime: '5 min read',
+        accent: '#ff4444',
+        featured: true,
+        content: `<p>YouTube Downloader is a modern Electron desktop application that lets you download YouTube videos and audio in just a few clicks. Powered by <strong>yt-dlp</strong> and <strong>FFmpeg</strong>, it delivers high-quality downloads with a clean, intuitive interface.</p>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Key Features</h3>
+        <ul style="padding-left:18px;margin:8px 0 16px">
+          <li style="margin-bottom:6px"><strong>Video Downloads</strong> &mdash; Choose from 360p, 480p, 720p, or 1080p+ with best audio auto-merged</li>
+          <li style="margin-bottom:6px"><strong>Audio Extraction</strong> &mdash; Download as MP3 at 128k-320k bitrate via FFmpeg</li>
+          <li style="margin-bottom:6px"><strong>Format Browser</strong> &mdash; View all available formats sorted by ID, resolution, codec, and bitrate</li>
+          <li style="margin-bottom:6px"><strong>Playlist Support</strong> &mdash; Download entire playlists with optional range selection</li>
+          <li style="margin-bottom:6px"><strong>System Tray</strong> &mdash; Minimize to tray with quick access menu</li>
+          <li style="margin-bottom:6px"><strong>Dark/Light Theme</strong> &mdash; Persistent theme toggle across sessions</li>
+          <li style="margin-bottom:6px"><strong>Download History</strong> &mdash; Browse, re-download, or remove past downloads</li>
+          <li style="margin-bottom:6px"><strong>yt-dlp Auto-Update</strong> &mdash; Keep yt-dlp.exe up to date from within the app</li>
+        </ul>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">How to Download a Video</h3>
+        <ol style="padding-left:18px;margin:8px 0 16px">
+          <li style="margin-bottom:6px">Launch the app and paste a YouTube URL into the input field</li>
+          <li style="margin-bottom:6px">Browse available formats in the format browser or use quick presets</li>
+          <li style="margin-bottom:6px">Select your preferred quality and click Download</li>
+          <li style="margin-bottom:6px">Watch real-time progress via SSE &mdash; speed, ETA, and step indicators</li>
+          <li style="margin-bottom:6px">Find your file in the output folder or access it from download history</li>
+        </ol>
+
+        <div style="margin-top:16px;padding:14px 18px;border-radius:12px;background:rgba(255,68,68,0.06);border-left:3px solid #ff4444">
+          <p style="font-size:13px;color:rgba(255,255,255,0.5);margin:0"><strong style="color:#ff4444">Tip:</strong> Use the format browser to find the best combination of resolution and file size. For music, switch to Audio mode and choose your bitrate.</p>
+        </div>`
+      },
+      {
+        id: 2,
+        title: 'Batch Download Movies with Movie Downloader v1.0.6',
+        desc: 'Torrent-based movie downloader with Letterboxd watchlist sync. Searches YTS, ThePirateBay, RARBG, and TorrentsCSV. Filter by 720p/1080p, BluRay, WEB-DL, seeders, size. Built-in video player with HTTP range-seeking.',
+        category: 'guides',
+        date: 'May 18, 2026',
+        readTime: '4 min read',
+        accent: '#a855f7',
+        content: `<p>Movie Downloader is a torrent-based movie downloader with <strong>Letterboxd watchlist integration</strong>. It aggregates results from multiple torrent sources and provides a rich, feature-packed experience for movie enthusiasts.</p>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Supported Sources</h3>
+        <ul style="padding-left:18px;margin:8px 0 16px">
+          <li style="margin-bottom:6px"><strong>YTS</strong> &mdash; High-quality movie torrents in small file sizes</li>
+          <li style="margin-bottom:6px"><strong>ThePirateBay</strong> &mdash; Largest torrent index</li>
+          <li style="margin-bottom:6px"><strong>RARBG</strong> &mdash; Curated releases with reliable quality</li>
+          <li style="margin-bottom:6px"><strong>TorrentsCSV</strong> &mdash; Additional fallback source</li>
+        </ul>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">How It Works</h3>
+        <ol style="padding-left:18px;margin:8px 0 16px">
+          <li style="margin-bottom:6px">Link your Letterboxd account to auto-load your watchlist, or search manually</li>
+          <li style="margin-bottom:6px">Filter results by quality (720p, 1080p, BluRay, WEB-DL), size, seeders, or category</li>
+          <li style="margin-bottom:6px">Click any result to start downloading &mdash; real-time progress shows speed, ETA, seeds, and peers</li>
+          <li style="margin-bottom:6px">Stream directly using the built-in video player with HTTP range-seeking support</li>
+          <li style="margin-bottom:6px">Browse your library folder tree and manage downloaded files</li>
+        </ol>
+
+        <p>Downloads go to an <code style="background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;font-size:12px">_incomplete/</code> folder and are moved upon completion. Incomplete downloads auto-resume across restarts.</p>
+
+        <div style="margin-top:16px;padding:14px 18px;border-radius:12px;background:rgba(168,85,247,0.06);border-left:3px solid #a855f7">
+          <p style="font-size:13px;color:rgba(255,255,255,0.5);margin:0"><strong style="color:#a855f7">Tip:</strong> Use the quality filter presets to narrow down results quickly. Sorting by seeders usually finds the fastest downloads.</p>
+        </div>`
+      },
+      {
+        id: 3,
+        title: 'Music Downloader: Smart Metadata &amp; Album Art',
+        desc: 'Search YouTube, then auto-fetch rich metadata from Deezer (with iTunes fallback). Embeds artist, title, album, year, genre, and cover art into 192kbps MP3s via FFmpeg. No API keys needed. Also includes the track-dl CLI.',
+        category: 'guides',
+        date: 'May 15, 2026',
+        readTime: '6 min read',
+        accent: '#1ed760',
+        content: `<p>Music Downloader searches YouTube, fetches rich metadata from <strong>Deezer</strong> (with iTunes fallback), and downloads high-quality <strong>192kbps MP3s</strong> with embedded album art. No API keys required.</p>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Smart Pipeline</h3>
+        <p>Each download follows a 6-step pipeline with visual progress:</p>
+        <ol style="padding-left:18px;margin:8px 0 16px">
+          <li style="margin-bottom:6px"><strong>Search</strong> &mdash; Searches YouTube with word-scoring algorithm for best match</li>
+          <li style="margin-bottom:6px"><strong>Metadata</strong> &mdash; Fetches artist, title, album, year, genre, and cover art from Deezer or iTunes</li>
+          <li style="margin-bottom:6px"><strong>Download</strong> &mdash; Downloads audio via yt-dlp</li>
+          <li style="margin-bottom:6px"><strong>Extract</strong> &mdash; Converts to PCM audio stream</li>
+          <li style="margin-bottom:6px"><strong>Process</strong> &mdash; Encodes to libmp3lame at 192kbps with embedded metadata</li>
+          <li style="margin-bottom:6px"><strong>Complete</strong> &mdash; Saves MP3 with album art embedded via FFmpeg</li>
+        </ol>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Auto &amp; Manual Modes</h3>
+        <p>The app can auto-pick the best match, or you can review and choose from up to 5 search results manually. Duplicate files get auto-appended (1), (2) when a file already exists.</p>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">CLI Tool: track-dl</h3>
+        <p>For power users, the <code style="background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;font-size:12px">track-dl</code> command-line interface provides the same matching pipeline directly in your terminal. Perfect for scripting and automation.</p>
+
+        <div style="margin-top:16px;padding:14px 18px;border-radius:12px;background:rgba(30,215,96,0.06);border-left:3px solid #1ed760">
+          <p style="font-size:13px;color:rgba(255,255,255,0.5);margin:0"><strong style="color:#1ed760">Tip:</strong> For the best metadata quality, search with the full "Artist - Song Title" format. The word-scoring algorithm works best with complete queries.</p>
+        </div>`
+      },
+      {
+        id: 4,
+        title: 'Managing Remote Servers with Command Manager v1.0.6',
+        desc: 'SSH Command Manager with a graphical interface. Create SSH profiles (host, port, username, password), design custom command cards with personalized styling, and execute on remote servers with one click. Runs as a Windows app or Docker container (eaeoz/command-manager-docker:6).',
+        category: 'tutorials',
+        date: 'May 12, 2026',
+        readTime: '8 min read',
+        accent: '#0db7ed',
+        content: `<p>Command Manager is an SSH command manager that gives you a graphical interface for managing remote servers. Create SSH profiles, design styled command buttons, and execute commands with a single click.</p>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">SSH Profile Management</h3>
+        <p>Create and manage multiple SSH profiles with host, port, username, and password. Profiles are stored in JSON configuration files for easy backup and portability.</p>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Custom Command Cards</h3>
+        <p>Design command buttons with full styling control:</p>
+        <ul style="padding-left:18px;margin:8px 0 16px">
+          <li style="margin-bottom:6px">Set text color, background, and gradients per button</li>
+          <li style="margin-bottom:6px">Customize fonts and appearance with right-click context menu</li>
+          <li style="margin-bottom:6px">Drag and drop to visually reorder command cards</li>
+          <li style="margin-bottom:6px">One-click execution on any SSH profile</li>
+        </ul>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Docker Deployment</h3>
+        <p>Run as a Docker container for persistent web access:</p>
+        <div style="background:rgba(0,0,0,0.3);border-radius:10px;padding:12px 16px;margin:8px 0 16px;font-family:Consolas,monospace;font-size:12px;color:rgba(255,255,255,0.6)">docker pull eaeoz/command-manager-docker:6</div>
+        <p>The Docker version runs on port 3000 and includes AI-powered assistance via Puter.js for generating commands.</p>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Backup &amp; Restore</h3>
+        <p>Export and import your entire configuration &mdash; profiles, commands, and styling &mdash; for easy migration between machines.</p>
+
+        <div style="margin-top:16px;padding:14px 18px;border-radius:12px;background:rgba(13,183,237,0.06);border-left:3px solid #0db7ed">
+          <p style="font-size:13px;color:rgba(255,255,255,0.5);margin:0"><strong style="color:#0db7ed">Tip:</strong> Use the AI button in the Docker version to describe what you need in plain English. The AI will generate the appropriate command for you.</p>
+        </div>`
+      },
+      {
+        id: 5,
+        title: 'Using Sondakika v2.0.4 for Turkish News',
+        desc: 'RSS news reader aggregating 10+ major Turkish sources: Cumhuriyet, TRT Haber, Mynet, Sabah, Star, Haberturk, CNN Turk, Yeni Safak, Anadolu Ajansi. Clean card-based UI, in-app article reader with keyboard navigation, source filtering, and adjustable font sizes.',
+        category: 'tutorials',
+        date: 'May 10, 2026',
+        readTime: '3 min read',
+        accent: '#f59e0b',
+        content: `<p>Sondakika (Turkish for "Breaking News") is a modern Electron-based RSS news reader that aggregates real-time headlines from <strong>10+ major Turkish news sources</strong> into one clean interface.</p>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Supported News Sources</h3>
+        <p style="margin-bottom:10px">Cumhuriyet, TRT Haber, Mynet, Sabah, Star, Gazete Vatan, Haberturk, CNN Turk, Yeni Safak, Anadolu Ajansi &mdash; all accessible from one app.</p>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Key Features</h3>
+        <ul style="padding-left:18px;margin:8px 0 16px">
+          <li style="margin-bottom:6px"><strong>Card-Based UI</strong> &mdash; Clean layout with source badges and timestamps</li>
+          <li style="margin-bottom:6px"><strong>In-App Article Reader</strong> &mdash; Read full articles without opening a browser, with animated transitions</li>
+          <li style="margin-bottom:6px"><strong>Keyboard Navigation</strong> &mdash; Arrow keys, Enter, Escape, F5 for refresh, number keys for font size</li>
+          <li style="margin-bottom:6px"><strong>Source Filtering</strong> &mdash; Enable/disable individual sources via sidebar checkboxes</li>
+          <li style="margin-bottom:6px"><strong>Adjustable Font Sizes</strong> &mdash; Separate controls for title (12-32px) and content (10-28px)</li>
+          <li style="margin-bottom:6px"><strong>Sorting &amp; Pagination</strong> &mdash; Newest/oldest first, 5-20 articles per page</li>
+          <li style="margin-bottom:6px"><strong>Image Extraction</strong> &mdash; Automatically extracts article images from RSS feeds</li>
+          <li style="margin-bottom:6px"><strong>Dark/Light Theme</strong> &mdash; Persistent theme toggle</li>
+        </ul>
+
+        <div style="margin-top:16px;padding:14px 18px;border-radius:12px;background:rgba(245,158,11,0.06);border-left:3px solid #f59e0b">
+          <p style="font-size:13px;color:rgba(255,255,255,0.5);margin:0"><strong style="color:#f59e0b">Tip:</strong> Press <kbd style="background:rgba(255,255,255,0.08);padding:1px 5px;border-radius:3px;border:1px solid rgba(255,255,255,0.1)">F5</kbd> to refresh all feeds, and use number keys 1-9 to adjust font sizes while reading articles.</p>
+        </div>`
+      },
+      {
+        id: 6,
+        title: 'How to Install All 5 Apps at Once',
+        desc: 'Use our one-click PowerShell command to install the entire bundle via tinyurl shortlinks. No manual downloads, no hoops. Just Win+R, paste, enter, and all five apps install automatically.',
+        category: 'tips',
+        date: 'May 8, 2026',
+        readTime: '2 min read',
+        accent: '#ff4444',
+        content: `<p>Installing all five applications is as simple as copying a single command. No need to visit each GitHub releases page individually.</p>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">One-Click Install</h3>
+        <p>Copy the PowerShell command below, open <kbd style="background:rgba(255,255,255,0.08);padding:2px 6px;border-radius:4px;border:1px solid rgba(255,255,255,0.1)">Win+R</kbd>, type <code style="background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;font-size:12px">powershell</code>, press <kbd style="background:rgba(255,255,255,0.08);padding:2px 6px;border-radius:4px;border:1px solid rgba(255,255,255,0.1)">Enter</kbd>, paste the command, and press <kbd style="background:rgba(255,255,255,0.08);padding:2px 6px;border-radius:4px;border:1px solid rgba(255,255,255,0.1)">Enter</kbd> again.</p>
+
+        <div style="background:rgba(0,0,0,0.3);border-radius:10px;padding:14px 18px;margin:12px 0;font-family:Consolas,monospace;font-size:12px;color:rgba(255,255,255,0.7);word-break:break-all">
+"ytdlps1","mvdlps1","msdlps1","cmmgrps1","sndkkps1" | ForEach-Object { iex (iwr -useb "https://tinyurl.com/$_") }
+        </div>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">What Gets Installed</h3>
+        <ul style="padding-left:18px;margin:8px 0 16px">
+          <li style="margin-bottom:6px"><strong>YouTube Downloader</strong> &mdash; Video/audio downloader with format browser</li>
+          <li style="margin-bottom:6px"><strong>Movie Downloader</strong> &mdash; Torrent-based movie downloader with Letterboxd sync</li>
+          <li style="margin-bottom:6px"><strong>Music Downloader</strong> &mdash; Music downloader with smart metadata and album art</li>
+          <li style="margin-bottom:6px"><strong>Command Manager</strong> &mdash; SSH command manager with GUI interface</li>
+          <li style="margin-bottom:6px"><strong>Sondakika</strong> &mdash; Turkish RSS news reader</li>
+        </ul>
+
+        <div style="margin-top:16px;padding:14px 18px;border-radius:12px;background:rgba(255,68,68,0.06);border-left:3px solid #ff4444">
+          <p style="font-size:13px;color:rgba(255,255,255,0.5);margin:0"><strong style="color:#ff4444">Note:</strong> Each tinyurl links to the latest GitHub release. The installer will download and run the NSIS setup for each app automatically.</p>
+        </div>`
+      },
+      {
+        id: 7,
+        title: 'Troubleshooting Common Download Issues',
+        desc: 'Facing problems with downloads? Covers yt-dlp updates, FFmpeg path issues, torrent connection errors, SSH authentication failures, and RSS feed timeouts across all five applications.',
+        category: 'tips',
+        date: 'May 5, 2026',
+        readTime: '4 min read',
+        accent: '#a855f7',
+        content: `<p>Encountering issues? Here are solutions for the most common problems across the 5 Apps Bundle.</p>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">YouTube Downloader</h3>
+        <ul style="padding-left:18px;margin:8px 0 16px">
+          <li style="margin-bottom:6px"><strong>yt-dlp out of date:</strong> Use the built-in <em>Update yt-dlp</em> button in settings, or download the latest yt-dlp.exe manually</li>
+          <li style="margin-bottom:6px"><strong>FFmpeg not found:</strong> Ensure ffmpeg.exe is in the same directory as the app, or set the FFmpeg path in settings</li>
+          <li style="margin-bottom:6px"><strong>Download stuck:</strong> Try a different format or resolution. Some videos have region restrictions</li>
+        </ul>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Movie Downloader</h3>
+        <ul style="padding-left:18px;margin:8px 0 16px">
+          <li style="margin-bottom:6px"><strong>No torrent sources found:</strong> Check your internet connection. Some sources may be blocked in your region &mdash; try a VPN</li>
+          <li style="margin-bottom:6px"><strong>Slow download:</strong> Sort by seeders. More seeders = faster downloads</li>
+          <li style="margin-bottom:6px"><strong>Player not working:</strong> Ensure the file is fully downloaded. Incomplete files remain in the <code style="background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px">_incomplete/</code> folder</li>
+        </ul>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Music Downloader</h3>
+        <ul style="padding-left:18px;margin:8px 0 16px">
+          <li style="margin-bottom:6px"><strong>No metadata found:</strong> Try searching with "Artist - Track Title" format. Deezer and iTunes fallback may not have all tracks</li>
+          <li style="margin-bottom:6px"><strong>Album art missing:</strong> FFmpeg must be available for image embedding. Check FFmpeg path in settings</li>
+        </ul>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Command Manager</h3>
+        <ul style="padding-left:18px;margin:8px 0 16px">
+          <li style="margin-bottom:6px"><strong>SSH connection refused:</strong> Verify host, port, and credentials. Ensure the SSH server is running</li>
+          <li style="margin-bottom:6px"><strong>Docker container not accessible:</strong> Check port mapping. Default is 3000 &mdash; ensure it is not in use</li>
+        </ul>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Sondakika</h3>
+        <ul style="padding-left:18px;margin:8px 0 16px">
+          <li style="margin-bottom:6px"><strong>No news loaded:</strong> Check internet connection. Some RSS feeds may be temporarily unavailable</li>
+          <li style="margin-bottom:6px"><strong>Empty articles:</strong> Some sources restrict full content in RSS feeds. Try a different source</li>
+        </ul>`
+      },
+      {
+        id: 8,
+        title: 'Understanding the Dashboard Download Stats',
+        desc: 'The live dashboard fetches release data from GitHub API via our app-stats repository. Tracks .exe downloads per release, displays grand totals, and refreshes every 10 minutes. No database &mdash; pure API magic.',
+        category: 'guides',
+        date: 'May 2, 2026',
+        readTime: '3 min read',
+        accent: '#0db7ed',
+        content: `<p>The 5 Free Apps Bundle dashboard provides live download statistics for all five applications. Here is how it works behind the scenes.</p>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Data Pipeline</h3>
+        <ol style="padding-left:18px;margin:8px 0 16px">
+          <li style="margin-bottom:6px">A scheduled GitHub Action collects release data from all five repositories</li>
+          <li style="margin-bottom:6px">Data is compiled into a single <code style="background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px">releases.json</code> file on the <code style="background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px">app-stats</code> repository</li>
+          <li style="margin-bottom:6px">The dashboard fetches this JSON file from GitHub's raw CDN</li>
+          <li style="margin-bottom:6px">JavaScript renders the data into cards with download counts, release tags, and asset details</li>
+          <li style="margin-bottom:6px">The page auto-refreshes every <strong>10 minutes</strong> to keep stats current</li>
+        </ol>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">What You See</h3>
+        <ul style="padding-left:18px;margin:8px 0 16px">
+          <li style="margin-bottom:6px"><strong>Grand Total</strong> &mdash; Sum of all downloads across all five apps</li>
+          <li style="margin-bottom:6px"><strong>Per-App Total</strong> &mdash; Downloads for each individual application</li>
+          <li style="margin-bottom:6px"><strong>Release Count</strong> &mdash; Number of releases per app</li>
+          <li style="margin-bottom:6px"><strong>Executable List</strong> &mdash; All .exe assets with file size and download count</li>
+          <li style="margin-bottom:6px"><strong>Older Releases</strong> &mdash; Expandable section for historical versions</li>
+          <li style="margin-bottom:6px"><strong>Star Count</strong> &mdash; GitHub stars for each repository</li>
+        </ul>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Quick Install</h3>
+        <p>Each app card has a Quick Install section with a one-click PowerShell command. Click the command to copy it, then paste into a PowerShell window to install instantly.</p>
+
+        <div style="margin-top:16px;padding:14px 18px;border-radius:12px;background:rgba(13,183,237,0.06);border-left:3px solid #0db7ed">
+          <p style="font-size:13px;color:rgba(255,255,255,0.5);margin:0"><strong style="color:#0db7ed">Tip:</strong> Hover over any install command for step-by-step instructions on how to run it.</p>
+        </div>`
+      },
+      {
+        id: 9,
+        title: 'Privacy-First Software: Why We Don\'t Track You',
+        desc: 'No telemetry, no analytics, no data collection. Our apps are fully offline (except RSS/news fetching). The dashboard uses privacy-focused Umami analytics (no cookies). Here\'s how we keep your data yours.',
+        category: 'updates',
+        date: 'Apr 28, 2026',
+        readTime: '5 min read',
+        accent: '#ff4444',
+        content: `<p>Privacy is not an afterthought &mdash; it is a core principle. Here is exactly how we protect your data across all five applications and the dashboard.</p>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Applications Are Fully Offline</h3>
+        <p>All desktop applications function entirely offline:</p>
+        <ul style="padding-left:18px;margin:8px 0 16px">
+          <li style="margin-bottom:6px"><strong>YouTube Downloader</strong> &mdash; No telemetry. Connects only to YouTube/yt-dlp sources</li>
+          <li style="margin-bottom:6px"><strong>Movie Downloader</strong> &mdash; No tracking. Connects only to torrent trackers and Letterboxd API</li>
+          <li style="margin-bottom:6px"><strong>Music Downloader</strong> &mdash; No data collection. Fetches metadata from Deezer/iTunes public APIs</li>
+          <li style="margin-bottom:6px"><strong>Command Manager</strong> &mdash; No internet connection needed unless managing remote servers</li>
+          <li style="margin-bottom:6px"><strong>Sondakika</strong> &mdash; Only fetches RSS feeds from news sources you select</li>
+        </ul>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Dashboard Analytics</h3>
+        <p>The web dashboard uses <strong>Umami Analytics</strong> &mdash; a privacy-focused, open-source analytics platform that:
+          <ul style="padding-left:18px;margin:8px 0 16px">
+            <li style="margin-bottom:6px">Does <strong>not</strong> use cookies</li>
+            <li style="margin-bottom:6px">Does <strong>not</strong> collect personal information</li>
+            <li style="margin-bottom:6px">Does <strong>not</strong> track users across websites</li>
+            <li style="margin-bottom:6px">Provides only basic page view counts for us to improve the site</li>
+          </ul>
+        </p>
+
+        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">No Data Selling</h3>
+        <p>We do <strong>not</strong> sell, trade, or share your data with third parties. The only external services our apps connect to are the ones you explicitly use (YouTube API, torrent trackers, RSS feeds, SSH servers).</p>
+
+        <div style="margin-top:16px;padding:14px 18px;border-radius:12px;background:rgba(255,68,68,0.06);border-left:3px solid #ff4444">
+          <p style="font-size:13px;color:rgba(255,255,255,0.5);margin:0"><strong style="color:#ff4444">Our Promise:</strong> No ads, no trackers, no hidden agendas. Just useful tools that respect your privacy.</p>
+        </div>`
+      }
+    ];
+
+    const CATEGORIES = [
+      { key: 'all', label: 'All' },
+      { key: 'guides', label: 'Guides' },
+      { key: 'tutorials', label: 'Tutorials' },
+      { key: 'tips', label: 'Tips' },
+      { key: 'updates', label: 'Updates' }
+    ];
+
+    let activeCategory = 'all';
+    let searchQuery = '';
+
+    const grid = document.getElementById('blogGrid');
+    const categoryBar = document.getElementById('categoryBar');
+    const searchInput = document.getElementById('blogSearch');
+
+    // ── Render category pills ──
+    function renderCategories() {
+      categoryBar.innerHTML = CATEGORIES.map(c => {
+        const count = c.key === 'all' ? POSTS.length : POSTS.filter(p => p.category === c.key).length;
+        return `<button class="cat-pill${c.key === activeCategory ? ' active' : ''}" data-cat="${c.key}">${c.label} <span class="cat-pill-count">${count}</span></button>`;
+      }).join('');
+      categoryBar.querySelectorAll('.cat-pill').forEach(btn => {
+        btn.addEventListener('click', () => {
+          categoryBar.querySelector('.active')?.classList.remove('active');
+          btn.classList.add('active');
+          activeCategory = btn.dataset.cat;
+          renderPosts();
+        });
+      });
+    }
+
+    // ── Render blog cards ──
+    function renderPosts() {
+      const filtered = POSTS.filter(p => {
+        const matchCat = activeCategory === 'all' || p.category === activeCategory;
+        const matchSearch = !searchQuery || p.title.toLowerCase().includes(searchQuery) || p.desc.toLowerCase().includes(searchQuery);
+        return matchCat && matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div class="blog-empty"><svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg><p>No posts found matching your criteria</p></div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map((post, i) => {
+        const catLabel = CATEGORIES.find(c => c.key === post.category)?.label || post.category;
+        const catBg = `${post.accent}12`;
+        const initials = '5A';
+
+        let html = `<div class="blog-card${post.featured ? ' featured' : ''}" data-id="${post.id}" style="--card-accent:${post.accent};--cat-bg:${catBg};transition-delay:${i * 0.04}s" tabindex="0">`;
+        html += `<div class="blog-card-accent" style="background:${post.accent}"></div>`;
+        if (post.featured) {
+          html += `<div class="blog-card-feat-visual"><div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></div></div>`;
+        }
+        html += `<div class="blog-card-body"><span class="blog-card-category" style="color:${post.accent};background:${catBg}">${catLabel}</span>`;
+        html += `<div class="blog-card-date">${post.date} &middot; ${post.readTime}</div>`;
+        html += `<h3 class="blog-card-title">${post.title}</h3>`;
+        html += `<p class="blog-card-desc">${post.desc}</p>`;
+        html += `<div class="blog-card-footer"><div class="blog-card-author"><div class="blog-card-avatar">${initials}</div><span class="blog-card-author-name">5 Apps Bundle</span></div>`;
+        html += `<span class="blog-card-read">Read <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></span>`;
+        html += `</div></div></div>`;
+        return html;
+      }).join('');
+
+      // Staggered entrance animation
+      const cards = grid.querySelectorAll('.blog-card');
+      cards.forEach((card, i) => {
+        setTimeout(() => card.classList.add('visible'), 80 + i * 60);
+      });
+
+      // Click handler
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          const id = parseInt(card.dataset.id);
+          const post = POSTS.find(p => p.id === id);
+          if (post) openPostModal(post);
+        });
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.click(); }
+        });
+      });
+    }
+
+    // ── Search ──
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value.toLowerCase();
+      renderPosts();
+    });
+
+    // ── Reading progress ──
+    const progressBar = document.getElementById('readingProgress');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = progress + '%';
+    });
+
+    // ── Post modal (simple overlay) ──
+    let modalEl = null;
+    function openPostModal(post) {
+      if (modalEl) closePostModal();
+      const catLabel = CATEGORIES.find(c => c.key === post.category)?.label || post.category;
+      modalEl = document.createElement('div');
+      modalEl.style.cssText = 'position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;visibility:hidden;opacity:0;transition:visibility 0.3s,opacity 0.3s ease';
+      modalEl.innerHTML = `
+        <div class="modal-bg" style="position:absolute;inset:0;background:rgba(4,4,12,0.88);backdrop-filter:blur(16px);cursor:pointer"></div>
+        <div class="modal-card" style="position:relative;max-width:640px;width:90vw;max-height:80vh;overflow-y:auto;background:linear-gradient(160deg,rgba(26,26,46,0.95),rgba(22,33,62,0.95));backdrop-filter:blur(12px);border-radius:24px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 20px 60px rgba(0,0,0,0.5);padding:36px;transform:scale(0.9) translateY(20px);opacity:0;transition:all 0.4s cubic-bezier(0.22,1,0.36,1)">
+          <button class="modal-close" style="position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,0.06);background:rgba(8,8,15,0.6);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s;font-size:18px">&#10005;</button>
+          <div style="display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:8px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px;background:${post.accent}15;color:${post.accent}">${catLabel}</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.25);font-weight:500;margin-bottom:8px">${post.date} &middot; ${post.readTime}</div>
+          <h2 style="font-size:24px;font-weight:900;color:#fff;letter-spacing:-0.5px;line-height:1.2;margin-bottom:16px">${post.title}</h2>
+          <div style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:16px">${post.desc}</div>
+          <div style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.8;border-top:1px solid rgba(255,255,255,0.04);padding-top:20px">
+            ${post.content || '<p style="color:rgba(255,255,255,0.3)">Full content coming soon.</p>'}
+          </div>
+        </div>`;
+      document.body.appendChild(modalEl);
+      document.body.style.overflow = 'hidden';
+
+      requestAnimationFrame(() => {
+        modalEl.style.visibility = 'visible';
+        modalEl.style.opacity = '1';
+        const card = modalEl.querySelector('.modal-card');
+        requestAnimationFrame(() => { card.style.transform = 'scale(1) translateY(0)'; card.style.opacity = '1'; });
+      });
+
+      modalEl.querySelector('.modal-bg').addEventListener('click', closePostModal);
+      modalEl.querySelector('.modal-close').addEventListener('click', closePostModal);
+      document.addEventListener('keydown', modalKeyHandler);
+    }
+
+    function modalKeyHandler(e) {
+      if (e.key === 'Escape') closePostModal();
+    }
+
+    function closePostModal() {
+      if (!modalEl) return;
+      const card = modalEl.querySelector('.modal-card');
+      card.style.transform = 'scale(0.9) translateY(20px)';
+      card.style.opacity = '0';
+      modalEl.style.opacity = '0';
+      setTimeout(() => {
+        document.body.removeChild(modalEl);
+        document.body.style.overflow = '';
+        modalEl = null;
+        document.removeEventListener('keydown', modalKeyHandler);
+      }, 300);
+    }
+
+    // ── Init ──
+    renderCategories();
+    renderPosts();
+  </script>
+</body>
+</html>

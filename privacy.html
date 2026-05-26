@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | 5 Free Apps Bundle</title>
+  <meta name="description" content="Privacy Policy for 5 Free Apps Bundle. Learn how we handle your data and protect your privacy.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ff4444'/%3E%3Cstop offset='1' stop-color='%23ff6b6b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='2' y='2' width='28' height='28' rx='7' fill='url(%23a)'/%3E%3Cpath d='M16 8v14m0 0l-5-5m5 5l5-5' stroke='%23fff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#08080f;min-height:100vh;color:rgba(255,255,255,0.8);-webkit-font-smoothing:antialiased}
+    .bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px);background-size:48px 48px}
+    .bg-glow{position:fixed;inset:0;z-index:0;pointer-events:none}
+    .bg-glow::before{content:'';position:absolute;top:-20%;left:-10%;width:60%;height:60%;background:radial-gradient(circle,rgba(255,68,68,0.06),transparent 60%);animation:glowDrift 12s ease-in-out infinite alternate}
+    .bg-glow::after{content:'';position:absolute;bottom:-20%;right:-10%;width:60%;height:60%;background:radial-gradient(circle,rgba(59,130,246,0.05),transparent 60%);animation:glowDrift 14s ease-in-out infinite alternate-reverse}
+    @keyframes glowDrift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(60px,40px) scale(1.2)}}
+    .container{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:32px 24px 80px}
+    @media(max-width:860px){.container{padding:16px 16px 60px}}
+
+    /* Nav */
+    .nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;background:rgba(8,8,15,0.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.04);max-width:100%;animation:navSlide 0.6s ease-out}
+    @keyframes navSlide{0%{transform:translateY(-100%);opacity:0}100%{transform:translateY(0);opacity:1}}
+    .nav-inner{display:flex;align-items:center;gap:32px;max-width:1280px;margin:0 auto;width:100%}
+    .nav-logo{font-size:18px;font-weight:900;color:#fff;text-decoration:none;letter-spacing:-0.5px;display:flex;align-items:center;gap:10px;transition:opacity 0.25s}
+    .nav-logo:hover{opacity:0.8}
+    .nav-logo-dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,#ff4444,#ff6b6b);flex-shrink:0}
+    .nav-links{display:flex;align-items:center;gap:6px}
+    .nav-link{padding:8px 16px;border-radius:10px;font-size:13px;font-weight:600;color:rgba(255,255,255,0.4);text-decoration:none;transition:all 0.3s ease;position:relative}
+    .nav-link:hover{color:#fff;background:rgba(255,255,255,0.04)}
+    .nav-link.active{color:#ff4444;background:rgba(255,68,68,0.08)}
+    @media(max-width:660px){
+      .nav{padding:12px 16px}
+      .nav-inner{gap:16px}
+      .nav-logo{font-size:15px}
+      .nav-link{padding:6px 10px;font-size:11px}
+      .nav-links{gap:2px}
+    }
+
+    /* Hero */
+    .page-hero{text-align:center;padding:60px 0 48px;animation:fadeDown 0.8s ease-out}
+    .page-hero h1{font-size:38px;font-weight:900;color:#fff;letter-spacing:-1.5px;line-height:1.15}
+    .page-hero h1 span{background:linear-gradient(135deg,#ff4444,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .page-hero p{color:rgba(255,255,255,0.35);font-size:15px;font-weight:500;margin-top:8px}
+    .page-hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 18px;border-radius:20px;background:rgba(255,68,68,0.06);border:1px solid rgba(255,68,68,0.12);font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.5px;margin-top:16px}
+    @media(max-width:660px){.page-hero{padding:36px 0 28px}.page-hero h1{font-size:26px}}
+
+    /* Section cards with staggered entrance */
+    .section-card{background:linear-gradient(160deg,rgba(26,26,46,0.6),rgba(22,33,62,0.6));backdrop-filter:blur(12px);border-radius:24px;padding:32px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 8px 40px rgba(0,0,0,0.3);margin-bottom:20px;opacity:0;transform:translateY(30px);transition:all 0.6s cubic-bezier(0.22,1,0.36,1)}
+    .section-card.reveal{opacity:1;transform:translateY(0)}
+    .section-card:nth-child(2){transition-delay:0.1s}
+    .section-card:nth-child(3){transition-delay:0.2s}
+    .section-card:nth-child(4){transition-delay:0.3s}
+    .section-card:nth-child(5){transition-delay:0.4s}
+    .section-card:nth-child(6){transition-delay:0.5s}
+    .section-card h2{font-size:20px;font-weight:800;color:#fff;letter-spacing:-0.3px;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+    .section-card h2 .h2-icon{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,68,68,0.12);color:#ff4444;font-size:16px}
+    .section-card p{line-height:1.8;font-size:14px;color:rgba(255,255,255,0.55);margin-bottom:10px}
+    .section-card p:last-child{margin-bottom:0}
+    .section-card ul{padding-left:20px;margin:12px 0}
+    .section-card ul li{line-height:1.8;font-size:14px;color:rgba(255,255,255,0.55);margin-bottom:6px}
+    .section-card ul li::marker{color:#ff4444}
+    @media(max-width:660px){.section-card{padding:20px;border-radius:18px}.section-card h2{font-size:17px}}
+
+    /* Table styles for privacy */
+    .data-table{width:100%;border-collapse:collapse;margin:14px 0;border-radius:12px;overflow:hidden}
+    .data-table th,.data-table td{padding:12px 16px;text-align:left;font-size:13px;border-bottom:1px solid rgba(255,255,255,0.04)}
+    .data-table th{font-weight:700;color:rgba(255,255,255,0.6);background:rgba(255,255,255,0.02);text-transform:uppercase;font-size:11px;letter-spacing:0.5px}
+    .data-table td{color:rgba(255,255,255,0.5)}
+    .data-table tr:last-child td{border-bottom:none}
+    .data-table tr:hover td{background:rgba(255,255,255,0.02)}
+    @media(max-width:660px){.data-table th,.data-table td{padding:8px 10px;font-size:11px}}
+
+    /* Footer */
+    .page-footer{margin-top:60px;text-align:center;animation:fadeUp 0.6s ease-out both;animation-delay:0.6s}
+    .footer-hr{border:none;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.06),rgba(255,68,68,0.15),rgba(255,255,255,0.06),transparent);margin:0 auto 24px;max-width:400px}
+    .footer-links{display:flex;align-items:center;justify-content:center;gap:24px}
+    .footer-link{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);color:rgba(255,255,255,0.3);text-decoration:none}
+    .footer-link svg{width:20px;height:20px;fill:currentColor;transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1)}
+    .footer-link:hover{transform:translateY(-4px) scale(1.08);border-color:transparent}
+    .footer-link--back:hover{background:#ff4444;color:#fff;box-shadow:0 8px 30px rgba(255,68,68,0.35)}
+    .footer-link--back:hover svg{transform:scale(1.1) rotate(-8deg)}
+    .footer-credit{margin-top:16px;font-size:11px;color:rgba(255,255,255,0.15);font-weight:500;letter-spacing:0.3px}
+
+    @keyframes fadeDown{0%{opacity:0;transform:translateY(-20px)}100%{opacity:1;transform:translateY(0)}}
+    @keyframes fadeUp{0%{opacity:0;transform:translateY(24px)}100%{opacity:1;transform:translateY(0)}}
+
+    /* Back to top */
+    .back-top{position:fixed;bottom:32px;right:32px;z-index:50;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,0.06);background:rgba(8,8,15,0.6);backdrop-filter:blur(12px);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(20px);transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);pointer-events:none}
+    .back-top.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+    .back-top:hover{background:rgba(255,68,68,0.2);border-color:#ff4444;transform:translateY(-4px) scale(1.1);box-shadow:0 0 30px rgba(255,68,68,0.2)}
+    .back-top:hover svg{transform:translateY(-2px)}
+    .back-top svg{width:20px;height:20px;fill:currentColor;transition:transform 0.3s}
+    @media(max-width:660px){.back-top{bottom:20px;right:20px;width:38px;height:38px}}
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span class="nav-logo-dot"></span>5 Apps Bundle</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Dashboard</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="blog/index.html" class="nav-link">Guides</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="page-hero">
+      <h1>Privacy <span>Policy</span></h1>
+      <p>Last updated: May 26, 2026</p>
+      <div class="page-hero-badge">&#128274; Your privacy matters</div>
+    </div>
+
+    <div class="section-card" data-delay="0">
+      <h2><span class="h2-icon">&#9432;</span> Introduction</h2>
+      <p>Welcome to 5 Free Apps Bundle. We respect your privacy and are committed to protecting any information you may provide while using our website and applications.</p>
+      <p>This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our downloadable software applications.</p>
+    </div>
+
+    <div class="section-card" data-delay="1">
+      <h2><span class="h2-icon">&#128202;</span> Information We Collect</h2>
+      <p>We collect minimal information to provide and improve our services:</p>
+      <table class="data-table">
+        <thead>
+          <tr><th>Type</th><th>Details</th><th>Purpose</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Download Analytics</td><td>Download count per asset</td><td>Track popularity &amp; usage</td></tr>
+          <tr><td>GitHub API Data</td><td>Release names, sizes, dates</td><td>Display download information</td></tr>
+          <tr><td>Anonymized Usage</td><td>Page visit metrics</td><td>Improve user experience</td></tr>
+        </tbody>
+      </table>
+      <p>We do <strong>not</strong> collect personal information such as names, email addresses, IP addresses (beyond standard analytics), or any sensitive data.</p>
+    </div>
+
+    <div class="section-card" data-delay="2">
+      <h2><span class="h2-icon">&#128273;</span> How We Use Information</h2>
+      <p>The information we collect is used solely for:</p>
+      <ul>
+        <li>Displaying real-time download statistics on our dashboard</li>
+        <li>Understanding which applications are most popular</li>
+        <li>Improving our applications and user experience</li>
+        <li>Maintaining and troubleshooting our services</li>
+      </ul>
+    </div>
+
+    <div class="section-card" data-delay="3">
+      <h2><span class="h2-icon">&#128373;</span> Third-Party Services</h2>
+      <p>Our website interacts with the following third-party services:</p>
+      <ul>
+        <li><strong>GitHub API</strong> &mdash; We fetch public release data from GitHub repositories. No authentication or personal data is transmitted.</li>
+        <li><strong>Umami Analytics</strong> &mdash; We use a privacy-focused analytics script to count page views. Umami does not use cookies and collects no personally identifiable information.</li>
+        <li><strong>Google Fonts</strong> &mdash; The Inter font is loaded from Google Fonts. Your browser may make a request to Google's servers to download the font.</li>
+      </ul>
+      <p>We do not sell, trade, or transfer your information to third parties for advertising or marketing purposes.</p>
+    </div>
+
+    <div class="section-card" data-delay="4">
+      <h2><span class="h2-icon">&#127751;</span> Cookies</h2>
+      <p>Our website does <strong>not</strong> use tracking cookies or persistent local storage for user tracking purposes. The only local storage used is for the dashboard's UI state (e.g., which release toggle is open), which never leaves your browser.</p>
+      <p>If you interact with external services (e.g., YouTube, GitHub), those services may set their own cookies according to their respective privacy policies.</p>
+    </div>
+
+    <div class="section-card" data-delay="5">
+      <h2><span class="h2-icon">&#128736;</span> Data Security</h2>
+      <p>We implement reasonable security measures to protect any data processed through our website. All communications with external APIs are conducted over HTTPS. However, no method of transmission over the Internet is 100% secure, and we cannot guarantee absolute security.</p>
+    </div>
+
+    <div class="section-card" data-delay="6">
+      <h2><span class="h2-icon">&#128209;</span> Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page with an updated date. You are advised to review this page periodically for any changes.</p>
+    </div>
+
+    <div class="section-card" data-delay="7">
+      <h2><span class="h2-icon">&#128231;</span> Contact</h2>
+      <p>If you have questions about this Privacy Policy, please contact us through our <a href="contact.html" style="color:#ff4444;text-decoration:none;font-weight:600">contact page</a> or reach out via the links in the footer.</p>
+    </div>
+
+    <footer class="page-footer">
+      <hr class="footer-hr">
+      <div class="footer-links">
+        <a href="index.html" class="footer-link footer-link--back" aria-label="Back to Dashboard">
+          <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        </a>
+      </div>
+      <p class="footer-credit">5 Free Apps Bundle &middot; Privacy Policy</p>
+    </footer>
+  </div>
+
+  <button class="back-top" id="backTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+  </button>
+
+  <script>
+    // Staggered reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.section-card').forEach(el => observer.observe(el));
+
+    // Back to top
+    const backTop = document.getElementById('backTop');
+    window.addEventListener('scroll', () => {
+      backTop.classList.toggle('visible', window.scrollY > 300);
+    });
+    backTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Active nav link
+    document.querySelectorAll('.nav-link').forEach(link => {
+      if (link.getAttribute('href') === 'privacy.html') link.classList.add('active');
+    });
+  </script>
+</body>
+</html>

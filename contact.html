@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | 5 Free Apps Bundle</title>
+  <meta name="description" content="Get in touch with the 5 Free Apps Bundle team. Send us a message or find us on social media.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ff4444'/%3E%3Cstop offset='1' stop-color='%23ff6b6b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='2' y='2' width='28' height='28' rx='7' fill='url(%23a)'/%3E%3Cpath d='M16 8v14m0 0l-5-5m5 5l5-5' stroke='%23fff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#08080f;min-height:100vh;color:rgba(255,255,255,0.8);-webkit-font-smoothing:antialiased}
+    .bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px);background-size:48px 48px}
+    .bg-glow{position:fixed;inset:0;z-index:0;pointer-events:none}
+    .bg-glow::before{content:'';position:absolute;top:-20%;left:-10%;width:60%;height:60%;background:radial-gradient(circle,rgba(255,68,68,0.06),transparent 60%);animation:glowDrift 12s ease-in-out infinite alternate}
+    .bg-glow::after{content:'';position:absolute;bottom:-20%;right:-10%;width:60%;height:60%;background:radial-gradient(circle,rgba(59,130,246,0.05),transparent 60%);animation:glowDrift 14s ease-in-out infinite alternate-reverse}
+    @keyframes glowDrift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(60px,40px) scale(1.2)}}
+    .container{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:32px 24px 80px}
+    @media(max-width:860px){.container{padding:16px 16px 60px}}
+
+    .nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;background:rgba(8,8,15,0.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.04);max-width:100%;animation:navSlide 0.6s ease-out}
+    @keyframes navSlide{0%{transform:translateY(-100%);opacity:0}100%{transform:translateY(0);opacity:1}}
+    .nav-inner{display:flex;align-items:center;gap:32px;max-width:1280px;margin:0 auto;width:100%}
+    .nav-logo{font-size:18px;font-weight:900;color:#fff;text-decoration:none;letter-spacing:-0.5px;display:flex;align-items:center;gap:10px;transition:opacity 0.25s}
+    .nav-logo:hover{opacity:0.8}
+    .nav-logo-dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,#ff4444,#ff6b6b);flex-shrink:0}
+    .nav-links{display:flex;align-items:center;gap:6px}
+    .nav-link{padding:8px 16px;border-radius:10px;font-size:13px;font-weight:600;color:rgba(255,255,255,0.4);text-decoration:none;transition:all 0.3s ease}
+    .nav-link:hover{color:#fff;background:rgba(255,255,255,0.04)}
+    .nav-link.active{color:#ff4444;background:rgba(255,68,68,0.08)}
+    @media(max-width:660px){
+      .nav{padding:12px 16px}
+      .nav-inner{gap:16px}
+      .nav-logo{font-size:15px}
+      .nav-link{padding:6px 10px;font-size:11px}
+      .nav-links{gap:2px}
+    }
+
+    .page-hero{text-align:center;padding:60px 0 48px;animation:fadeDown 0.8s ease-out}
+    .page-hero h1{font-size:38px;font-weight:900;color:#fff;letter-spacing:-1.5px;line-height:1.15}
+    .page-hero h1 span{background:linear-gradient(135deg,#ff4444,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .page-hero p{color:rgba(255,255,255,0.35);font-size:15px;font-weight:500;margin-top:8px}
+    @media(max-width:660px){.page-hero{padding:36px 0 28px}.page-hero h1{font-size:26px}}
+
+    /* Contact layout */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;animation:fadeDown 0.8s ease-out;animation-delay:0.1s;opacity:0;animation-fill-mode:forwards}
+    @media(max-width:760px){.contact-grid{grid-template-columns:1fr;gap:20px}}
+
+    /* Form card */
+    .form-card{background:linear-gradient(160deg,rgba(26,26,46,0.6),rgba(22,33,62,0.6));backdrop-filter:blur(12px);border-radius:24px;padding:32px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 8px 40px rgba(0,0,0,0.3)}
+    .form-card h2{font-size:18px;font-weight:800;color:#fff;letter-spacing:-0.3px;margin-bottom:6px}
+    .form-card p{font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:24px;line-height:1.6}
+    @media(max-width:660px){.form-card{padding:20px;border-radius:18px}}
+
+    .form-group{margin-bottom:18px}
+    .form-group label{display:block;font-size:11px;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+    .form-input,.form-textarea{width:100%;padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.3);color:rgba(255,255,255,0.8);font-family:'Inter',sans-serif;font-size:14px;font-weight:500;transition:all 0.3s ease;outline:none}
+    .form-input:focus,.form-textarea:focus{border-color:#ff4444;box-shadow:0 0 0 3px rgba(255,68,68,0.1);background:rgba(0,0,0,0.4)}
+    .form-input::placeholder,.form-textarea::placeholder{color:rgba(255,255,255,0.2);font-weight:400}
+    .form-textarea{resize:vertical;min-height:120px}
+
+    .form-submit{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;border-radius:14px;border:none;background:linear-gradient(135deg,#ff4444,#ff6b6b);color:#fff;font-family:'Inter',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);letter-spacing:-0.2px;width:100%;justify-content:center}
+    .form-submit:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 8px 30px rgba(255,68,68,0.35)}
+    .form-submit:active{transform:translateY(-1px) scale(0.98)}
+    .form-submit:disabled{opacity:0.5;cursor:not-allowed;transform:none!important}
+
+    .form-status{margin-top:14px;padding:10px 16px;border-radius:10px;font-size:13px;font-weight:600;display:none}
+    .form-status.success{display:block;background:rgba(30,215,96,0.1);border:1px solid rgba(30,215,96,0.2);color:#1ed760}
+    .form-status.error{display:block;background:rgba(255,68,68,0.1);border:1px solid rgba(255,68,68,0.2);color:#ff4444}
+
+    /* Info card */
+    .info-card{display:flex;flex-direction:column;gap:16px}
+    .info-item{background:linear-gradient(160deg,rgba(26,26,46,0.6),rgba(22,33,62,0.6));backdrop-filter:blur(12px);border-radius:20px;padding:24px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 8px 40px rgba(0,0,0,0.3);transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);opacity:0;transform:translateY(20px)}
+    .info-item.reveal{opacity:1;transform:translateY(0)}
+    .info-item:nth-child(2){transition-delay:0.1s}
+    .info-item:nth-child(3){transition-delay:0.2s}
+    .info-item:hover{transform:translateY(-4px)}
+    .info-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-size:18px}
+    .info-item h3{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px}
+    .info-item p{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.6}
+    .info-item a{color:#ff4444;text-decoration:none;font-weight:600;transition:opacity 0.25s}
+    .info-item a:hover{opacity:0.8}
+
+    /* Social links */
+    .social-links{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap}
+    .social-link{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:12px;font-size:13px;font-weight:600;color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);text-decoration:none;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1)}
+    .social-link svg{width:18px;height:18px;fill:currentColor;transition:transform 0.3s}
+    .social-link:hover{transform:translateY(-3px) scale(1.04);border-color:transparent;color:#fff}
+    .social-link:hover svg{transform:scale(1.15)}
+    .social-link--github:hover{background:#6e40c9;box-shadow:0 6px 20px rgba(110,64,201,0.3)}
+    .social-link--linkedin:hover{background:#0a66c2;box-shadow:0 6px 20px rgba(10,102,194,0.3)}
+    .social-link--email:hover{background:#ff4444;box-shadow:0 6px 20px rgba(255,68,68,0.3)}
+    @media(max-width:660px){.info-item{padding:18px;border-radius:16px}}
+
+    .page-footer{margin-top:60px;text-align:center;animation:fadeUp 0.6s ease-out both;animation-delay:0.6s}
+    .footer-hr{border:none;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.06),rgba(255,68,68,0.15),rgba(255,255,255,0.06),transparent);margin:0 auto 24px;max-width:400px}
+    .footer-links{display:flex;align-items:center;justify-content:center;gap:24px}
+    .footer-link{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);color:rgba(255,255,255,0.3);text-decoration:none}
+    .footer-link svg{width:20px;height:20px;fill:currentColor;transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1)}
+    .footer-link:hover{transform:translateY(-4px) scale(1.08);border-color:transparent}
+    .footer-link--back:hover{background:#ff4444;color:#fff;box-shadow:0 8px 30px rgba(255,68,68,0.35)}
+    .footer-credit{margin-top:16px;font-size:11px;color:rgba(255,255,255,0.15);font-weight:500;letter-spacing:0.3px}
+    @keyframes fadeDown{0%{opacity:0;transform:translateY(-20px)}100%{opacity:1;transform:translateY(0)}}
+    @keyframes fadeUp{0%{opacity:0;transform:translateY(24px)}100%{opacity:1;transform:translateY(0)}}
+
+    /* Particle animation canvas */
+    #particleCanvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.3}
+  </style>
+</head>
+<body>
+  <canvas id="particleCanvas"></canvas>
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span class="nav-logo-dot"></span>5 Apps Bundle</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Dashboard</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="blog/index.html" class="nav-link">Guides</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="page-hero">
+      <h1>Get in <span>Touch</span></h1>
+      <p>Have a question, suggestion, or just want to say hello? We'd love to hear from you.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="form-card">
+        <h2>Send a Message</h2>
+        <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+        <form id="contactForm" novalidate>
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input class="form-input" type="text" id="name" placeholder="John Doe" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input class="form-input" type="email" id="email" placeholder="john@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input class="form-input" type="text" id="subject" placeholder="How can we help?" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea class="form-textarea" id="message" placeholder="Tell us more about your inquiry..." required></textarea>
+          </div>
+          <button class="form-submit" type="submit" id="formSubmit">
+            <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            Send Message
+          </button>
+          <div class="form-status" id="formStatus"></div>
+        </form>
+      </div>
+
+      <div class="info-card">
+        <div class="info-item" data-index="0">
+          <div class="info-icon" style="background:rgba(255,68,68,0.12);color:#ff4444">&#128231;</div>
+          <h3>Email</h3>
+          <p>For general inquiries and support, reach out via email or use the contact form.</p>
+          <p><a href="https://sedat.netlify.app/contact" target="_blank" rel="noopener">sedat.netlify.app/contact &#8599;</a></p>
+        </div>
+        <div class="info-item" data-index="1">
+          <div class="info-icon" style="background:rgba(168,85,247,0.12);color:#a855f7">&#128279;</div>
+          <h3>GitHub</h3>
+          <p>Open issues, feature requests, and contributions are welcome on GitHub.</p>
+          <p><a href="https://github.com/eaeoz" target="_blank" rel="noopener">github.com/eaeoz &#8599;</a></p>
+        </div>
+        <div class="info-item" data-index="2">
+          <div class="info-icon" style="background:rgba(13,183,237,0.12);color:#0db7ed">&#128101;</div>
+          <h3>Social</h3>
+          <p>Follow or connect on social platforms for updates and announcements.</p>
+          <div class="social-links">
+            <a class="social-link social-link--github" href="https://github.com/eaeoz" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12 24 5.37 18.63 0 12 0z"/></svg>
+              GitHub
+            </a>
+            <a class="social-link social-link--linkedin" href="https://www.linkedin.com/in/sedatergoz" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zm-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79zM6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68zm1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="page-footer">
+      <hr class="footer-hr">
+      <div class="footer-links">
+        <a href="index.html" class="footer-link footer-link--back" aria-label="Back to Dashboard">
+          <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        </a>
+      </div>
+      <p class="footer-credit">5 Free Apps Bundle &middot; Contact</p>
+    </footer>
+  </div>
+
+  <script>
+    // Particle animation
+    (function() {
+      const canvas = document.getElementById('particleCanvas');
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+      let animId;
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      const count = Math.min(60, Math.floor(window.innerWidth * window.innerHeight / 18000));
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          r: Math.random() * 1.8 + 0.5,
+          a: Math.random() * 0.3 + 0.1
+        });
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0) p.x = canvas.width;
+          if (p.x > canvas.width) p.x = 0;
+          if (p.y < 0) p.y = canvas.height;
+          if (p.y > canvas.height) p.y = 0;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255,68,68,${p.a})`;
+          ctx.fill();
+          // connect nearby particles
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dx = p.x - p2.x;
+            const dy = p.y - p2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 120) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(255,68,68,${0.06 * (1 - dist / 120)})`;
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
+          }
+        }
+        animId = requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+
+    // Form validation & submission
+    const form = document.getElementById('contactForm');
+    const formSubmit = document.getElementById('formSubmit');
+    const formStatus = document.getElementById('formStatus');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !subject || !message) {
+        formStatus.className = 'form-status error';
+        formStatus.textContent = 'Please fill in all fields.';
+        return;
+      }
+      if (!email.includes('@') || !email.includes('.')) {
+        formStatus.className = 'form-status error';
+        formStatus.textContent = 'Please enter a valid email address.';
+        return;
+      }
+
+      formSubmit.disabled = true;
+      formSubmit.innerHTML = '<svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor;animation:spin 0.8s linear infinite"><path d="M12 4V2A10 10 0 0 0 2 12h2a8 8 0 0 1 8-8z"/></svg> Sending...';
+
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            access_key: 'b44d44c6-4119-4828-b5ab-e21b02a77d87',
+            name,
+            email,
+            subject,
+            message
+          })
+        });
+        const data = await res.json();
+        if (data.success) {
+          formStatus.className = 'form-status success';
+          formStatus.textContent = 'Message sent successfully! We will get back to you soon.';
+          form.reset();
+        } else {
+          throw new Error('Send failed');
+        }
+      } catch {
+        formStatus.className = 'form-status success';
+        formStatus.textContent = 'Thank you for reaching out! (Demo mode &mdash; form is not live)';
+        form.reset();
+      }
+      formSubmit.disabled = false;
+      formSubmit.innerHTML = '<svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg> Send Message';
+    });
+
+    // Input focus effects
+    document.querySelectorAll('.form-input, .form-textarea').forEach(el => {
+      el.addEventListener('focus', () => el.parentElement.querySelector('label')?.style.setProperty('color', '#ff4444'));
+      el.addEventListener('blur', () => el.parentElement.querySelector('label')?.style.setProperty('color', 'rgba(255,255,255,0.4)'));
+    });
+
+    // Info items reveal
+    const infoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const idx = entry.target.dataset.index || 0;
+          setTimeout(() => entry.target.classList.add('reveal'), idx * 120);
+          infoObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.info-item').forEach(el => infoObserver.observe(el));
+  </script>
+</body>
+</html>

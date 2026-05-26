@@ -21,7 +21,25 @@
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background: #08080f;
       min-height: 100vh;
-      padding: 32px;
+      padding: 0;
+    }
+
+    .nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;background:rgba(8,8,15,0.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.04);max-width:100%;animation:navSlide 0.6s ease-out}
+    @keyframes navSlide{0%{transform:translateY(-100%);opacity:0}100%{transform:translateY(0);opacity:1}}
+    .nav-inner{display:flex;align-items:center;gap:32px;max-width:1280px;margin:0 auto;width:100%}
+    .nav-logo{font-size:18px;font-weight:900;color:#fff;text-decoration:none;letter-spacing:-0.5px;display:flex;align-items:center;gap:10px;transition:opacity 0.25s}
+    .nav-logo:hover{opacity:0.8}
+    .nav-logo-dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,#ff4444,#ff6b6b);flex-shrink:0}
+    .nav-links{display:flex;align-items:center;gap:6px}
+    .nav-link{padding:8px 16px;border-radius:10px;font-size:13px;font-weight:600;color:rgba(255,255,255,0.4);text-decoration:none;transition:all 0.3s ease}
+    .nav-link:hover{color:#fff;background:rgba(255,255,255,0.04)}
+    .nav-link.active{color:#ff4444;background:rgba(255,68,68,0.08)}
+    @media(max-width:660px){
+      .nav{padding:12px 16px}
+      .nav-inner{gap:16px}
+      .nav-logo{font-size:15px}
+      .nav-link{padding:6px 10px;font-size:11px}
+      .nav-links{gap:2px}
     }
 
     .bg-grid {
@@ -78,6 +96,7 @@
       z-index: 1;
       max-width: 1280px;
       margin: 0 auto;
+      padding: 32px;
     }
 
     /* ── Hero Header ── */
@@ -262,6 +281,17 @@
       color: #fff;
       letter-spacing: -0.3px;
       line-height: 1.2;
+    }
+
+    .repo-card-desc {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.3);
+      line-height: 1.5;
+      margin-top: 4px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .repo-card-sub {
@@ -1230,7 +1260,7 @@
     }
 
     @media (max-width: 860px) {
-      body {
+      .container {
         padding: 16px;
       }
     .hero h1 {
@@ -1920,6 +1950,18 @@
 </head>
 <body>
 
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span class="nav-logo-dot"></span>5 Apps Bundle</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">Dashboard</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="blog/index.html" class="nav-link">Guides</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+    </div>
+  </nav>
+
   <div class="bg-grid"></div>
   <div class="bg-glow"></div>
 
@@ -1976,30 +2018,35 @@
     const META = {
       'eaeoz/youtube-downloader': {
         label: 'YouTube Downloader',
+        desc: 'Download YouTube videos & audio. Electron desktop app powered by yt-dlp + FFmpeg with format browser, playlists, and system tray.',
         icon: `<svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`,
         accent: '#ff4444',
         cmd: 'iex (iwr -useb https://tinyurl.com/ytdlps1)',
       },
       'eaeoz/movie-downloader': {
         label: 'Movie Downloader',
+        desc: 'Torrent-based movie downloader with Letterboxd watchlist sync. Multi-source search (YTS, TPB, RARBG), built-in video player, rich metadata.',
         icon: `<svg viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4a2 2 0 0 0-1.99 2L2 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V4h-4z"/></svg>`,
         accent: '#a855f7',
         cmd: 'iex (iwr -useb https://tinyurl.com/mvdlps1)',
       },
       'eaeoz/music-downloader': {
         label: 'Music Downloader',
+        desc: 'Search YouTube, fetch Deezer/iTunes metadata, and download high-quality MP3s with embedded album art. Includes track-dl CLI tool.',
         icon: `<svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>`,
         accent: '#1ed760',
         cmd: 'iex (iwr -useb https://tinyurl.com/msdlps1)',
       },
       'eaeoz/command-manager-docker': {
         label: 'Command Manager',
+        desc: 'SSH Command Manager with GUI. Create profiles, design styled command cards, execute on remote servers. Runs as Windows app or Docker container.',
         icon: `<svg viewBox="0 0 24 24"><path d="M13 9h-2V7h2v2zm0 4h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 0H7v-2h2v2zm-4 4h2v2H5v-2zm8 2h-2v-2h2v2zm4-2h-2v-2h2v2zm4-8h-2V7h2v2zm0 4h-2v-2h2v2zm-4-4h-2V7h2v2zM3 5h18V3H3v2zm0 16h18v-2H3v2z"/></svg>`,
         accent: '#0db7ed',
         cmd: 'iex (iwr -useb https://tinyurl.com/cmmgrps1)',
       },
       'eaeoz/sondakika': {
         label: 'Sondakika',
+        desc: 'Turkish RSS news reader (Breaking News). Fetches headlines from 10+ major sources (Cumhuriyet, TRT, CNN Turk, etc.) with in-app article reader.',
         icon: `<svg viewBox="0 0 24 24"><path d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"/></svg>`,
         accent: '#f59e0b',
         cmd: 'iex (iwr -useb https://tinyurl.com/sndkkps1)',
@@ -2091,6 +2138,7 @@
         const meta = META[fullRepo] || {};
         const accent = meta.accent || '#ff4444';
         const label = meta.label || repoLabel(fullRepo);
+        const desc = meta.desc || '';
         const icon = meta.icon || '';
         const repoUrl = `https://github.com/${fullRepo}`;
         const installCmd = meta.cmd ? installBox(meta.cmd, label, accent) : '';
@@ -2183,6 +2231,7 @@
               ${icon ? `<div class="repo-icon" style="background:${accent};box-shadow:0 4px 16px ${glowRgb}">${icon}</div>` : ''}
             <div class="repo-card-info">
                   <div class="repo-card-name">${label}</div>
+                  ${desc ? `<div class="repo-card-desc">${desc}</div>` : ''}
                   <div class="repo-card-sub">
                     <span class="repo-card-count">${repoTotal.toLocaleString()} downloads</span>
                     <span class="repo-card-releases">${releaseCount} release${releaseCount !== 1 ? 's' : ''}</span>
@@ -2229,7 +2278,8 @@
               <span class="tooltip">GitHub</span>
             </a>
           </div>
-          <p class="footer-credit">5 Free Apps Bundle &middot; Built with passion</p>
+          <p class="footer-credit" style="margin-bottom:8px">5 Free Apps Bundle &middot; Built with passion</p>
+          <p class="footer-credit" style="font-size:11px"><a href="privacy.html" style="color:rgba(255,255,255,0.2);text-decoration:none;transition:color 0.25s" onmouseover="this.style.color='rgba(255,255,255,0.5)'" onmouseout="this.style.color='rgba(255,255,255,0.2)'">Privacy Policy</a></p>
         </footer>`;
 
       const bulkCmd = '"ytdlps1","mvdlps1","msdlps1","cmmgrps1","sndkkps1" | ForEach-Object { iex (iwr -useb "https://tinyurl.com/$_") }';

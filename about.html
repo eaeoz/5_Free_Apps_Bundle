@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | 5 Free Apps Bundle</title>
+  <meta name="description" content="About 5 Free Apps Bundle. Discover our mission, story, and the developer behind these free open-source applications.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ff4444'/%3E%3Cstop offset='1' stop-color='%23ff6b6b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='2' y='2' width='28' height='28' rx='7' fill='url(%23a)'/%3E%3Cpath d='M16 8v14m0 0l-5-5m5 5l5-5' stroke='%23fff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:#08080f;min-height:100vh;color:rgba(255,255,255,0.8);-webkit-font-smoothing:antialiased}
+    .bg-grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px);background-size:48px 48px}
+    .bg-glow{position:fixed;inset:0;z-index:0;pointer-events:none}
+    .bg-glow::before{content:'';position:absolute;top:-20%;left:-10%;width:60%;height:60%;background:radial-gradient(circle,rgba(255,68,68,0.06),transparent 60%);animation:glowDrift 12s ease-in-out infinite alternate}
+    .bg-glow::after{content:'';position:absolute;bottom:-20%;right:-10%;width:60%;height:60%;background:radial-gradient(circle,rgba(59,130,246,0.05),transparent 60%);animation:glowDrift 14s ease-in-out infinite alternate-reverse}
+    @keyframes glowDrift{0%{transform:translate(0,0) scale(1)}100%{transform:translate(60px,40px) scale(1.2)}}
+    .container{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:32px 24px 80px}
+    @media(max-width:860px){.container{padding:16px 16px 60px}}
+
+    .nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;background:rgba(8,8,15,0.8);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.04);max-width:100%;animation:navSlide 0.6s ease-out}
+    @keyframes navSlide{0%{transform:translateY(-100%);opacity:0}100%{transform:translateY(0);opacity:1}}
+    .nav-inner{display:flex;align-items:center;gap:32px;max-width:1280px;margin:0 auto;width:100%}
+    .nav-logo{font-size:18px;font-weight:900;color:#fff;text-decoration:none;letter-spacing:-0.5px;display:flex;align-items:center;gap:10px;transition:opacity 0.25s}
+    .nav-logo:hover{opacity:0.8}
+    .nav-logo-dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,#ff4444,#ff6b6b);flex-shrink:0}
+    .nav-links{display:flex;align-items:center;gap:6px}
+    .nav-link{padding:8px 16px;border-radius:10px;font-size:13px;font-weight:600;color:rgba(255,255,255,0.4);text-decoration:none;transition:all 0.3s ease}
+    .nav-link:hover{color:#fff;background:rgba(255,255,255,0.04)}
+    .nav-link.active{color:#ff4444;background:rgba(255,68,68,0.08)}
+    @media(max-width:660px){
+      .nav{padding:12px 16px}
+      .nav-inner{gap:16px}
+      .nav-logo{font-size:15px}
+      .nav-link{padding:6px 10px;font-size:11px}
+      .nav-links{gap:2px}
+    }
+
+    .page-hero{text-align:center;padding:60px 0 48px;animation:fadeDown 0.8s ease-out}
+    .page-hero h1{font-size:38px;font-weight:900;color:#fff;letter-spacing:-1.5px;line-height:1.15}
+    .page-hero h1 span{background:linear-gradient(135deg,#ff4444,#ff6b6b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .page-hero p{color:rgba(255,255,255,0.35);font-size:15px;font-weight:500;margin-top:8px}
+    .page-hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 18px;border-radius:20px;background:rgba(255,68,68,0.06);border:1px solid rgba(255,68,68,0.12);font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.5px;margin-top:16px}
+    @media(max-width:660px){.page-hero{padding:36px 0 28px}.page-hero h1{font-size:26px}}
+
+    /* Stats row */
+    .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:36px;animation:fadeDown 0.8s ease-out;animation-delay:0.15s;opacity:0;animation-fill-mode:forwards}
+    .stat-card{background:linear-gradient(160deg,rgba(26,26,46,0.6),rgba(22,33,62,0.6));backdrop-filter:blur(12px);border-radius:20px;padding:28px 20px;text-align:center;border:1px solid rgba(255,255,255,0.04);box-shadow:0 8px 40px rgba(0,0,0,0.3);position:relative;overflow:hidden;transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1)}
+    .stat-card:hover{transform:translateY(-6px) scale(1.02)}
+    .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--stat-accent);opacity:0;transition:opacity 0.4s}
+    .stat-card:hover::before{opacity:1}
+    .stat-number{font-size:36px;font-weight:900;color:#fff;letter-spacing:-1.5px;line-height:1;margin-bottom:4px}
+    .stat-label{font-size:12px;font-weight:600;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.5px}
+    .stat-glow{position:absolute;bottom:-30px;right:-30px;width:100px;height:100px;border-radius:50%;filter:blur(50px);opacity:0.15;pointer-events:none}
+    @media(max-width:760px){.stats-row{grid-template-columns:repeat(2,1fr);gap:12px}.stat-number{font-size:28px}.stat-card{padding:20px 16px}}
+    @media(max-width:480px){.stats-row{grid-template-columns:repeat(2,1fr);gap:8px}.stat-number{font-size:22px}}
+
+    /* Section */
+    .section-card{background:linear-gradient(160deg,rgba(26,26,46,0.6),rgba(22,33,62,0.6));backdrop-filter:blur(12px);border-radius:24px;padding:32px;border:1px solid rgba(255,255,255,0.04);box-shadow:0 8px 40px rgba(0,0,0,0.3);margin-bottom:20px;opacity:0;transform:translateY(30px);transition:all 0.6s cubic-bezier(0.22,1,0.36,1)}
+    .section-card.reveal{opacity:1;transform:translateY(0)}
+    .section-card h2{font-size:20px;font-weight:800;color:#fff;letter-spacing:-0.3px;margin-bottom:16px;display:flex;align-items:center;gap:12px}
+    .section-card h2 .h2-icon{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,68,68,0.12);color:#ff4444;font-size:16px}
+    .section-card p{line-height:1.8;font-size:14px;color:rgba(255,255,255,0.55);margin-bottom:10px}
+    .section-card p:last-child{margin-bottom:0}
+    @media(max-width:660px){.section-card{padding:20px;border-radius:18px}.section-card h2{font-size:17px}}
+
+    /* Timeline */
+    .timeline{position:relative;padding-left:28px;margin-top:20px}
+    .timeline::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,rgba(255,68,68,0.3),rgba(59,130,246,0.3))}
+    .timeline-item{position:relative;padding-bottom:28px;opacity:0;transform:translateX(-20px);transition:all 0.6s cubic-bezier(0.22,1,0.36,1)}
+    .timeline-item.reveal{opacity:1;transform:translateX(0)}
+    .timeline-item:last-child{padding-bottom:0}
+    .timeline-dot{position:absolute;left:-28px;top:4px;width:16px;height:16px;border-radius:50%;background:#08080f;border:3px solid #ff4444;box-shadow:0 0 16px rgba(255,68,68,0.2);z-index:1;transition:all 0.4s}
+    .timeline-item:hover .timeline-dot{transform:scale(1.3);box-shadow:0 0 24px rgba(255,68,68,0.4)}
+    .timeline-date{font-size:11px;font-weight:700;color:#ff4444;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
+    .timeline-title{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px}
+    .timeline-desc{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.6}
+    @media(max-width:660px){.timeline{padding-left:22px}.timeline::before{left:5px}.timeline-dot{left:-22px;width:12px;height:12px;border-width:2px}}
+
+    /* App grid mini */
+    .app-mini-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-top:16px}
+    .app-mini-card{display:flex;flex-direction:column;align-items:center;gap:8px;padding:18px 12px;border-radius:16px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);transition:all 0.3s ease;text-align:center;cursor:pointer}
+    .app-mini-card:hover{transform:translateY(-4px);background:rgba(255,255,255,0.04);border-color:var(--app-accent,rgba(255,68,68,0.2));box-shadow:0 8px 24px rgba(0,0,0,0.2)}
+    .app-mini-icon{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--app-accent,rgba(255,68,68,0.12))}
+    .app-mini-icon svg{width:22px;height:22px;fill:#fff}
+    .app-mini-name{font-size:12px;font-weight:700;color:rgba(255,255,255,0.7)}
+
+    .page-footer{margin-top:60px;text-align:center;animation:fadeUp 0.6s ease-out both;animation-delay:0.6s}
+    .footer-hr{border:none;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.06),rgba(255,68,68,0.15),rgba(255,255,255,0.06),transparent);margin:0 auto 24px;max-width:400px}
+    .footer-links{display:flex;align-items:center;justify-content:center;gap:24px}
+    .footer-link{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.05);transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);color:rgba(255,255,255,0.3);text-decoration:none}
+    .footer-link svg{width:20px;height:20px;fill:currentColor;transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1)}
+    .footer-link:hover{transform:translateY(-4px) scale(1.08);border-color:transparent}
+    .footer-link--back:hover{background:#ff4444;color:#fff;box-shadow:0 8px 30px rgba(255,68,68,0.35)}
+    .footer-credit{margin-top:16px;font-size:11px;color:rgba(255,255,255,0.15);font-weight:500;letter-spacing:0.3px}
+
+    @keyframes fadeDown{0%{opacity:0;transform:translateY(-20px)}100%{opacity:1;transform:translateY(0)}}
+    @keyframes fadeUp{0%{opacity:0;transform:translateY(24px)}100%{opacity:1;transform:translateY(0)}}
+
+    .back-top{position:fixed;bottom:32px;right:32px;z-index:50;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,0.06);background:rgba(8,8,15,0.6);backdrop-filter:blur(12px);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(20px);transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);pointer-events:none}
+    .back-top.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+    .back-top:hover{background:rgba(255,68,68,0.2);border-color:#ff4444;transform:translateY(-4px) scale(1.1);box-shadow:0 0 30px rgba(255,68,68,0.2)}
+    .back-top svg{width:20px;height:20px;fill:currentColor;transition:transform 0.3s}
+    .back-top:hover svg{transform:translateY(-2px)}
+    @media(max-width:660px){.back-top{bottom:20px;right:20px;width:38px;height:38px}}
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><span class="nav-logo-dot"></span>5 Apps Bundle</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Dashboard</a>
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="blog/index.html" class="nav-link">Guides</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="page-hero">
+      <h1>About <span>Us</span></h1>
+      <p>Building useful, free, and open-source tools for everyone</p>
+      <div class="page-hero-badge">&#128640; Since 2024</div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card" style="--stat-accent:#ff4444">
+        <div class="stat-number" data-count="5">0</div>
+        <div class="stat-label">Applications</div>
+        <div class="stat-glow" style="background:#ff4444"></div>
+      </div>
+      <div class="stat-card" style="--stat-accent:#a855f7">
+        <div class="stat-number"><span id="totalDownloads">--</span></div>
+        <div class="stat-label">Downloads</div>
+        <div class="stat-glow" style="background:#a855f7"></div>
+      </div>
+      <div class="stat-card" style="--stat-accent:#1ed760">
+        <div class="stat-number" data-count="5">5</div>
+        <div class="stat-label">Electron Apps</div>
+        <div class="stat-glow" style="background:#1ed760"></div>
+      </div>
+      <div class="stat-card" style="--stat-accent:#0db7ed">
+        <div class="stat-number" data-count="100">0<span style="font-size:20px">%</span></div>
+        <div class="stat-label">Free &amp; Open Source</div>
+        <div class="stat-glow" style="background:#0db7ed"></div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2><span class="h2-icon">&#127775;</span> Our Mission</h2>
+      <p>5 Free Apps Bundle is a collection of open-source Windows applications designed to make everyday tasks easier. From downloading media to managing Docker containers, each tool is built with simplicity, performance, and user experience in mind.</p>
+      <p>Our mission is to provide high-quality, free software alternatives that respect your privacy and give you full control over your data. No ads, no trackers, no hidden agendas &mdash; just useful tools.</p>
+    </div>
+
+    <div class="section-card">
+      <h2><span class="h2-icon">&#128214;</span> Our Story</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Early 2024</div>
+          <div class="timeline-title">YouTube Downloader &mdash; v1.0.0</div>
+          <div class="timeline-desc">Electron desktop app powered by yt-dlp &amp; FFmpeg. Download YouTube videos and audio with a format browser, playlist support, and real-time SSE progress. The first of five.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Mid 2024</div>
+          <div class="timeline-title">Movie Downloader &amp; Music Downloader</div>
+          <div class="timeline-desc">Movie Downloader (v1.0.6): torrent-based downloader with Letterboxd watchlist sync, multi-source search (YTS, TPB, RARBG), and a built-in video player. Music Downloader (v1.0.0): search YouTube, fetch Deezer/iTunes metadata, and download MP3s with embedded album art.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">Late 2024</div>
+          <div class="timeline-title">Command Manager &amp; Sondakika</div>
+          <div class="timeline-desc">Command Manager (v1.0.6): SSH command manager with a GUI builder for styled command cards &mdash; runs as a Windows app or Docker container. Sondakika (v2.0.4): Turkish RSS news reader aggregating 10+ major sources (Cumhuriyet, TRT, CNN Turk, etc.) with an in-app article reader.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2025 &amp; Beyond</div>
+          <div class="timeline-title">Dashboard &amp; Continuous Improvement</div>
+          <div class="timeline-desc">The live download dashboard was built to track stats, showcase the suite, and make installation a one-click experience. Ongoing releases with bug fixes, features, and refinements across all five apps.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2><span class="h2-icon">&#128187;</span> Our Applications</h2>
+      <p>Five tools, one philosophy: simple, fast, and free.</p>
+      <div class="app-mini-grid">
+        <a class="app-mini-card" href="https://github.com/eaeoz/youtube-downloader" target="_blank" rel="noopener" style="--app-accent:#ff4444;text-decoration:none">
+          <div class="app-mini-icon" style="background:rgba(255,68,68,0.15)">
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </div>
+          <div class="app-mini-name">YouTube Downloader</div>
+        </a>
+        <a class="app-mini-card" href="https://github.com/eaeoz/movie-downloader" target="_blank" rel="noopener" style="--app-accent:#a855f7;text-decoration:none">
+          <div class="app-mini-icon" style="background:rgba(168,85,247,0.15)">
+            <svg viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4a2 2 0 0 0-1.99 2L2 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V4h-4z"/></svg>
+          </div>
+          <div class="app-mini-name">Movie Downloader</div>
+        </a>
+        <a class="app-mini-card" href="https://github.com/eaeoz/music-downloader" target="_blank" rel="noopener" style="--app-accent:#1ed760;text-decoration:none">
+          <div class="app-mini-icon" style="background:rgba(30,215,96,0.15)">
+            <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55C7.79 13 6 14.79 6 17s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+          </div>
+          <div class="app-mini-name">Music Downloader</div>
+        </a>
+        <a class="app-mini-card" href="https://github.com/eaeoz/command-manager-docker" target="_blank" rel="noopener" style="--app-accent:#0db7ed;text-decoration:none">
+          <div class="app-mini-icon" style="background:rgba(13,183,237,0.15)">
+            <svg viewBox="0 0 24 24"><path d="M13 9h-2V7h2v2zm0 4h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 0H7v-2h2v2zm-4 4h2v2H5v-2zm8 2h-2v-2h2v2zm4-2h-2v-2h2v2zm4-8h-2V7h2v2zm0 4h-2v-2h2v2zm-4-4h-2V7h2v2zM3 5h18V3H3v2zm0 16h18v-2H3v2z"/></svg>
+          </div>
+          <div class="app-mini-name">Command Manager</div>
+        </a>
+        <a class="app-mini-card" href="https://github.com/eaeoz/sondakika" target="_blank" rel="noopener" style="--app-accent:#f59e0b;text-decoration:none">
+          <div class="app-mini-icon" style="background:rgba(245,158,11,0.15)">
+            <svg viewBox="0 0 24 24"><path d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"/></svg>
+          </div>
+          <div class="app-mini-name">Sondakika Haber</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2><span class="h2-icon">&#128295;</span> Technology</h2>
+      <p>All five applications are <strong>Electron</strong> desktop apps for Windows, each following a consistent architecture: an <strong>Express.js</strong> backend serves a vanilla JavaScript frontend inside an Electron frameless window with system tray support.</p>
+      <p>Key technologies: <strong>Electron 28+</strong> for desktop shells, <strong>Express.js</strong> backends, <strong>electron-builder</strong> for packaging (NSIS installer + portable variants), <strong>yt-dlp</strong> + <strong>FFmpeg</strong> for media processing, <strong>WebTorrent</strong> for torrents, <strong>ssh2</strong> for remote connections, <strong>Docker</strong> for containerized deployments, and <strong>GitHub Actions</strong> for CI/CD. The dashboard is pure <strong>HTML/CSS/JS</strong> &mdash; no frameworks, no bloat.</p>
+    </div>
+
+    <footer class="page-footer">
+      <hr class="footer-hr">
+      <div class="footer-links">
+        <a href="index.html" class="footer-link footer-link--back" aria-label="Back to Dashboard">
+          <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        </a>
+      </div>
+      <p class="footer-credit">5 Free Apps Bundle &middot; About Us</p>
+    </footer>
+  </div>
+
+  <button class="back-top" id="backTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+  </button>
+
+  <script>
+    // Animated counters
+    const countEls = document.querySelectorAll('[data-count]');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.dataset.counted) {
+          entry.target.dataset.counted = '1';
+          const target = parseInt(entry.target.dataset.count);
+          let current = 0;
+          const step = Math.max(1, Math.floor(target / 40));
+          const interval = setInterval(() => {
+            current += step;
+            if (current >= target) { current = target; clearInterval(interval); }
+            entry.target.textContent = current.toLocaleString();
+          }, 30);
+        }
+      });
+    }, { threshold: 0.5 });
+    countEls.forEach(el => counterObserver.observe(el));
+
+    // Timeline reveal (staggered)
+    const tlItems = document.querySelectorAll('.timeline-item');
+    const tlObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('reveal'), Array.from(tlItems).indexOf(entry.target) * 120);
+          tlObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    tlItems.forEach(el => tlObserver.observe(el));
+
+    // Section card reveal
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal');
+          cardObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.section-card').forEach(el => cardObserver.observe(el));
+
+    // Back to top
+    const backTop = document.getElementById('backTop');
+    window.addEventListener('scroll', () => { backTop.classList.toggle('visible', window.scrollY > 300); });
+    backTop.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+    // Fetch live total from releases.json
+    fetch('https://raw.githubusercontent.com/eaeoz/app-stats/refs/heads/main/public/releases.json')
+      .then(r => r.json())
+      .then(json => {
+        let total = 0;
+        for (const p of json.projects) total += p.releases.reduce((s, r) => s + (r.assets || []).reduce((a, b) => a + (b.downloads || 0), 0), 0);
+        const el = document.getElementById('totalDownloads');
+        if (el) {
+          let current = 0;
+          const step = Math.max(1, Math.floor(total / 40));
+          const interval = setInterval(() => {
+            current += step;
+            if (current >= total) { current = total; clearInterval(interval); }
+            el.textContent = current.toLocaleString();
+          }, 30);
+        }
+      })
+      .catch(() => { document.getElementById('totalDownloads').textContent = '--'; });
+  </script>
+</body>
+</html>
