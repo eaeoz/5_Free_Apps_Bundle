@@ -226,7 +226,7 @@
         accent: '#ff4444',
         content: `<p>YouTube Downloader is a modern Electron desktop application that lets you download YouTube videos and audio in just a few clicks. Powered by <strong>yt-dlp</strong> and <strong>FFmpeg</strong>, it delivers high-quality downloads with a clean, intuitive interface.</p>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Key Features</h3>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">Key Features</h3>
         <ul style="padding-left:18px;margin:8px 0 16px">
           <li style="margin-bottom:6px"><strong>Video Downloads</strong> &mdash; Choose from 360p, 480p, 720p, or 1080p+ with best audio auto-merged</li>
           <li style="margin-bottom:6px"><strong>Audio Extraction</strong> &mdash; Download as MP3 at 128k-320k bitrate via FFmpeg</li>
@@ -238,7 +238,7 @@
           <li style="margin-bottom:6px"><strong>yt-dlp Auto-Update</strong> &mdash; Keep yt-dlp.exe up to date from within the app</li>
         </ul>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">How to Download a Video</h3>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">How to Download a Video</h3>
         <ol style="padding-left:18px;margin:8px 0 16px">
           <li style="margin-bottom:6px">Launch the app and paste a YouTube URL into the input field</li>
           <li style="margin-bottom:6px">Browse available formats in the format browser or use quick presets</li>
@@ -248,7 +248,7 @@
         </ol>
 
         <div style="margin-top:16px;padding:14px 18px;border-radius:12px;background:rgba(255,68,68,0.06);border-left:3px solid #ff4444">
-          <p style="font-size:13px;color:rgba(255,255,255,0.5);margin:0"><strong style="color:#ff4444">Tip:</strong> Use the format browser to find the best combination of resolution and file size. For music, switch to Audio mode and choose your bitrate.</p>
+          <p style="font-size:13px;color:var(--text-tertiary);margin:0"><strong style="color:#ff4444">Tip:</strong> Use the format browser to find the best combination of resolution and file size. For music, switch to Audio mode and choose your bitrate.</p>
         </div>`
       },
       {
@@ -261,7 +261,7 @@
         accent: '#a855f7',
         content: `<p>Movie Downloader is a torrent-based movie downloader with <strong>Letterboxd watchlist integration</strong>. It aggregates results from multiple torrent sources and provides a rich, feature-packed experience for movie enthusiasts.</p>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Supported Sources</h3>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">Supported Sources</h3>
         <ul style="padding-left:18px;margin:8px 0 16px">
           <li style="margin-bottom:6px"><strong>YTS</strong> &mdash; High-quality movie torrents in small file sizes</li>
           <li style="margin-bottom:6px"><strong>ThePirateBay</strong> &mdash; Largest torrent index</li>
@@ -269,7 +269,7 @@
           <li style="margin-bottom:6px"><strong>TorrentsCSV</strong> &mdash; Additional fallback source</li>
         </ul>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">How It Works</h3>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">How It Works</h3>
         <ol style="padding-left:18px;margin:8px 0 16px">
           <li style="margin-bottom:6px">Link your Letterboxd account to auto-load your watchlist, or search manually</li>
           <li style="margin-bottom:6px">Filter results by quality (720p, 1080p, BluRay, WEB-DL), size, seeders, or category</li>
@@ -278,10 +278,10 @@
           <li style="margin-bottom:6px">Browse your library folder tree and manage downloaded files</li>
         </ol>
 
-        <p>Downloads go to an <code style="background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;font-size:12px">_incomplete/</code> folder and are moved upon completion. Incomplete downloads auto-resume across restarts.</p>
+        <p>Downloads go to an <code style="background:var(--border-light);padding:2px 6px;border-radius:4px;font-size:12px">_incomplete/</code> folder and are moved upon completion. Incomplete downloads auto-resume across restarts.</p>
 
         <div style="margin-top:16px;padding:14px 18px;border-radius:12px;background:rgba(168,85,247,0.06);border-left:3px solid #a855f7">
-          <p style="font-size:13px;color:rgba(255,255,255,0.5);margin:0"><strong style="color:#a855f7">Tip:</strong> Use the quality filter presets to narrow down results quickly. Sorting by seeders usually finds the fastest downloads.</p>
+          <p style="font-size:13px;color:var(--text-tertiary);margin:0"><strong style="color:#a855f7">Tip:</strong> Use the quality filter presets to narrow down results quickly. Sorting by seeders usually finds the fastest downloads.</p>
         </div>`
       },
       {
@@ -294,7 +294,7 @@
         accent: '#1ed760',
         content: `<p>Music Downloader searches YouTube, fetches rich metadata from <strong>Deezer</strong> (with iTunes fallback), and downloads high-quality <strong>192kbps MP3s</strong> with embedded album art. No API keys required.</p>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Smart Pipeline</h3>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">Smart Pipeline</h3>
         <p>Each download follows a 6-step pipeline with visual progress:</p>
         <ol style="padding-left:18px;margin:8px 0 16px">
           <li style="margin-bottom:6px"><strong>Search</strong> &mdash; Searches YouTube with word-scoring algorithm for best match</li>
@@ -305,14 +305,14 @@
           <li style="margin-bottom:6px"><strong>Complete</strong> &mdash; Saves MP3 with album art embedded via FFmpeg</li>
         </ol>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Auto &amp; Manual Modes</h3>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">Auto &amp; Manual Modes</h3>
         <p>The app can auto-pick the best match, or you can review and choose from up to 5 search results manually. Duplicate files get auto-appended (1), (2) when a file already exists.</p>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">CLI Tool: track-dl</h3>
-        <p>For power users, the <code style="background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;font-size:12px">track-dl</code> command-line interface provides the same matching pipeline directly in your terminal. Perfect for scripting and automation.</p>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">CLI Tool: track-dl</h3>
+        <p>For power users, the <code style="background:var(--border-light);padding:2px 6px;border-radius:4px;font-size:12px">track-dl</code> command-line interface provides the same matching pipeline directly in your terminal. Perfect for scripting and automation.</p>
 
         <div style="margin-top:16px;padding:14px 18px;border-radius:12px;background:rgba(30,215,96,0.06);border-left:3px solid #1ed760">
-          <p style="font-size:13px;color:rgba(255,255,255,0.5);margin:0"><strong style="color:#1ed760">Tip:</strong> For the best metadata quality, search with the full "Artist - Song Title" format. The word-scoring algorithm works best with complete queries.</p>
+          <p style="font-size:13px;color:var(--text-tertiary);margin:0"><strong style="color:#1ed760">Tip:</strong> For the best metadata quality, search with the full "Artist - Song Title" format. The word-scoring algorithm works best with complete queries.</p>
         </div>`
       },
       {
@@ -325,10 +325,10 @@
         accent: '#0db7ed',
         content: `<p>Command Manager is an SSH command manager that gives you a graphical interface for managing remote servers. Create SSH profiles, design styled command buttons, and execute commands with a single click.</p>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">SSH Profile Management</h3>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">SSH Profile Management</h3>
         <p>Create and manage multiple SSH profiles with host, port, username, and password. Profiles are stored in JSON configuration files for easy backup and portability.</p>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Custom Command Cards</h3>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">Custom Command Cards</h3>
         <p>Design command buttons with full styling control:</p>
         <ul style="padding-left:18px;margin:8px 0 16px">
           <li style="margin-bottom:6px">Set text color, background, and gradients per button</li>
@@ -337,16 +337,16 @@
           <li style="margin-bottom:6px">One-click execution on any SSH profile</li>
         </ul>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Docker Deployment</h3>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">Docker Deployment</h3>
         <p>Run as a Docker container for persistent web access:</p>
-        <div style="background:rgba(0,0,0,0.3);border-radius:10px;padding:12px 16px;margin:8px 0 16px;font-family:Consolas,monospace;font-size:12px;color:rgba(255,255,255,0.6)">docker pull eaeoz/command-manager-docker:6</div>
+        <div style="background:var(--input-bg);border-radius:10px;padding:12px 16px;margin:8px 0 16px;font-family:Consolas,monospace;font-size:12px;color:var(--text-secondary)">docker pull eaeoz/command-manager-docker:6</div>
         <p>The Docker version runs on port 3000 and includes AI-powered assistance via Puter.js for generating commands.</p>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Backup &amp; Restore</h3>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">Backup &amp; Restore</h3>
         <p>Export and import your entire configuration &mdash; profiles, commands, and styling &mdash; for easy migration between machines.</p>
 
         <div style="margin-top:16px;padding:14px 18px;border-radius:12px;background:rgba(13,183,237,0.06);border-left:3px solid #0db7ed">
-          <p style="font-size:13px;color:rgba(255,255,255,0.5);margin:0"><strong style="color:#0db7ed">Tip:</strong> Use the AI button in the Docker version to describe what you need in plain English. The AI will generate the appropriate command for you.</p>
+          <p style="font-size:13px;color:var(--text-tertiary);margin:0"><strong style="color:#0db7ed">Tip:</strong> Use the AI button in the Docker version to describe what you need in plain English. The AI will generate the appropriate command for you.</p>
         </div>`
       },
       {
@@ -359,10 +359,10 @@
         accent: '#f59e0b',
         content: `<p>Sondakika (Turkish for "Breaking News") is a modern Electron-based RSS news reader that aggregates real-time headlines from <strong>10+ major Turkish news sources</strong> into one clean interface.</p>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Supported News Sources</h3>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">Supported News Sources</h3>
         <p style="margin-bottom:10px">Cumhuriyet, TRT Haber, Mynet, Sabah, Star, Gazete Vatan, Haberturk, CNN Turk, Yeni Safak, Anadolu Ajansi &mdash; all accessible from one app.</p>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Key Features</h3>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">Key Features</h3>
         <ul style="padding-left:18px;margin:8px 0 16px">
           <li style="margin-bottom:6px"><strong>Card-Based UI</strong> &mdash; Clean layout with source badges and timestamps</li>
           <li style="margin-bottom:6px"><strong>In-App Article Reader</strong> &mdash; Read full articles without opening a browser, with animated transitions</li>
@@ -375,7 +375,7 @@
         </ul>
 
         <div style="margin-top:16px;padding:14px 18px;border-radius:12px;background:rgba(245,158,11,0.06);border-left:3px solid #f59e0b">
-          <p style="font-size:13px;color:rgba(255,255,255,0.5);margin:0"><strong style="color:#f59e0b">Tip:</strong> Press <kbd style="background:rgba(255,255,255,0.08);padding:1px 5px;border-radius:3px;border:1px solid rgba(255,255,255,0.1)">F5</kbd> to refresh all feeds, and use number keys 1-9 to adjust font sizes while reading articles.</p>
+          <p style="font-size:13px;color:var(--text-tertiary);margin:0"><strong style="color:#f59e0b">Tip:</strong> Press <kbd style="background:var(--border-light);padding:1px 5px;border-radius:3px;border:1px solid var(--border-color)">F5</kbd> to refresh all feeds, and use number keys 1-9 to adjust font sizes while reading articles.</p>
         </div>`
       },
       {
@@ -388,14 +388,14 @@
         accent: '#ff4444',
         content: `<p>Installing all five applications is as simple as copying a single command. No need to visit each GitHub releases page individually.</p>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">One-Click Install</h3>
-        <p>Copy the PowerShell command below, open <kbd style="background:rgba(255,255,255,0.08);padding:2px 6px;border-radius:4px;border:1px solid rgba(255,255,255,0.1)">Win+R</kbd>, type <code style="background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px;font-size:12px">powershell</code>, press <kbd style="background:rgba(255,255,255,0.08);padding:2px 6px;border-radius:4px;border:1px solid rgba(255,255,255,0.1)">Enter</kbd>, paste the command, and press <kbd style="background:rgba(255,255,255,0.08);padding:2px 6px;border-radius:4px;border:1px solid rgba(255,255,255,0.1)">Enter</kbd> again.</p>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">One-Click Install</h3>
+        <p>Copy the PowerShell command below, open <kbd style="background:var(--border-light);padding:2px 6px;border-radius:4px;border:1px solid var(--border-color)">Win+R</kbd>, type <code style="background:var(--border-light);padding:2px 6px;border-radius:4px;font-size:12px">powershell</code>, press <kbd style="background:var(--border-light);padding:2px 6px;border-radius:4px;border:1px solid var(--border-color)">Enter</kbd>, paste the command, and press <kbd style="background:var(--border-light);padding:2px 6px;border-radius:4px;border:1px solid var(--border-color)">Enter</kbd> again.</p>
 
-        <div style="background:rgba(0,0,0,0.3);border-radius:10px;padding:14px 18px;margin:12px 0;font-family:Consolas,monospace;font-size:12px;color:rgba(255,255,255,0.7);word-break:break-all">
+        <div style="background:var(--input-bg);border-radius:10px;padding:14px 18px;margin:12px 0;font-family:Consolas,monospace;font-size:12px;color:var(--text-secondary);word-break:break-all">
 "ytdlps1","mvdlps1","msdlps1","cmmgrps1","sndkkps1" | ForEach-Object { iex (iwr -useb "https://tinyurl.com/$_") }
         </div>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">What Gets Installed</h3>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">What Gets Installed</h3>
         <ul style="padding-left:18px;margin:8px 0 16px">
           <li style="margin-bottom:6px"><strong>YouTube Downloader</strong> &mdash; Video/audio downloader with format browser</li>
           <li style="margin-bottom:6px"><strong>Movie Downloader</strong> &mdash; Torrent-based movie downloader with Letterboxd sync</li>
@@ -405,7 +405,7 @@
         </ul>
 
         <div style="margin-top:16px;padding:14px 18px;border-radius:12px;background:rgba(255,68,68,0.06);border-left:3px solid #ff4444">
-          <p style="font-size:13px;color:rgba(255,255,255,0.5);margin:0"><strong style="color:#ff4444">Note:</strong> Each tinyurl links to the latest GitHub release. The installer will download and run the NSIS setup for each app automatically.</p>
+          <p style="font-size:13px;color:var(--text-tertiary);margin:0"><strong style="color:#ff4444">Note:</strong> Each tinyurl links to the latest GitHub release. The installer will download and run the NSIS setup for each app automatically.</p>
         </div>`
       },
       {
@@ -418,33 +418,33 @@
         accent: '#a855f7',
         content: `<p>Encountering issues? Here are solutions for the most common problems across the 5 Apps Bundle.</p>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">YouTube Downloader</h3>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">YouTube Downloader</h3>
         <ul style="padding-left:18px;margin:8px 0 16px">
           <li style="margin-bottom:6px"><strong>yt-dlp out of date:</strong> Use the built-in <em>Update yt-dlp</em> button in settings, or download the latest yt-dlp.exe manually</li>
           <li style="margin-bottom:6px"><strong>FFmpeg not found:</strong> Ensure ffmpeg.exe is in the same directory as the app, or set the FFmpeg path in settings</li>
           <li style="margin-bottom:6px"><strong>Download stuck:</strong> Try a different format or resolution. Some videos have region restrictions</li>
         </ul>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Movie Downloader</h3>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">Movie Downloader</h3>
         <ul style="padding-left:18px;margin:8px 0 16px">
           <li style="margin-bottom:6px"><strong>No torrent sources found:</strong> Check your internet connection. Some sources may be blocked in your region &mdash; try a VPN</li>
           <li style="margin-bottom:6px"><strong>Slow download:</strong> Sort by seeders. More seeders = faster downloads</li>
-          <li style="margin-bottom:6px"><strong>Player not working:</strong> Ensure the file is fully downloaded. Incomplete files remain in the <code style="background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px">_incomplete/</code> folder</li>
+          <li style="margin-bottom:6px"><strong>Player not working:</strong> Ensure the file is fully downloaded. Incomplete files remain in the <code style="background:var(--border-light);padding:2px 6px;border-radius:4px">_incomplete/</code> folder</li>
         </ul>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Music Downloader</h3>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">Music Downloader</h3>
         <ul style="padding-left:18px;margin:8px 0 16px">
           <li style="margin-bottom:6px"><strong>No metadata found:</strong> Try searching with "Artist - Track Title" format. Deezer and iTunes fallback may not have all tracks</li>
           <li style="margin-bottom:6px"><strong>Album art missing:</strong> FFmpeg must be available for image embedding. Check FFmpeg path in settings</li>
         </ul>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Command Manager</h3>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">Command Manager</h3>
         <ul style="padding-left:18px;margin:8px 0 16px">
           <li style="margin-bottom:6px"><strong>SSH connection refused:</strong> Verify host, port, and credentials. Ensure the SSH server is running</li>
           <li style="margin-bottom:6px"><strong>Docker container not accessible:</strong> Check port mapping. Default is 3000 &mdash; ensure it is not in use</li>
         </ul>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Sondakika</h3>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">Sondakika</h3>
         <ul style="padding-left:18px;margin:8px 0 16px">
           <li style="margin-bottom:6px"><strong>No news loaded:</strong> Check internet connection. Some RSS feeds may be temporarily unavailable</li>
           <li style="margin-bottom:6px"><strong>Empty articles:</strong> Some sources restrict full content in RSS feeds. Try a different source</li>
@@ -460,16 +460,16 @@
         accent: '#0db7ed',
         content: `<p>The 5 Free Apps Bundle dashboard provides live download statistics for all five applications. Here is how it works behind the scenes.</p>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Data Pipeline</h3>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">Data Pipeline</h3>
         <ol style="padding-left:18px;margin:8px 0 16px">
           <li style="margin-bottom:6px">A scheduled GitHub Action collects release data from all five repositories</li>
-          <li style="margin-bottom:6px">Data is compiled into a single <code style="background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px">releases.json</code> file on the <code style="background:rgba(255,255,255,0.06);padding:2px 6px;border-radius:4px">app-stats</code> repository</li>
+          <li style="margin-bottom:6px">Data is compiled into a single <code style="background:var(--border-light);padding:2px 6px;border-radius:4px">releases.json</code> file on the <code style="background:var(--border-light);padding:2px 6px;border-radius:4px">app-stats</code> repository</li>
           <li style="margin-bottom:6px">The dashboard fetches this JSON file from GitHub's raw CDN</li>
           <li style="margin-bottom:6px">JavaScript renders the data into cards with download counts, release tags, and asset details</li>
           <li style="margin-bottom:6px">The page auto-refreshes every <strong>10 minutes</strong> to keep stats current</li>
         </ol>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">What You See</h3>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">What You See</h3>
         <ul style="padding-left:18px;margin:8px 0 16px">
           <li style="margin-bottom:6px"><strong>Grand Total</strong> &mdash; Sum of all downloads across all five apps</li>
           <li style="margin-bottom:6px"><strong>Per-App Total</strong> &mdash; Downloads for each individual application</li>
@@ -479,11 +479,11 @@
           <li style="margin-bottom:6px"><strong>Star Count</strong> &mdash; GitHub stars for each repository</li>
         </ul>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Quick Install</h3>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">Quick Install</h3>
         <p>Each app card has a Quick Install section with a one-click PowerShell command. Click the command to copy it, then paste into a PowerShell window to install instantly.</p>
 
         <div style="margin-top:16px;padding:14px 18px;border-radius:12px;background:rgba(13,183,237,0.06);border-left:3px solid #0db7ed">
-          <p style="font-size:13px;color:rgba(255,255,255,0.5);margin:0"><strong style="color:#0db7ed">Tip:</strong> Hover over any install command for step-by-step instructions on how to run it.</p>
+          <p style="font-size:13px;color:var(--text-tertiary);margin:0"><strong style="color:#0db7ed">Tip:</strong> Hover over any install command for step-by-step instructions on how to run it.</p>
         </div>`
       },
       {
@@ -496,7 +496,7 @@
         accent: '#ff4444',
         content: `<p>Privacy is not an afterthought &mdash; it is a core principle. Here is exactly how we protect your data across all five applications and the dashboard.</p>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Applications Are Fully Offline</h3>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">Applications Are Fully Offline</h3>
         <p>All desktop applications function entirely offline:</p>
         <ul style="padding-left:18px;margin:8px 0 16px">
           <li style="margin-bottom:6px"><strong>YouTube Downloader</strong> &mdash; No telemetry. Connects only to YouTube/yt-dlp sources</li>
@@ -506,7 +506,7 @@
           <li style="margin-bottom:6px"><strong>Sondakika</strong> &mdash; Only fetches RSS feeds from news sources you select</li>
         </ul>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">Dashboard Analytics</h3>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">Dashboard Analytics</h3>
         <p>The web dashboard uses <strong>Umami Analytics</strong> &mdash; a privacy-focused, open-source analytics platform that:
           <ul style="padding-left:18px;margin:8px 0 16px">
             <li style="margin-bottom:6px">Does <strong>not</strong> use cookies</li>
@@ -516,11 +516,11 @@
           </ul>
         </p>
 
-        <h3 style="font-size:16px;font-weight:800;color:#fff;margin:20px 0 10px">No Data Selling</h3>
+        <h3 style="font-size:16px;font-weight:800;color:var(--text-primary);margin:20px 0 10px">No Data Selling</h3>
         <p>We do <strong>not</strong> sell, trade, or share your data with third parties. The only external services our apps connect to are the ones you explicitly use (YouTube API, torrent trackers, RSS feeds, SSH servers).</p>
 
         <div style="margin-top:16px;padding:14px 18px;border-radius:12px;background:rgba(255,68,68,0.06);border-left:3px solid #ff4444">
-          <p style="font-size:13px;color:rgba(255,255,255,0.5);margin:0"><strong style="color:#ff4444">Our Promise:</strong> No ads, no trackers, no hidden agendas. Just useful tools that respect your privacy.</p>
+          <p style="font-size:13px;color:var(--text-tertiary);margin:0"><strong style="color:#ff4444">Our Promise:</strong> No ads, no trackers, no hidden agendas. Just useful tools that respect your privacy.</p>
         </div>`
       }
     ];
