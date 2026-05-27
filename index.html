@@ -905,6 +905,8 @@
       justify-content: center;
       overflow: hidden;
       background: radial-gradient(ellipse at center, rgba(255,255,255,0.02) 0%, transparent 70%);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .slider-image {
@@ -2620,10 +2622,20 @@
         progress.style.width = '100%';
       }
 
-      // Click image to open lightbox
+      // Open lightbox on tap/click
+      let touchTap = false;
       slides.forEach((slide, i) => {
+        // Empty touchstart tells iOS Safari this is an interactive element
+        slide.addEventListener('touchstart', () => { touchTap = false; }, { passive: true });
+        slide.addEventListener('touchmove', () => { touchTap = true; }, { passive: true });
+        slide.addEventListener('touchend', () => {
+          if (touchMoved || touchTap) return;
+          touchTap = true;
+          stopAutoplay();
+          lbOpen(i);
+        }, { passive: true });
         slide.addEventListener('click', () => {
-          if (touchMoved) return;
+          if (touchMoved || touchTap) return;
           stopAutoplay();
           lbOpen(i);
         });
