@@ -32,7 +32,7 @@ Each release ships two `.exe` variants — **Setup** (installer) and **Portable*
 Run one command to install all 5 apps at once:
 
 ```powershell
-"ytdlps1","mvdlps1","msdlps1","cmmgrps1","sndkkps1" | ForEach-Object { iex (iwr -useb "https://tinyurl.com/$_") }
+"ytdlps1","movdlps1","msdlps1","cmmgrps1","sndkkps1" | ForEach-Object { iex (iwr -useb "https://tinyurl.com/$_") }
 ```
 
 ---
@@ -57,7 +57,7 @@ Run one command to install all 5 apps at once:
       <img src="https://img.shields.io/github/v/release/eaeoz/movie-downloader?style=flat-square&label=Latest&color=a855f7" alt="Latest">
       <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Feaeoz%2Fapp-stats%2Frefs%2Fheads%2Fmain%2Fpublic%2Freleases.json&query=%24.projects%5B1%5D.releases.length&label=Releases&color=a855f7" alt="Releases">
       <br>
-      <code>iex (iwr -useb https://tinyurl.com/mvdlps1)</code>
+      <code>iex (iwr -useb https://tinyurl.com/movdlps1)</code>
     </td>
   </tr>
   <tr>
