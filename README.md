@@ -43,45 +43,30 @@ Run one command to install all 5 apps at once:
   <tr>
     <td width="180"><b>YouTube Downloader</b></td>
     <td>
-      <img src="https://img.shields.io/github/v/release/eaeoz/youtube-downloader?style=flat-square&label=Latest&color=ff4444" alt="Latest">
-      <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Feaeoz%2Fapp-stats%2Frefs%2Fheads%2Fmain%2Fpublic%2Freleases.json&query=%24.projects%5B0%5D.releases.length&label=Releases&color=ff4444" alt="Releases">
-      <br>
       <code>iex (iwr -useb https://tinyurl.com/ytdlps1)</code>
     </td>
   </tr>
   <tr>
     <td width="180"><b>Movie Downloader</b></td>
     <td>
-      <img src="https://img.shields.io/github/v/release/eaeoz/movie-downloader?style=flat-square&label=Latest&color=a855f7" alt="Latest">
-      <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Feaeoz%2Fapp-stats%2Frefs%2Fheads%2Fmain%2Fpublic%2Freleases.json&query=%24.projects%5B1%5D.releases.length&label=Releases&color=a855f7" alt="Releases">
-      <br>
       <code>iex (iwr -useb https://tinyurl.com/movdlps1)</code>
     </td>
   </tr>
   <tr>
     <td width="180"><b>Music Downloader</b></td>
     <td>
-      <img src="https://img.shields.io/github/v/release/eaeoz/music-downloader?style=flat-square&label=Latest&color=1ed760" alt="Latest">
-      <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Feaeoz%2Fapp-stats%2Frefs%2Fheads%2Fmain%2Fpublic%2Freleases.json&query=%24.projects%5B2%5D.releases.length&label=Releases&color=1ed760" alt="Releases">
-      <br>
       <code>iex (iwr -useb https://tinyurl.com/msdlps1)</code>
     </td>
   </tr>
   <tr>
     <td width="180"><b>Command Manager</b></td>
     <td>
-      <img src="https://img.shields.io/github/v/release/eaeoz/command-manager-docker?style=flat-square&label=Latest&color=0db7ed" alt="Latest">
-      <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Feaeoz%2Fapp-stats%2Frefs%2Fheads%2Fmain%2Fpublic%2Freleases.json&query=%24.projects%5B3%5D.releases.length&label=Releases&color=0db7ed" alt="Releases">
-      <br>
       <code>iex (iwr -useb https://tinyurl.com/cmmgrps1)</code>
     </td>
   </tr>
   <tr>
     <td width="180"><b>Sondakika</b></td>
     <td>
-      <img src="https://img.shields.io/github/v/release/eaeoz/sondakika?style=flat-square&label=Latest&color=f59e0b" alt="Latest">
-      <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Feaeoz%2Fapp-stats%2Frefs%2Fheads%2Fmain%2Fpublic%2Freleases.json&query=%24.projects%5B4%5D.releases.length&label=Releases&color=f59e0b" alt="Releases">
-      <br>
       <code>iex (iwr -useb https://tinyurl.com/sndkkps1)</code>
     </td>
   </tr>
