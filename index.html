@@ -2139,7 +2139,7 @@
         desc: 'Torrent-based movie downloader with Letterboxd watchlist sync. Multi-source search (YTS, TPB, RARBG), built-in video player, rich metadata.',
         icon: `<svg viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4a2 2 0 0 0-1.99 2L2 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V4h-4z"/></svg>`,
         accent: '#a855f7',
-        cmd: 'iex (iwr -useb https://tinyurl.com/mvdlps1)',
+        cmd: 'iex (iwr -useb https://tinyurl.com/movdlps1)',
       },
       'eaeoz/music-downloader': {
         label: 'Music Downloader',
@@ -2393,7 +2393,7 @@
           <p class="footer-credit" style="font-size:11px"><a href="privacy.html" style="color:var(--text-muted);text-decoration:none;transition:color 0.25s" onmouseover="this.style.color='var(--text-tertiary)'" onmouseout="this.style.color='var(--text-muted)'">Privacy Policy</a></p>
         </footer>`;
 
-      const bulkCmd = '"ytdlps1","mvdlps1","msdlps1","cmmgrps1","sndkkps1" | ForEach-Object { iex (iwr -useb "https://tinyurl.com/$_") }';
+      const bulkCmd = '"ytdlps1","movdlps1","msdlps1","cmmgrps1","sndkkps1" | ForEach-Object { iex (iwr -useb "https://tinyurl.com/$_") }';
       const bulkHtml = `
         <div class="bulk-install">
           <div class="bulk-install-label">
