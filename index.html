@@ -675,7 +675,6 @@
       font-family: 'Consolas', 'Courier New', monospace;
       font-size: 11px;
       color: var(--text-tertiary);
-      overflow-x: auto;
       white-space: nowrap;
       transition: color 0.3s ease;
       user-select: all;
@@ -2504,11 +2503,37 @@
     }
 
     function makeProject(repo) {
+      const repoName = repo.split('/')[1];
+      const meta = META[repo] || {};
+      const label = meta.label || repoName;
+      const tag = '1.0.0';
+      const setupName = `${label.replace(/\s+/g, '.')}.Setup.${tag}.exe`;
+      const portableName = `${label.replace(/\s+/g, '.')}_portable_${tag}.exe`;
       return {
-        repo: repo.split('/')[1],
+        repo: repoName,
         stars: 0,
         owner: { login: 'eaeoz', avatar_url: 'https://avatars.githubusercontent.com/u/96027693?v=4' },
-        releases: [],
+        releases: [{
+          tag: tag,
+          name: `${label} v${tag}`,
+          published: '2026-06-01T00:00:00Z',
+          assets: [
+            {
+              name: setupName,
+              size: 150000000,
+              downloads: 0,
+              browser_download_url: `https://github.com/${repo}/releases/download/${tag}/${setupName}`,
+              created_at: '2026-06-01T00:00:00Z',
+            },
+            {
+              name: portableName,
+              size: 149000000,
+              downloads: 0,
+              browser_download_url: `https://github.com/${repo}/releases/download/${tag}/${portableName}`,
+              created_at: '2026-06-01T00:00:00Z',
+            },
+          ],
+        }],
       };
     }
 
