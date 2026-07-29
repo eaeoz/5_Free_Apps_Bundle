@@ -2503,24 +2503,45 @@
         </div>`;
     }
 
+    function makeProject(repo) {
+      return {
+        repo: repo.split('/')[1],
+        stars: 0,
+        owner: { login: 'eaeoz', avatar_url: 'https://avatars.githubusercontent.com/u/96027693?v=4' },
+        releases: [],
+      };
+    }
+
     async function loadAll() {
       const app = document.getElementById('app');
 
-      const res = await fetch('https://raw.githubusercontent.com/eaeoz/app-stats/refs/heads/main/public/releases.json');
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const json = await res.json();
+      const allRepos = [...REPOS, ...BONUS_REPOS];
+      let projectsData;
+
+      try {
+        const res = await fetch('https://raw.githubusercontent.com/eaeoz/app-stats/refs/heads/main/public/releases.json');
+        if (res.ok) {
+          const json = await res.json();
+          projectsData = json.projects;
+        } else {
+          projectsData = [];
+        }
+      } catch {
+        projectsData = [];
+      }
+
+      const projectsMap = {};
+      for (const p of projectsData) {
+        projectsMap[`eaeoz/${p.repo}`] = p;
+      }
 
       let grandTotal = 0;
       let cardsHtml = '';
       let bonusCardsHtml = '';
 
-      const allRepos = [...REPOS, ...BONUS_REPOS];
-
-      for (const project of json.projects) {
-        const fullRepo = `eaeoz/${project.repo}`;
+      for (const fullRepo of allRepos) {
         const isBonus = BONUS_REPOS.includes(fullRepo);
-        if (!allRepos.includes(fullRepo)) continue;
-
+        const project = projectsMap[fullRepo] || makeProject(fullRepo);
         const cardHtml = buildCard(project, isBonus);
 
         let repoTotal = 0;
