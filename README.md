@@ -1,11 +1,11 @@
-# 5 Free Apps Bundle
+# 7 Free Apps Bundle
 
 <p align="center">
-  <b>Live download dashboard</b> tracking 5 free open-source Windows apps. All badges fetch live data — no manual updates needed.
+  <b>Live download dashboard</b> tracking 7 free open-source Windows apps. All badges fetch live data — no manual updates needed.
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Projects-5-0db7ed?style=flat-square" alt="5 projects">
+  <img src="https://img.shields.io/badge/Projects-7-0db7ed?style=flat-square" alt="7 projects">
   <img src="https://img.shields.io/badge/Updated-Live%20API-ff4444?style=flat-square" alt="Live API">
 </p>
 
@@ -21,6 +21,16 @@
 
 ## Tracked Projects
 
+| # | App | Category | Install Command |
+|---|-----|----------|-----------------|
+| 1 | **YouTube Downloader** | Media | `iex (iwr -useb https://tinyurl.com/ytdlps1)` |
+| 2 | **Movie Downloader** | Media | `iex (iwr -useb https://tinyurl.com/movdlps1)` |
+| 3 | **Music Downloader** | Media | `iex (iwr -useb https://tinyurl.com/msdlps1)` |
+| 4 | **Command Manager** | Dev Tools | `iex (iwr -useb https://tinyurl.com/cmmgrps1)` |
+| 5 | **VoiceEffect** | Audio | `iex (iwr -useb https://tinyurl.com/voiceffect)` |
+| 6 | **Sondakika** | News | `iex (iwr -useb https://tinyurl.com/sndkkps1)` |
+| 7 | **Speech Type** | Productivity | `iex (iwr -useb https://tinyurl.com/spchtyp)` |
+
 Each release ships two `.exe` variants — **Setup** (installer) and **Portable** (standalone). The **Downloads** badge shows the total across both.
 
 > **How to run the install commands below:** Press `Win+R`, type `powershell`, press Enter, paste the command, press Enter.
@@ -29,10 +39,10 @@ Each release ships two `.exe` variants — **Setup** (installer) and **Portable*
 
 ## All-in-One Install
 
-Run one command to install all 5 apps at once:
+Run one command to install all 5 main apps at once:
 
 ```powershell
-"ytdlps1","movdlps1","msdlps1","cmmgrps1","sndkkps1" | ForEach-Object { iex (iwr -useb "https://tinyurl.com/$_") }
+"ytdlps1","movdlps1","msdlps1","cmmgrps1","voiceffect" | ForEach-Object { iex (iwr -useb "https://tinyurl.com/$_") }
 ```
 
 ---
@@ -65,9 +75,26 @@ Run one command to install all 5 apps at once:
     </td>
   </tr>
   <tr>
+    <td width="180"><b>VoiceEffect</b></td>
+    <td>
+      <code>iex (iwr -useb https://tinyurl.com/voiceffect)</code>
+    </td>
+  </tr>
+</table>
+
+### Bonus Apps
+
+<table>
+  <tr>
     <td width="180"><b>Sondakika</b></td>
     <td>
       <code>iex (iwr -useb https://tinyurl.com/sndkkps1)</code>
+    </td>
+  </tr>
+  <tr>
+    <td width="180"><b>Speech Type</b></td>
+    <td>
+      <code>iex (iwr -useb https://tinyurl.com/spchtyp)</code>
     </td>
   </tr>
 </table>
@@ -94,4 +121,4 @@ Each repo card displays:
 
 ## Editing
 
-To add or modify repos, edit the `REPOS` array and `META` map in `index.html`. Each `META` entry requires a `label`, `icon` (SVG string), `accent` color, and `cmd` install command.
+To add or modify repos, edit the `REPOS` array, `BONUS_REPOS` array and `META` map in `index.html`. Each `META` entry requires a `label`, `icon` (SVG string), `accent` color, and `cmd` install command.
