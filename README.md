@@ -1,7 +1,7 @@
-# 7 Free Apps Bundle
+# 5 Free Apps Bundle
 
 <p align="center">
-  <b>Live download dashboard</b> tracking 7 free open-source Windows apps. All badges fetch live data — no manual updates needed.
+  <b>Live download dashboard</b> tracking 5 free (+2 Bonus) open-source Windows apps. All badges fetch live data — no manual updates needed.
 </p>
 
 <p align="center">
