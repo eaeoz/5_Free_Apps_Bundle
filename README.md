@@ -27,7 +27,7 @@
 | 2 | **Movie Downloader** | Media | `iex (iwr -useb https://tinyurl.com/mvdl108)` |
 | 3 | **Music Downloader** | Media | `iex (iwr -useb https://tinyurl.com/msdlps1)` |
 | 4 | **Command Manager** | Dev Tools | `iex (iwr -useb https://tinyurl.com/cmmgrps1)` |
-| 5 | **VoiceEffect** | Audio | `iex (iwr -useb https://tinyurl.com/voiceffect201)` |
+| 5 | **VoiceEffect** | Audio | `iex (iwr -useb https://tinyurl.com/voiceffect202)` |
 | 6 | **Sondakika** | News | `iex (iwr -useb https://tinyurl.com/sndkkps1)` |
 | 7 | **Speech Type** | Productivity | `iex (iwr -useb https://tinyurl.com/spchtyp)` |
 
@@ -42,7 +42,7 @@ Each release ships two `.exe` variants — **Setup** (installer) and **Portable*
 Run one command to install all 5 main apps at once:
 
 ```powershell
-"ytdlps1","mvdl108","msdlps1","cmmgrps1","voiceffect201" | ForEach-Object { iex (iwr -useb "https://tinyurl.com/$_") }
+"ytdlps1","mvdl108","msdlps1","cmmgrps1","voiceffect202" | ForEach-Object { iex (iwr -useb "https://tinyurl.com/$_") }
 ```
 
 ---
@@ -77,7 +77,7 @@ Run one command to install all 5 main apps at once:
   <tr>
     <td width="180"><b>VoiceEffect</b></td>
     <td>
-      <code>iex (iwr -useb https://tinyurl.com/voiceffect201)</code>
+      <code>iex (iwr -useb https://tinyurl.com/voiceffect202)</code>
     </td>
   </tr>
 </table>
