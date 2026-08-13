@@ -25,7 +25,7 @@
 |---|-----|----------|-----------------|
 | 1 | **YouTube Downloader** | Media | `iex (iwr -useb https://tinyurl.com/ytdlps1)` |
 | 2 | **Movie Downloader** | Media | `iex (iwr -useb https://tinyurl.com/mvdl108)` |
-| 3 | **Music Downloader** | Media | `iex (iwr -useb https://tinyurl.com/msdlps1)` |
+| 3 | **Music Downloader** | Media | `iex (iwr -useb https://tinyurl.com/msdl101)` |
 | 4 | **Command Manager** | Dev Tools | `iex (iwr -useb https://tinyurl.com/cmmgrps1)` |
 | 5 | **VoiceEffect** | Audio | `iex (iwr -useb https://tinyurl.com/voiceffect202)` |
 | 6 | **Sondakika** | News | `iex (iwr -useb https://tinyurl.com/sndkkps1)` |
@@ -42,7 +42,7 @@ Each release ships two `.exe` variants — **Setup** (installer) and **Portable*
 Run one command to install all 5 main apps at once:
 
 ```powershell
-"ytdlps1","mvdl108","msdlps1","cmmgrps1","voiceffect202" | ForEach-Object { iex (iwr -useb "https://tinyurl.com/$_") }
+"ytdlps1","mvdl108","msdl101","cmmgrps1","voiceffect202" | ForEach-Object { iex (iwr -useb "https://tinyurl.com/$_") }
 ```
 
 ---
@@ -65,7 +65,7 @@ Run one command to install all 5 main apps at once:
   <tr>
     <td width="180"><b>Music Downloader</b></td>
     <td>
-      <code>iex (iwr -useb https://tinyurl.com/msdlps1)</code>
+      <code>iex (iwr -useb https://tinyurl.com/msdl101)</code>
     </td>
   </tr>
   <tr>
