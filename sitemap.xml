@@ -1,34 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://eaeoz.github.io/5_Free_Apps_Bundle/</loc>
-    <lastmod>2026-05-27</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://eaeoz.github.io/5_Free_Apps_Bundle/images/youtube-downloader.png</image:loc>
+      <image:title>YouTube Downloader - Download Dashboard</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://eaeoz.github.io/5_Free_Apps_Bundle/images/movie-downloader.png</image:loc>
+      <image:title>Movie Downloader - Download Dashboard</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://eaeoz.github.io/5_Free_Apps_Bundle/images/music-downloader.png</image:loc>
+      <image:title>Music Downloader - Download Dashboard</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://eaeoz.github.io/5_Free_Apps_Bundle/images/command-manager-docker.png</image:loc>
+      <image:title>Command Manager - Download Dashboard</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://eaeoz.github.io/5_Free_Apps_Bundle/images/voice-effect-1.jpg</image:loc>
+      <image:title>VoiceEffect - Download Dashboard</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://eaeoz.github.io/5_Free_Apps_Bundle/images/sondakika-2.png</image:loc>
+      <image:title>Sondakika Haber - Download Dashboard</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://eaeoz.github.io/5_Free_Apps_Bundle/images/speech-type.jpg</image:loc>
+      <image:title>Speech Type - Download Dashboard</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://eaeoz.github.io/5_Free_Apps_Bundle/about.html</loc>
-    <lastmod>2026-05-27</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://eaeoz.github.io/5_Free_Apps_Bundle/contact.html</loc>
-    <lastmod>2026-05-27</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://eaeoz.github.io/5_Free_Apps_Bundle/privacy.html</loc>
-    <lastmod>2026-05-27</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://eaeoz.github.io/5_Free_Apps_Bundle/blog/</loc>
-    <lastmod>2026-05-27</lastmod>
+    <lastmod>2026-08-18</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
 </urlset>
